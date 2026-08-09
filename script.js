@@ -177,6 +177,17 @@ leadForm.querySelectorAll('.form-back').forEach(btn => {
 leadForm.addEventListener('submit', (e) => {
   e.preventDefault();
   if (!validateStep(currentStep)) return;
+
+  const data = new FormData(leadForm);
+  const subject = encodeURIComponent(`New vehicle lead: ${data.get('fullName')}`);
+  const body = encodeURIComponent(
+    `Full Name: ${data.get('fullName')}\n` +
+    `Email: ${data.get('email')}\n` +
+    `Phone: ${data.get('phone')}\n` +
+    `Location: ${data.get('location')}\n`
+  );
+  window.location.href = `mailto:604kars@gmail.com?subject=${subject}&body=${body}`;
+
   leadForm.style.display = 'none';
   document.querySelector('.form-progress').style.display = 'none';
   document.querySelector('.form-step-label').style.display = 'none';
