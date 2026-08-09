@@ -1,819 +1,1561 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>604 Kars — Turo Co-Hosting & Vehicle Management, Vancouver</title>
-<meta name="description" content="604 Kars manages guest messages, check-ins, cleaning, documentation, and pricing for your vehicle on Turo — Vancouver, North Van, Burnaby & Richmond. One flat management rate.">
-<link rel="canonical" href="https://604kars.com/">
-<meta name="theme-color" content="#0F3D28">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>604 Kars — Turo co-hosting &amp; vehicle management in Metro Vancouver</title>
+<meta name="description" content="604 Kars runs your car on Turo end to end — listing, pricing, guest screening, handoffs, cleaning and claims. You keep the title, the keys, and the larger half of every trip.">
+<meta name="theme-color" content="#F3EEE3">
+<meta property="og:title" content="604 Kars — Turo co-hosting in Metro Vancouver">
+<meta property="og:description" content="Your car earns nothing in the driveway. We run it on Turo so you don't have to.">
 <meta property="og:type" content="website">
-<meta property="og:title" content="604 Kars — Turo Co-Hosting & Vehicle Management, Vancouver">
-<meta property="og:description" content="604 Kars manages guest messages, check-ins, cleaning, documentation, and pricing for your vehicle on Turo — Vancouver, North Van, Burnaby & Richmond.">
 <meta property="og:url" content="https://604kars.com/">
+<link rel="canonical" href="https://604kars.com/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<!-- Fraunces' italic axis is loaded on purpose: the hero sets <em> in italic,
+     and without the real cut the browser slants the roman instead, which in a
+     display serif reads as a mistake. -->
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..900;1,9..144,400..900&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
 <meta property="og:image" content="https://604kars.com/og-image.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="icon" type="image/svg+xml" href="favicon.svg">
 <script>document.documentElement.className += ' js';</script>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,600;1,9..144,700&family=Work+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600;700&display=swap">
-<link rel="stylesheet" href="styles.css">
-<!--
-  ANALYTICS: no tracking is installed yet. Add your own GA4 or Plausible
-  snippet here once you have an account — e.g.:
-  <script defer data-domain="604kars.com" src="https://plausible.io/js/script.js"></script>
-  We can't create that account on your behalf; drop in your real ID/domain.
--->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "LocalBusiness",
-  "name": "604 Kars",
-  "description": "Turo co-hosting and vehicle management service covering Vancouver, North Vancouver, Burnaby, and Richmond.",
-  "url": "https://604kars.com/",
-  "telephone": "+1-236-788-8944",
-  "email": "604kars@gmail.com",
-  "areaServed": [
-    { "@type": "City", "name": "Vancouver" },
-    { "@type": "City", "name": "North Vancouver" },
-    { "@type": "City", "name": "Burnaby" },
-    { "@type": "City", "name": "Richmond" }
-  ],
-  "address": {
-    "@type": "PostalAddress",
-    "addressLocality": "Vancouver",
-    "addressRegion": "BC",
-    "addressCountry": "CA"
-  },
-  "openingHoursSpecification": {
-    "@type": "OpeningHoursSpecification",
-    "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
-    "opens": "09:00",
-    "closes": "21:00"
-  },
-  "founder": {
-    "@type": "Person",
-    "name": "Amir Keshavarzi"
-  }
+
+<style>
+/* ==========================================================================
+   604 KARS — brand tokens
+   paper / ink / racing green / brass / hairline
+   Brass is reserved for money and hairlines. Nothing else is brass.
+   ========================================================================== */
+:root{
+  --paper:        #F3EEE3;   /* page ground — warm bone, not white */
+  --paper-raise:  #FAF7EF;   /* raised cards on paper */
+  --ink:          #16241B;   /* primary text — green-tinted near-black */
+  --ink-soft:     #4A5A4E;   /* secondary text on paper */
+  --ink-mute:     #5F6E63;   /* captions, meta */
+  --green:        #0F3D28;   /* dominant brand surface, primary CTA */
+  --green-deep:   #0A2A1B;   /* depth, hover, footer */
+  --brass:        #A9793C;   /* accent on paper — hairlines, rules, icons */
+  --brass-text:   #876130;   /* the same brass, darkened for small text.
+                                #A9793C is only 3.31:1 on paper — fine for a
+                                1px rule or an icon, but every eyebrow and
+                                kicker on this page is 0.64–0.68rem text and
+                                needs 4.5:1. This measures 4.80:1. */
+  --brass-lift:   #DFAE68;   /* accent on green — money figures */
+  --hairline:     #D9CEB8;   /* dividers and borders on paper */
+
+  /* On-green equivalents */
+  --on-green:      #F3EEE3;
+  --on-green-soft: rgba(243,238,227,.74);
+  --on-green-mute: rgba(243,238,227,.62);
+  --on-green-line: rgba(243,238,227,.20);
+  --on-green-fill: rgba(243,238,227,.09);
+  --on-green-edge: rgba(255,255,255,.26);
+
+  --r-sm: 8px;
+  --r-md: 14px;
+  --r-lg: 20px;
+  --r-xl: 26px;
+
+  --gut: clamp(20px, 5vw, 46px);
+  --maxw: 1140px;
+
+  /* Mirrored pair — outbound and return follow the same curve (§7) */
+  --ease-out: cubic-bezier(.22,.61,.36,1);
+  --ease-in:  cubic-bezier(.64,.39,.78,1);
 }
-</script>
+
+*{ box-sizing:border-box; }
+html{ -webkit-text-size-adjust:100%; scroll-behavior:smooth; scrollbar-gutter:stable; }
+@media (prefers-reduced-motion: reduce){ html{ scroll-behavior:auto; } }
+
+body{
+  margin:0;
+  background:var(--paper);
+  color:var(--ink);
+  font-family:'Instrument Sans', system-ui, -apple-system, sans-serif;
+  font-size:clamp(15px,.36vw + 14.2px,17px);
+  line-height:1.6;
+  letter-spacing:0;              /* body sits at zero tracking (§15) */
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+body.is-locked{ overflow:hidden; }
+img{ max-width:100%; display:block; }
+
+/* ==========================================================================
+   TYPE — tracking and leading are size-specific, never one value (§15)
+   ========================================================================== */
+h1,h2,h3,.display{
+  font-family:Fraunces, Georgia, serif;
+  font-optical-sizing:auto;
+  margin:0;
+  font-weight:600;
+  text-wrap:balance;
+}
+h1{
+  font-size:clamp(2.7rem,7.6vw,5.2rem);
+  line-height:.96;
+  letter-spacing:-.032em;        /* large text reads loose — tighten hard */
+}
+h2{
+  font-size:clamp(1.95rem,3.7vw,3.05rem);
+  line-height:1.05;
+  letter-spacing:-.022em;
+}
+/* Anchor targets sit under the fixed nav without this — a jump to #faq
+   would otherwise land its heading half-hidden behind the header. */
+section[id]{ scroll-margin-top:88px; }
+h3{
+  font-family:'Instrument Sans',sans-serif;
+  font-size:1.03rem;
+  line-height:1.32;
+  letter-spacing:-.006em;
+  font-weight:600;
+}
+.eyebrow{
+  font-size:.68rem;
+  font-weight:600;
+  letter-spacing:.15em;          /* small text wants positive tracking */
+  text-transform:uppercase;
+  color:var(--brass-text);
+  margin:0 0 18px;
+}
+.lede{
+  font-size:clamp(1.02rem,1.1vw + .82rem,1.24rem);
+  line-height:1.52;
+  letter-spacing:-.004em;
+  color:var(--ink-soft);
+  max-width:54ch;
+}
+.mono{
+  font-family:'JetBrains Mono', ui-monospace, monospace;
+  font-variant-numeric:tabular-nums;   /* figures must not jitter mid-spring (§11) */
+  font-feature-settings:"tnum" 1;
+}
+p{ margin:0 0 1em; }
+p:last-child{ margin-bottom:0; }
+
+/* ==========================================================================
+   LAYOUT
+   ========================================================================== */
+.wrap{ width:100%; max-width:var(--maxw); margin-inline:auto; padding-inline:var(--gut); }
+.band{ padding-block:clamp(70px,10.5vw,128px); }
+.band--tight{ padding-block:clamp(54px,8vw,90px); }
+.rule{ height:1px; border:0; margin:0; background:var(--hairline); }
+.cols{ display:grid; gap:clamp(26px,4vw,46px); }
+@media (min-width:900px){ .cols--split{ grid-template-columns:minmax(0,.82fr) minmax(0,1.18fr); } }
+
+/* ==========================================================================
+   NAV — translucent layer, content scrolls underneath (§12)
+   ========================================================================== */
+.nav{
+  position:fixed; inset:0 0 auto 0; z-index:60;
+  padding:11px 0;
+  padding-top:calc(11px + env(safe-area-inset-top));
+  background:rgba(243,238,227,0);
+  border-bottom:1px solid transparent;
+  backdrop-filter:blur(0px) saturate(150%);
+  -webkit-backdrop-filter:blur(0px) saturate(150%);
+  transition:background-color 240ms linear, border-color 240ms linear, backdrop-filter 240ms linear;
+}
+.nav.is-lifted{
+  background:rgba(243,238,227,.76);
+  border-bottom-color:var(--hairline);
+  backdrop-filter:blur(18px) saturate(170%);
+  -webkit-backdrop-filter:blur(18px) saturate(170%);
+}
+/* Scroll-edge fade where content meets floating chrome — not a hard divider (§12) */
+.nav::after{
+  content:''; position:absolute; left:0; right:0; top:100%; height:22px;
+  background:linear-gradient(to bottom, rgba(243,238,227,.6), rgba(243,238,227,0));
+  opacity:0; pointer-events:none;
+  transition:opacity 240ms var(--ease-out);
+}
+.nav.is-lifted::after{ opacity:1; }
+
+.nav-inner{ display:flex; align-items:center; justify-content:space-between; gap:16px; }
+.brand{ display:flex; align-items:center; gap:10px; text-decoration:none; color:var(--ink); }
+/* Signature mark: a plate. The subject's own artifact. */
+.plate{
+  font-family:'JetBrains Mono',monospace;
+  font-weight:700; font-size:.64rem; letter-spacing:.1em;
+  color:var(--green);
+  background:var(--paper-raise);
+  border:1px solid var(--brass);
+  box-shadow:inset 0 0 0 1px rgba(169,121,60,.22);
+  border-radius:4px;
+  padding:5px 8px 4px;
+  line-height:1;
+  flex:none;
+}
+.nav-right{ display:flex; align-items:center; gap:6px; }
+.nav-link{
+  display:none; font-size:.85rem; color:var(--ink-soft); text-decoration:none;
+  padding:7px 10px; border-radius:var(--r-sm);
+}
+.nav-link:hover{ color:var(--ink); }
+@media (min-width:900px){ .nav-link{ display:inline-block; } }
+
+/* ==========================================================================
+   BUTTONS — feedback on pointer-down, instantly (§1)
+   ========================================================================== */
+.btn{
+  -webkit-tap-highlight-color:transparent;
+  touch-action:manipulation;
+  appearance:none; border:0; cursor:pointer;
+  font:inherit; font-weight:600; font-size:.93rem; letter-spacing:-.006em;
+  padding:13px 22px; border-radius:999px;
+  display:inline-flex; align-items:center; justify-content:center; gap:8px;
+  text-decoration:none; transform:scale(1);
+  transition:transform 110ms var(--ease-out), background-color 170ms linear, color 170ms linear;
+}
+.btn:active{ transform:scale(.965); }
+.btn--primary{ background:var(--green); color:var(--paper); }
+.btn--primary:hover{ background:var(--green-deep); }
+.btn--ghost{ background:transparent; color:var(--ink); box-shadow:inset 0 0 0 1px var(--hairline); }
+.btn--ghost:hover{ background:rgba(169,121,60,.08); }
+.btn--onGreen{ background:var(--paper); color:var(--green-deep); }
+.btn--onGreen:hover{ background:#fff; }
+.btn--sm{ padding:9px 16px; font-size:.85rem; }
+.btn--wide{ width:100%; }
+:where(a,button,[tabindex]):focus-visible{
+  outline:2px solid var(--brass); outline-offset:3px; border-radius:var(--r-sm);
+}
+
+/* ==========================================================================
+   HERO
+   ========================================================================== */
+.hero{ padding-top:clamp(108px,16vh,164px); padding-bottom:clamp(46px,7vw,78px); }
+.hero-grid{ display:grid; gap:clamp(34px,5vw,58px); }
+@media (min-width:1000px){
+  .hero-grid{ grid-template-columns:minmax(0,1fr) minmax(0,458px); align-items:start; gap:58px; }
+}
+.hero h1 em{ font-style:italic; font-weight:400; color:var(--brass); }
+.hero .lede{ margin-top:22px; }
+.hero-actions{ display:flex; flex-wrap:wrap; gap:10px; margin-top:28px; }
+@media (max-width:520px){ .hero-actions .btn{ width:100%; } }
+.hero-note{ margin-top:20px; font-size:.83rem; color:var(--ink-mute); }
+
+/* ==========================================================================
+   INSTRUMENT PANEL — the signature.
+   One physical object holding everything the owner touches.
+   ========================================================================== */
+.panel{
+  position:relative;
+  background:var(--green);
+  color:var(--on-green);
+  border-radius:var(--r-xl);
+  padding:clamp(20px,3.2vw,28px);
+  box-shadow:
+    inset 0 1px 0 var(--on-green-edge),          /* light catching the top edge */
+    0 28px 56px -30px rgba(10,42,27,.65);        /* big surface reads thick (§12) */
+  overflow:hidden;
+}
+.panel::before{
+  content:''; position:absolute; inset:0; pointer-events:none; border-radius:inherit;
+  box-shadow:inset 0 0 0 1px rgba(223,174,104,.22);
+}
+.panel-head{ display:flex; align-items:baseline; justify-content:space-between; gap:12px; margin-bottom:18px; }
+.panel-title{ font-size:.93rem; font-weight:600; letter-spacing:-.008em; }
+.panel-tag{ font-size:.65rem; letter-spacing:.14em; text-transform:uppercase; color:var(--on-green-mute); }
+
+/* Segmented control */
+.seg{
+  position:relative; display:grid; grid-template-columns:repeat(4,1fr);
+  background:var(--on-green-fill);
+  box-shadow:inset 0 0 0 1px var(--on-green-line);
+  border-radius:12px; padding:4px; isolation:isolate;
+}
+.seg-thumb{
+  position:absolute; z-index:-1; top:4px; bottom:4px; left:0;
+  background:rgba(243,238,227,.16);
+  box-shadow:inset 0 0 0 1px var(--on-green-edge);
+  border-radius:9px;
+}
+.seg button{
+  -webkit-tap-highlight-color:transparent;
+  appearance:none; background:none; border:0; cursor:pointer;
+  font:inherit; font-size:.79rem; font-weight:600; letter-spacing:-.002em;
+  color:var(--on-green-soft);
+  padding:9px 3px; border-radius:9px;
+  transition:color 160ms linear, transform 110ms var(--ease-out);
+}
+.seg button:active{ transform:scale(.955); }
+.seg button[aria-checked="true"]{ color:var(--on-green); }
+.seg-hint{ margin:9px 0 0; font-size:.75rem; color:var(--on-green-mute); min-height:1.25em; }
+
+/* Readout */
+.readout{ margin:24px 0 2px; }
+.readout-label{ font-size:.66rem; letter-spacing:.14em; text-transform:uppercase; color:var(--on-green-mute); margin:0 0 8px; }
+.readout-figure{
+  display:flex; align-items:baseline; gap:9px; margin:0;
+  font-family:'JetBrains Mono',monospace; font-variant-numeric:tabular-nums;
+  font-weight:700; font-size:clamp(2.6rem,7.6vw,3.6rem); line-height:1;
+  letter-spacing:-.045em; color:var(--brass-lift);
+}
+.readout-figure .per{
+  font-family:'Instrument Sans',sans-serif; font-size:.88rem; font-weight:500;
+  letter-spacing:0; color:var(--on-green-mute);
+}
+
+/* Slider — a real instrument, not an input[type=range] */
+.slider{ margin-top:24px; touch-action:pan-y; user-select:none; -webkit-user-select:none; -webkit-tap-highlight-color:transparent; }
+.slider-top{ display:flex; align-items:baseline; justify-content:space-between; gap:12px; font-size:.78rem; color:var(--on-green-soft); margin-bottom:12px; }
+.slider-days{ color:var(--on-green); font-weight:600; }
+.slider-track{ position:relative; height:42px; display:flex; align-items:center; cursor:grab; }
+.slider-track:active{ cursor:grabbing; }
+.slider-rail{
+  position:absolute; left:0; right:0; height:8px; border-radius:999px;
+  background:rgba(10,42,27,.55);
+  box-shadow:inset 0 0 0 1px var(--on-green-line);
+  overflow:hidden;
+}
+.slider-fill{
+  position:absolute; inset:0; border-radius:999px;
+  background:linear-gradient(90deg, var(--brass), var(--brass-lift));
+  transform-origin:left center; transform:scaleX(0);
+}
+.slider-thumb{
+  position:absolute; left:0; top:50%; width:28px; height:28px; margin-top:-14px;
+  border-radius:999px; background:var(--paper);
+  box-shadow:0 2px 8px rgba(10,42,27,.5), inset 0 0 0 1px rgba(169,121,60,.35);
+  transition:box-shadow 150ms linear;
+}
+.slider-thumb.is-held{ box-shadow:0 5px 16px rgba(10,42,27,.6), inset 0 0 0 1px rgba(169,121,60,.5), 0 0 0 8px rgba(223,174,104,.16); }
+.slider-scale{ display:flex; justify-content:space-between; font-family:'JetBrains Mono',monospace; font-size:.68rem; color:var(--on-green-mute); margin-top:4px; }
+
+/* The arithmetic, shown rather than hidden */
+.maths{ margin-top:22px; padding-top:16px; border-top:1px solid var(--on-green-line); display:grid; gap:7px; font-size:.83rem; }
+.maths-row{ display:flex; justify-content:space-between; gap:16px; color:var(--on-green-soft); }
+.maths-row b{ font-weight:500; color:var(--on-green); }
+.maths-row--net{ margin-top:2px; padding-top:9px; border-top:1px solid var(--on-green-line); font-weight:600; color:var(--on-green); }
+.maths-row--net b{ color:var(--brass-lift); font-weight:700; }
+.maths b.mono{ font-size:.83rem; }
+.panel .btn--wide{ margin-top:18px; }
+.disclaimer{ margin:16px 0 0; font-size:.71rem; line-height:1.55; color:var(--on-green-mute); }
+
+/* ==========================================================================
+   WHAT WE HANDLE
+   ========================================================================== */
+.handled{
+  display:grid; gap:1px; background:var(--hairline);
+  border:1px solid var(--hairline); border-radius:var(--r-lg); overflow:hidden;
+}
+@media (min-width:620px){ .handled{ grid-template-columns:1fr 1fr; } }
+.handled-item{ background:var(--paper); padding:22px; }
+.handled-item h3{ margin-bottom:7px; }
+.handled-item p{ margin:0; font-size:.88rem; line-height:1.55; color:var(--ink-soft); }
+.kicker{
+  display:block; margin-bottom:12px;
+  font-family:'JetBrains Mono',monospace; font-size:.64rem;
+  letter-spacing:.12em; color:var(--brass-text);
+}
+
+/* ==========================================================================
+   TIMELINE — order carries information, so the sequence is the structure
+   ========================================================================== */
+.timeline{ margin-top:36px; }
+.timeline-viewport{
+  overflow:hidden; cursor:grab; touch-action:pan-y;
+  user-select:none; -webkit-user-select:none; -webkit-tap-highlight-color:transparent;
+  -webkit-mask-image:linear-gradient(90deg,transparent,#000 3%,#000 97%,transparent);
+  mask-image:linear-gradient(90deg,transparent,#000 3%,#000 97%,transparent);
+}
+.timeline-viewport:active{ cursor:grabbing; }
+.timeline-rail{ display:flex; gap:14px; padding:3px 0 5px; }
+.stop{
+  flex:0 0 auto; width:min(268px,74vw);
+  background:var(--paper-raise);
+  border:1px solid var(--hairline);
+  border-radius:var(--r-md); padding:20px;
+}
+.stop h3{ margin-bottom:7px; }
+.stop p{ margin:0; font-size:.85rem; line-height:1.55; color:var(--ink-soft); }
+.timeline-foot{ display:flex; align-items:center; justify-content:space-between; gap:14px; margin-top:16px; }
+.dots{ display:flex; gap:6px; }
+.dot{
+  width:6px; height:6px; border-radius:999px; background:var(--hairline);
+  transition:background-color 220ms linear, transform 220ms var(--ease-out);
+}
+.dot.is-on{ background:var(--brass); transform:scale(1.5); }
+.drag-hint{ font-size:.74rem; color:var(--ink-mute); }
+.tl-nav{ display:flex; gap:6px; }
+.tl-btn{
+  -webkit-tap-highlight-color:transparent;
+  appearance:none; cursor:pointer; display:grid; place-items:center;
+  width:34px; height:34px; border-radius:999px; padding:0;
+  background:var(--paper-raise); color:var(--ink);
+  box-shadow:inset 0 0 0 1px var(--hairline);
+  transform:scale(1);
+  transition:transform 110ms var(--ease-out), border-color 160ms linear, opacity 160ms linear;
+}
+.tl-btn:hover{ box-shadow:inset 0 0 0 1px var(--brass); }
+.tl-btn:active{ transform:scale(.92); }
+.tl-btn:disabled{ opacity:.35; cursor:default; }
+.tl-btn:disabled:active{ transform:none; }
+/* The viewport itself is now a focusable, keyboard-operable group (arrow
+   keys move a card at a time) — it needs a visible ring like any control. */
+.timeline-viewport:focus-visible{ outline:2px solid var(--brass); outline-offset:6px; border-radius:var(--r-md); }
+
+/* ==========================================================================
+   THE SPLIT
+   ========================================================================== */
+.split-card{
+  background:var(--paper-raise);
+  border:1px solid var(--hairline);
+  border-radius:var(--r-lg);
+  padding:clamp(22px,3.3vw,32px);
+}
+.split-figure{
+  margin:0; font-family:Fraunces,serif; font-optical-sizing:auto;
+  font-size:clamp(3.2rem,8.6vw,4.5rem); font-weight:600; line-height:.95;
+  letter-spacing:-.04em; color:var(--green);
+}
+.split-figure small{
+  display:block; margin-top:12px;
+  font-family:'Instrument Sans',sans-serif; font-size:.26em; font-weight:500;
+  letter-spacing:-.008em; line-height:1.45; color:var(--ink-mute);
+}
+.checks{ list-style:none; padding:0; margin:24px 0 0; display:grid; gap:11px; }
+.checks li{ display:grid; grid-template-columns:18px 1fr; gap:11px; font-size:.9rem; line-height:1.5; color:var(--ink-soft); }
+.checks svg{ margin-top:5px; color:var(--brass-text); }
+.checks li.no{ color:var(--ink-mute); }
+.checks li.no svg{ color:var(--ink-mute); }
+
+/* ==========================================================================
+   FAQ — not gesture-driven, so a CSS transition is the right tool here
+   ========================================================================== */
+.faq{ display:grid; gap:1px; background:var(--hairline); border:1px solid var(--hairline); border-radius:var(--r-lg); overflow:hidden; }
+.qa{ background:var(--paper); }
+.qa-btn{
+  -webkit-tap-highlight-color:transparent;
+  width:100%; text-align:left; appearance:none; background:none; border:0; cursor:pointer;
+  font:inherit; font-weight:600; font-size:.97rem; letter-spacing:-.008em; color:var(--ink);
+  padding:19px 22px; display:flex; align-items:center; justify-content:space-between; gap:16px;
+}
+.qa-btn .chev{ flex:none; color:var(--brass); transition:transform 300ms var(--ease-out); }
+.qa[data-open="true"] .qa-btn .chev{ transform:rotate(180deg); }
+.qa-body{ display:grid; grid-template-rows:0fr; transition:grid-template-rows 300ms var(--ease-in); }
+.qa[data-open="true"] .qa-body{ grid-template-rows:1fr; transition-timing-function:var(--ease-out); }
+.qa-body > div{ overflow:hidden; }
+.qa-body p{ margin:0; padding:0 22px 20px; font-size:.9rem; line-height:1.6; color:var(--ink-soft); max-width:64ch; }
+
+/* ==========================================================================
+   CONTACT + FOOTER
+   ========================================================================== */
+.contact-grid{ display:grid; gap:12px; margin-top:30px; }
+@media (min-width:760px){ .contact-grid{ grid-template-columns:repeat(3,1fr); } }
+.contact-card{
+  display:block; width:100%; text-align:left; text-decoration:none; cursor:pointer;
+  font:inherit; color:var(--ink);
+  background:var(--paper-raise); border:1px solid var(--hairline);
+  border-radius:var(--r-md); padding:20px;
+  transform:scale(1);
+  transition:transform 120ms var(--ease-out), border-color 180ms linear, background-color 180ms linear;
+}
+.contact-card:active{ transform:scale(.98); }
+.contact-card:hover{ border-color:var(--brass); }
+.contact-card .v{ display:block; font-weight:600; font-size:1rem; letter-spacing:-.012em; }
+.contact-card .s{ display:block; font-size:.8rem; color:var(--ink-mute); margin-top:4px; }
+
+.foot{ background:var(--green-deep); color:var(--on-green); padding-block:44px; padding-bottom:calc(44px + env(safe-area-inset-bottom)); font-size:.83rem; }
+.foot .brand{ color:var(--on-green); }
+.foot .plate{ background:transparent; color:var(--brass-lift); border-color:var(--brass); box-shadow:none; }
+.foot-top{ display:flex; flex-wrap:wrap; gap:20px 32px; justify-content:space-between; align-items:flex-start; }
+.foot-blurb{ color:var(--on-green-soft); margin:12px 0 0; }
+.foot-links{ display:flex; flex-wrap:wrap; gap:8px 18px; }
+.foot a{ color:var(--on-green-soft); text-decoration:none; }
+.foot a:hover{ color:var(--on-green); }
+.foot-fine{ margin:26px 0 0; padding-top:20px; border-top:1px solid var(--on-green-line); max-width:76ch; font-size:.76rem; line-height:1.6; color:var(--on-green-mute); }
+
+/* ==========================================================================
+   SHEET — in from the bottom, out to the bottom (§7)
+   ========================================================================== */
+.scrim{
+  position:fixed; inset:0; z-index:70; background:rgba(10,42,27,.5);
+  backdrop-filter:blur(2px); -webkit-backdrop-filter:blur(2px);
+  opacity:0; visibility:hidden; pointer-events:none;
+}
+.scrim.is-live{ visibility:visible; pointer-events:auto; }
+.sheet{
+  position:fixed; z-index:71; left:50%; bottom:0; width:min(520px,100%);
+  transform:translate3d(-50%,110%,0);
+  background:rgba(250,247,239,.94);
+  backdrop-filter:blur(26px) saturate(160%); -webkit-backdrop-filter:blur(26px) saturate(160%);
+  border-radius:22px 22px 0 0;
+  border-top:1px solid var(--brass);
+  box-shadow:0 -20px 50px -20px rgba(10,42,27,.5);
+  padding:6px var(--gut) calc(24px + env(safe-area-inset-bottom));
+  max-height:88dvh; overflow-y:auto; overflow-x:hidden;
+  visibility:hidden;
+  touch-action:pan-y;              /* content stays scrollable on short screens */
+}
+.sheet.is-live{ visibility:visible; }
+/* Drag lives here, so it never fights the sheet's own scrolling */
+.sheet-handle{ touch-action:none; cursor:grab; user-select:none; -webkit-user-select:none; }
+.sheet-handle:active{ cursor:grabbing; }
+.grabber{ width:36px; height:4px; border-radius:999px; background:#C3B497; margin:8px auto 14px; }
+.sheet h2{ font-size:1.55rem; letter-spacing:-.026em; }
+.sheet .lede{ font-size:.91rem; margin-top:8px; }
+.field{ margin-top:14px; }
+.field label{ display:block; font-size:.7rem; letter-spacing:.12em; text-transform:uppercase; color:var(--ink-mute); margin-bottom:7px; }
+.field input, .field textarea{
+  width:100%; font:inherit; font-size:.95rem; color:var(--ink);
+  background:var(--paper); border:1px solid var(--hairline); border-radius:var(--r-sm);
+  padding:12px 14px;
+}
+.field textarea{ resize:vertical; min-height:76px; }
+.field input:focus, .field textarea:focus{ outline:none; border-color:var(--brass); box-shadow:0 0 0 3px rgba(169,121,60,.16); }
+.field-err{ display:block; font-size:.78rem; line-height:1.4; color:#9A3B2E; }
+.field-err:not(:empty){ margin-top:6px; }
+.field.has-err input{ border-color:#9A3B2E; }
+.field.has-err input:focus{ box-shadow:0 0 0 3px rgba(154,59,46,.16); }
+.sheet-actions{ display:grid; gap:9px; margin-top:20px; }
+.sheet-alt{ text-align:center; font-size:.8rem; color:var(--ink-mute); margin:14px 0 0; }
+.sheet-alt a{ color:var(--brass-text); }
+
+/* ==========================================================================
+   REVEALS — entry only, restrained
+   ========================================================================== */
+.js .rise{ opacity:0; transform:translate3d(0,14px,0); }
+.js .rise.is-in{ opacity:1; transform:none; transition:opacity 600ms var(--ease-out), transform 600ms var(--ease-out); }
+@media print{ .js .rise{ opacity:1; transform:none; } }
+
+/* ==========================================================================
+   PREFERENCES (§14) — reduced motion is a gentler equivalent, not an absence
+   ========================================================================== */
+@media (prefers-reduced-motion: reduce){
+  .js .rise{ opacity:1; transform:none; transition:opacity 180ms linear; }
+  .btn, .seg button, .contact-card{ transition:background-color 150ms linear, color 150ms linear, opacity 150ms linear; }
+  .btn:active, .seg button:active, .contact-card:active{ transform:none; opacity:.7; }
+  .qa-body, .qa-btn .chev, .nav::after, .dot{ transition-duration:140ms; }
+  .dot.is-on{ transform:none; }
+}
+@media (prefers-reduced-transparency: reduce){
+  .nav.is-lifted{ background:var(--paper); backdrop-filter:none; -webkit-backdrop-filter:none; }
+  .sheet{ background:var(--paper-raise); backdrop-filter:none; -webkit-backdrop-filter:none; }
+  .scrim{ background:rgba(10,42,27,.78); backdrop-filter:none; -webkit-backdrop-filter:none; }
+}
+@media (prefers-contrast: more){
+  :root{ --ink-soft:#2C3A31; --ink-mute:#39473E; --hairline:#A99878; --on-green-soft:rgba(243,238,227,.92); --on-green-mute:rgba(243,238,227,.8); --on-green-line:rgba(243,238,227,.42); }
+  .btn--ghost{ box-shadow:inset 0 0 0 2px var(--ink); }
+  .contact-card, .stop, .split-card, .handled, .faq{ border-color:var(--ink-mute); }
+}
+
+.visually-hidden{ position:absolute; width:1px; height:1px; margin:-1px; padding:0; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; border:0; }
+</style>
 </head>
 <body>
 
-<a href="#top" class="skip-link">Skip to content</a>
-<div class="scroll-progress" id="scrollProgress"></div>
-
-<nav class="nav">
-  <div class="container nav-inner">
-    <a href="#top" class="logo"><span class="logo-mark">604</span> Kars</a>
-    <div class="nav-links">
-      <a href="#owners">For Owners</a>
-      <a href="#plans">Plans</a>
-      <a href="#calculator">Earnings</a>
-      <a href="#fit">Is It A Fit</a>
-      <a href="#faq">FAQ</a>
-      <a href="#contact">Contact</a>
-    </div>
-    <div class="nav-cta">
-      <a href="#contact" class="btn btn-ghost">Book a Call</a>
-      <a href="#contact" class="btn btn-primary">Get Started</a>
-    </div>
-    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobileMenu">
-      <svg class="icon" viewBox="0 0 24 24"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
-    </button>
-  </div>
-  <div class="container">
-    <div class="mobile-menu" id="mobileMenu">
-      <div class="mobile-menu-inner">
-        <a href="#owners">For Owners</a>
-        <a href="#plans">Plans</a>
-        <a href="#calculator">Earnings</a>
-        <a href="#fit">Is It A Fit</a>
-        <a href="#faq">FAQ</a>
-        <a href="#contact">Contact</a>
-        <a href="#contact" class="btn btn-primary">Get Started</a>
-      </div>
+<nav class="nav" id="nav">
+  <div class="nav-inner wrap">
+    <a class="brand" href="#top" aria-label="604 Kars — home">
+      <span class="plate">604&nbsp;KARS</span>
+    </a>
+    <div class="nav-right">
+      <a class="nav-link" href="#handled">What we handle</a>
+      <a class="nav-link" href="#trip">How a booking runs</a>
+      <a class="nav-link" href="#split">The split</a>
+      <button class="btn btn--primary btn--sm" type="button" data-open-sheet>Get an estimate</button>
     </div>
   </div>
 </nav>
 
-<main id="top">
+<main id="main">
 
-  <!-- HERO -->
-  <header class="hero">
-    <div class="container hero-grid">
-      <div>
-        <span class="spec-plate">Vancouver · Turo Co-Hosting</span>
-        <h1>Your car is an <em>idle asset.</em></h1>
-        <p class="hero-sub">604 Kars manages the guest messages, check-ins, cleaning, documentation, and pricing for your vehicle — so the hours it spends parked can start paying rent.</p>
-        <div class="hero-ctas">
-          <a href="#calculator" class="btn btn-primary btn-lg">See What My Car Could Earn</a>
-          <a href="#contact" class="btn btn-secondary btn-lg">Book a Free Consultation</a>
-        </div>
-        <div class="hero-badges">
-          <div class="hero-badge"><strong>Local</strong> — Vancouver, North Van, Burnaby, Richmond</div>
-          <div class="hero-badge"><strong>Transparent</strong> — one flat management rate</div>
-        </div>
+<!-- ======================= HERO + INSTRUMENT ======================= -->
+<section class="hero wrap" id="top">
+  <div class="hero-grid">
+    <div>
+      <p class="eyebrow">Metro Vancouver · Turo co-hosting</p>
+      <h1>Your car earns<br>nothing in the<br><em>driveway.</em></h1>
+      <p class="lede">
+        604&nbsp;Kars runs your vehicle on Turo end to end — listing, pricing, guest
+        screening, handoffs, cleaning, fuel and damage claims. You keep the title,
+        the keys, and the larger half of every trip.
+      </p>
+      <div class="hero-actions">
+        <button class="btn btn--primary" type="button" data-open-sheet>Get an estimate for my car</button>
+        <a class="btn btn--ghost" href="#handled">See what we handle</a>
+      </div>
+      <p class="hero-note">No setup fee. No lock-in. Pull your car off the platform whenever you want.</p>
+    </div>
+
+    <!-- The signature element. Drag it. -->
+    <div class="panel" id="estimator">
+      <div class="panel-head">
+        <span class="panel-title">Earnings estimator</span>
+        <span class="panel-tag">Drag to explore</span>
       </div>
 
-      <div class="photo-frame hero-photo reveal">
-        <div class="photo-caption">
-          <svg class="icon-camera" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 8h3l2-2h6l2 2h3v11H4z"/><circle cx="12" cy="13.5" r="3.5"/></svg>
-          <div class="label">Photo: managed vehicle</div>
-          <div class="dims">1000 × 1250 · portrait, natural light</div>
+      <div class="seg" id="seg" role="radiogroup" aria-label="Vehicle class">
+        <div class="seg-thumb" id="segThumb" aria-hidden="true"></div>
+      </div>
+      <p class="seg-hint" id="segHint"></p>
+
+      <div class="readout">
+        <p class="readout-label">Your estimated monthly payout</p>
+        <p class="readout-figure">
+          <span class="mono" id="figure">$0</span>
+          <span class="per">/ month</span>
+        </p>
+        <!-- Kept separate from the visible figure on purpose: that number
+             repaints every animation frame while dragging, and a live region
+             wired straight to it would read out ~60 values a second. This
+             one is only ever written once, after the value settles (§13 —
+             feedback earns its place, over-feedback trains people to ignore
+             it). Screen-reader users get one clean announcement per change,
+             not a stream of noise. -->
+        <span class="visually-hidden" id="figureAnnounce" aria-live="polite" aria-atomic="true"></span>
+      </div>
+
+      <div class="slider">
+        <div class="slider-top">
+          <span id="dayLabel">Days you’d leave it available</span>
+          <span class="slider-days mono" id="dayCount">18</span>
         </div>
+        <div class="slider-track" id="track" role="slider" tabindex="0"
+             aria-labelledby="dayLabel" aria-valuemin="4" aria-valuemax="30"
+             aria-valuenow="18" aria-valuetext="18 days per month">
+          <div class="slider-rail"><div class="slider-fill" id="fill"></div></div>
+          <div class="slider-thumb" id="thumb"></div>
+        </div>
+        <div class="slider-scale" aria-hidden="true"><span>4</span><span>30 days</span></div>
+      </div>
+
+      <div class="maths">
+        <div class="maths-row"><span>Gross trip revenue</span><b class="mono" id="mGross">$0</b></div>
+        <div class="maths-row"><span>Turo’s cut</span><b class="mono" id="mTuro">−$0</b></div>
+        <div class="maths-row"><span>604 Kars management</span><b class="mono" id="mMgmt">−$0</b></div>
+        <div class="maths-row maths-row--net"><span>You keep</span><b class="mono" id="mNet">$0</b></div>
+      </div>
+
+      <button class="btn btn--onGreen btn--wide" type="button" data-open-sheet>Get a real number for my car</button>
+
+      <p class="disclaimer" id="assumptions"></p>
+      <noscript><p class="disclaimer">The estimator needs JavaScript. Call or text 236-788-8944 and we’ll run the numbers with you.</p></noscript>
+    </div>
+  </div>
+</section>
+
+<hr class="rule">
+
+<!-- ======================= WHAT WE HANDLE ======================= -->
+<section class="band wrap" id="handled">
+  <div class="cols cols--split">
+    <div class="rise">
+      <p class="eyebrow">The job</p>
+      <h2>Everything between your driveway and the deposit.</h2>
+      <p class="lede" style="margin-top:18px">Most owners quit Turo over the admin, not the economics. This is the admin.</p>
+    </div>
+    <div class="handled rise">
+      <div class="handled-item">
+        <span class="kicker">LISTING</span><h3>Listing and pricing</h3>
+        <p>Photography, description, trip settings, and pricing that moves with Vancouver demand instead of sitting at one flat rate all year.</p>
+      </div>
+      <div class="handled-item">
+        <span class="kicker">GUESTS</span><h3>Screening and messaging</h3>
+        <p>Every inquiry answered, every guest vetted before approval. Questions at 11pm are ours, not yours.</p>
+      </div>
+      <div class="handled-item">
+        <span class="kicker">HANDOFF</span><h3>Delivery and pickup</h3>
+        <p>Meeting guests, walkarounds, photo documentation at both ends, and airport runs when the trip calls for it.</p>
+      </div>
+      <div class="handled-item">
+        <span class="kicker">TURNOVER</span><h3>Cleaning and refuelling</h3>
+        <p>Interior and exterior between trips, fuel or charge topped up, so the next guest sees the same car the last one did.</p>
+      </div>
+      <div class="handled-item">
+        <span class="kicker">UPKEEP</span><h3>Maintenance tracking</h3>
+        <p>Oil, tires, seasonal changeover and service intervals tracked against real mileage, with your approval before any spend.</p>
+      </div>
+      <div class="handled-item">
+        <span class="kicker">CLAIMS</span><h3>Damage and disputes</h3>
+        <p>Documentation, filing and follow-through with Turo when something goes wrong — the part most owners dread.</p>
       </div>
     </div>
-  </header>
+  </div>
+</section>
 
-  <!-- PATH SPLIT -->
-  <section id="owners">
-    <div class="container">
-      <div class="path-grid">
-        <div class="path-card reveal">
-          <span class="path-tag">I Own A Vehicle</span>
-          <h2 class="path-title">Turn your car into managed income</h2>
-          <p>Learn how 604 Kars can list, manage, and report on your vehicle.</p>
-          <a href="#contact" class="btn btn-primary">Manage My Vehicle</a>
-        </div>
-        <div class="path-card reveal">
-          <span class="path-tag">I Need A Vehicle</span>
-          <h2 class="path-title">Looking to rent a car in Vancouver?</h2>
-          <p>Browse vehicles currently managed by 604 Kars on Turo.</p>
-          <!-- PLACEHOLDER: replace with your real Turo host profile URL -->
-          <a href="https://turo.com" target="_blank" rel="noopener" class="btn btn-secondary">Browse Available Vehicles</a>
-        </div>
+<hr class="rule">
+
+<!-- ======================= TIMELINE ======================= -->
+<section class="band wrap" id="trip">
+  <div class="rise">
+    <p class="eyebrow">One booking, start to finish</p>
+    <h2>What happens while<br>you do nothing.</h2>
+  </div>
+  <div class="timeline rise">
+    <div class="timeline-viewport" id="tlViewport" role="group" aria-label="How a booking runs, seven steps" tabindex="0">
+      <div class="timeline-rail" id="tlRail">
+        <article class="stop"><span class="kicker">01 / INQUIRY</span><h3>A guest asks</h3><p>The request lands in our inbox. We answer fast — response time is one of the biggest levers on how often your car gets picked.</p></article>
+        <article class="stop"><span class="kicker">02 / SCREENING</span><h3>We vet them</h3><p>Trip history, ratings, age, and reason for the trip. If something reads wrong we decline it. You never see the ones we turn away.</p></article>
+        <article class="stop"><span class="kicker">03 / HANDOFF</span><h3>Keys change hands</h3><p>We meet the guest, walk the car, and photograph every panel with timestamps. That evidence is what wins claims later.</p></article>
+        <article class="stop"><span class="kicker">04 / TRIP</span><h3>They drive</h3><p>We’re on call for extensions, lockouts and roadside issues for the whole trip. Your phone stays quiet.</p></article>
+        <article class="stop"><span class="kicker">05 / RETURN</span><h3>The car comes back</h3><p>Second walkaround, same angles, fuel and mileage logged. Any new damage is filed the same day, not the next week.</p></article>
+        <article class="stop"><span class="kicker">06 / RESET</span><h3>Cleaned and topped up</h3><p>Interior, exterior, fuel or charge. The car goes back on the calendar ready — not "ready once I get to it".</p></article>
+        <article class="stop"><span class="kicker">07 / PAYOUT</span><h3>You get paid</h3><p>Turo pays out, we take our share, and you get a statement showing every trip, every expense and every dollar.</p></article>
       </div>
     </div>
-  </section>
-
-  <!-- WIDE PHOTO BAND -->
-  <section class="section-flush">
-    <div class="photo-frame wide-photo reveal">
-      <div class="photo-caption">
-        <svg class="icon-camera" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 8h3l2-2h6l2 2h3v11H4z"/><circle cx="12" cy="13.5" r="3.5"/></svg>
-        <div class="label">Photo: vehicle prepped for handoff</div>
-        <div class="dims">2400 × 1030 · full-bleed, exterior detail shot</div>
+    <div class="timeline-foot">
+      <div class="dots" id="tlDots" aria-hidden="true"></div>
+      <div class="tl-nav">
+        <button class="tl-btn" type="button" id="tlPrev" aria-label="Previous step" disabled><svg width="15" height="15" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M10 3.5L5.5 8l4.5 4.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <button class="tl-btn" type="button" id="tlNext" aria-label="Next step"><svg width="15" height="15" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M6 3.5L10.5 8 6 12.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- THE PROBLEM (merged: problem + alternative + short version) -->
-  <section>
-    <div class="container">
-      <div class="section-head left reveal">
-        <span class="spec-plate">The Problem</span>
-        <h2>Owning a car costs money whether you drive it or not.</h2>
-        <p>Insurance, financing, and depreciation run on a monthly clock — regardless of how many days the car actually leaves the driveway. Most owners who try renting it out on their own quit within a few months, not because the demand isn't there, but because the operational load is.</p>
-      </div>
-      <div class="problem-layout">
-        <div class="reveal">
-          <h3 class="list-heading">What running it yourself looks like</h3>
-          <div class="op-list">
-            <div class="op-row"><span>Listing, photos &amp; pricing</span><span>Ongoing</span></div>
-            <div class="op-row"><span>Guest messages &amp; booking requests</span><span>Daily</span></div>
-            <div class="op-row"><span>Check-in / check-out coordination</span><span>Per trip</span></div>
-            <div class="op-row"><span>Cleaning &amp; turnover</span><span>Per trip</span></div>
-            <div class="op-row"><span>Damage documentation</span><span>As needed</span></div>
-            <div class="op-row"><span>Maintenance scheduling</span><span>Ongoing</span></div>
-          </div>
-        </div>
-        <div class="reveal">
-          <h3 class="list-heading">What you hand off to us</h3>
-          <ul class="x-list">
-            <li><span class="x-mark"><svg class="icon-sm" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></span>Answering guest messages at midnight</li>
-            <li><span class="x-mark"><svg class="icon-sm" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></span>Coordinating every check-in and check-out</li>
-            <li><span class="x-mark"><svg class="icon-sm" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></span>Tracking down photo documentation</li>
-            <li><span class="x-mark"><svg class="icon-sm" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></span>Repricing the car every week</li>
-            <li><span class="x-mark"><svg class="icon-sm" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></span>Scheduling cleaning and maintenance yourself</li>
-          </ul>
-        </div>
-      </div>
+<hr class="rule">
+
+<!-- ======================= THE SPLIT ======================= -->
+<section class="band wrap" id="split">
+  <div class="cols cols--split">
+    <div class="rise">
+      <p class="eyebrow">The split</p>
+      <h2>One number.<br>No line items.</h2>
+      <p class="lede" style="margin-top:18px">
+        We take a share of what your car earns, so we only do well when it does.
+        There’s no monthly fee, no onboarding charge, and nothing to pay in a month
+        your car sits still.
+      </p>
     </div>
-  </section>
-
-  <!-- SHORT STATEMENT -->
-  <section class="statement">
-    <div class="container">
-      <h2>You own the vehicle. <span class="dim">We manage the operations.</span></h2>
-      <p>That's the entire pitch. Everything else on this page is detail.</p>
-    </div>
-  </section>
-
-  <!-- WHY 604 KARS -->
-  <section>
-    <div class="container">
-      <div class="section-head reveal">
-        <span class="spec-plate">Why Owners Choose Us</span>
-        <h2>Why 604 Kars?</h2>
-        <p>You could manage the car yourself, or hire someone unproven. Here's what you actually get with us.</p>
-      </div>
-      <div class="grid-4">
-        <div class="card reveal">
-          <span class="card-eyebrow">Local</span>
-          <h3>Vancouver market knowledge</h3>
-          <p>We focus on the Vancouver and Lower Mainland market specifically, positioning your vehicle for local demand.</p>
-        </div>
-        <div class="card reveal">
-          <span class="card-eyebrow">Hands-Off</span>
-          <h3>Operations off your plate</h3>
-          <p>You don't spend your evenings answering guest messages or coordinating every turnover.</p>
-        </div>
-        <div class="card reveal">
-          <span class="card-eyebrow">Documented</span>
-          <h3>Structured documentation</h3>
-          <p>Consistent pre- and post-trip records track vehicle condition — not guesswork after the fact.</p>
-        </div>
-        <div class="card reveal">
-          <span class="card-eyebrow">Transparent</span>
-          <h3>One flat fee, defined upfront</h3>
-          <p>Your management percentage is set before you begin. No surprise increases mid-agreement.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- DAY TO DAY OPS -->
-  <section>
-    <div class="container">
-      <div class="section-head reveal">
-        <span class="spec-plate">Day-To-Day Operations</span>
-        <h2>We handle the details.</h2>
-        <p>This is what your management fee actually pays for, broken down by function.</p>
-      </div>
-      <div class="grid-3">
-        <div class="card reveal">
-          <span class="card-eyebrow">Guest Mgmt</span>
-          <h3>Guest management</h3>
-          <ul class="split-list"><li>Guest questions &amp; booking communication</li><li>Pickup &amp; return instructions</li><li>Trip-related support</li></ul>
-        </div>
-        <div class="card reveal">
-          <span class="card-eyebrow">Vehicle Ops</span>
-          <h3>Vehicle operations</h3>
-          <ul class="split-list"><li>Vehicle readiness &amp; turnovers</li><li>Cleaning coordination</li><li>Fuel / charge &amp; condition checks</li></ul>
-        </div>
-        <div class="card reveal">
-          <span class="card-eyebrow">Listing</span>
-          <h3>Listing management</h3>
-          <ul class="split-list"><li>Photos &amp; description</li><li>Pricing &amp; availability</li><li>Listing optimization</li></ul>
-        </div>
-        <div class="card reveal">
-          <span class="card-eyebrow">Documentation</span>
-          <h3>Trip documentation</h3>
-          <ul class="split-list"><li>Pre- &amp; post-trip photos</li><li>Odometer &amp; fuel/charge readings</li><li>Condition notes</li></ul>
-        </div>
-        <div class="card reveal">
-          <span class="card-eyebrow">Maintenance</span>
-          <h3>Maintenance coordination</h3>
-          <ul class="split-list"><li>Service reminders &amp; scheduling</li><li>Tire changes &amp; repairs</li><li>Detailing</li></ul>
-        </div>
-        <div class="card reveal">
-          <span class="card-eyebrow">Reporting</span>
-          <h3>Owner reporting</h3>
-          <ul class="split-list"><li>Revenue &amp; trip count</li><li>Utilization</li><li>Performance updates</li></ul>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- OWNER JOURNEY -->
-  <section>
-    <div class="container">
-      <div class="section-head reveal">
-        <span class="spec-plate">Owner Journey</span>
-        <h2>From your driveway to your first booking.</h2>
-        <p>Six steps take your vehicle from parked to earning. You choose how involved you want to stay at every stage.</p>
-      </div>
-      <div class="timeline">
-        <div class="timeline-step reveal"><span class="step-num">01</span><h3>Assessment &amp; earnings estimate</h3><p>We review your vehicle's condition, availability, and realistic local demand.</p></div>
-        <div class="timeline-step reveal"><span class="step-num">02</span><h3>Management plan</h3><p>You choose the level of service that fits — Ops Lite, Standard, or Full Service.</p></div>
-        <div class="timeline-step reveal"><span class="step-num">03</span><h3>Onboarding &amp; preparation</h3><p>We put responsibilities in writing and prepare the vehicle for listing.</p></div>
-        <div class="timeline-step reveal"><span class="step-num">04</span><h3>Listing launch</h3><p>We optimize the listing, pricing, photos, and availability windows.</p></div>
-        <div class="timeline-step reveal"><span class="step-num">05</span><h3>First booking</h3><p>The vehicle begins accepting trips under your selected plan.</p></div>
-        <div class="timeline-step reveal"><span class="step-num">06</span><h3>Ongoing management</h3><p>We run the operational process and continuously monitor performance.</p></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- PRICING -->
-  <section id="plans">
-    <div class="container">
-      <div class="section-head reveal">
-        <span class="spec-plate">Management Plans</span>
-        <h2>Choose how involved you want to be.</h2>
-        <p>One flat rate, taken as a percentage of what you actually receive from Turo. No setup fees, no hidden management line items.</p>
-      </div>
-      <div class="pricing-grid">
-        <div class="price-card reveal">
-          <span class="price-name">Ops Lite</span>
-          <div class="price-value">25%</div>
-          <p class="price-desc">For owners who want help with the platform but plan to stay hands-on with the vehicle itself.</p>
-          <ul class="price-features">
-            <li><span class="check-mark"><svg class="icon-sm" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>Guest communication</li>
-            <li><span class="check-mark"><svg class="icon-sm" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>Calendar management</li>
-            <li><span class="check-mark"><svg class="icon-sm" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>Basic pricing support</li>
-            <li><span class="check-mark"><svg class="icon-sm" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>Listing support</li>
-          </ul>
-          <a href="#contact" class="btn btn-secondary btn-block">Get Started</a>
-          <span class="price-best">Best for: Involved Owners</span>
-        </div>
-        <div class="price-card popular reveal">
-          <span class="popular-tag">Most Popular</span>
-          <span class="price-name">Standard</span>
-          <div class="price-value">30%</div>
-          <p class="price-desc">Professional, end-to-end management with minimal day-to-day involvement from you.</p>
-          <ul class="price-features">
-            <li><span class="check-mark"><svg class="icon-sm" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>Everything in Ops Lite</li>
-            <li><span class="check-mark"><svg class="icon-sm" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>Check-in &amp; check-out coordination</li>
-            <li><span class="check-mark"><svg class="icon-sm" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>Cleaning coordination</li>
-            <li><span class="check-mark"><svg class="icon-sm" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>Vehicle &amp; damage documentation</li>
-          </ul>
-          <a href="#contact" class="btn btn-primary btn-block">Get Started</a>
-          <span class="price-best">Best for: Most Vehicle Owners</span>
-        </div>
-        <div class="price-card reveal">
-          <span class="price-name">Full Service</span>
-          <div class="price-value">35%</div>
-          <p class="price-desc">The closest thing to completely hands-off vehicle ownership.</p>
-          <ul class="price-features">
-            <li><span class="check-mark"><svg class="icon-sm" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>Everything in Standard</li>
-            <li><span class="check-mark"><svg class="icon-sm" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>30+ photo trip documentation</li>
-            <li><span class="check-mark"><svg class="icon-sm" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>Inspection &amp; maintenance coordination</li>
-            <li><span class="check-mark"><svg class="icon-sm" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>Monthly owner performance reports</li>
-          </ul>
-          <a href="#contact" class="btn btn-secondary btn-block">Get Started</a>
-          <span class="price-best">Best for: Hands-Off Owners</span>
-        </div>
-      </div>
-      <p class="pricing-note reveal">"No hidden line items" refers to our management fee specifically — it's fixed at the percentage you select and won't change mid-agreement. It doesn't mean there are zero other costs: Turo's own host protection fee, cleaning, maintenance, and depreciation are separate and are addressed in the earnings calculator below.</p>
-    </div>
-  </section>
-
-  <!-- COMPARISON -->
-  <section>
-    <div class="container">
-      <div class="section-head reveal">
-        <span class="spec-plate">Side By Side</span>
-        <h2>Compare your options.</h2>
-      </div>
-      <div class="table-wrap reveal">
-        <table>
-          <thead>
-            <tr><th>Responsibility</th><th>Self-Managed</th><th>Ops Lite</th><th>Standard</th><th>Full Service</th></tr>
-          </thead>
-          <tbody>
-            <tr><td>Guest communication</td><td>You</td><td>604 Kars</td><td>604 Kars</td><td>604 Kars</td></tr>
-            <tr><td>Pricing support</td><td>You</td><td>Shared</td><td>604 Kars</td><td>604 Kars</td></tr>
-            <tr><td>Check-in / check-out</td><td>You</td><td>You</td><td>Coordinated</td><td>Managed</td></tr>
-            <tr><td>Cleaning</td><td>You</td><td>You</td><td>Coordinated</td><td>Managed</td></tr>
-            <tr><td>Trip documentation</td><td>You</td><td>Shared</td><td>Managed</td><td>Managed + 30 photos</td></tr>
-            <tr><td>Maintenance coordination</td><td>You</td><td>You</td><td>Shared</td><td>604 Kars</td></tr>
-            <tr><td>Owner reporting</td><td>Basic</td><td>Basic</td><td>Regular</td><td>Detailed</td></tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </section>
-
-  <!-- RESPONSIBILITIES SPLIT -->
-  <section>
-    <div class="container">
-      <div class="section-head reveal">
-        <span class="spec-plate">Set In Writing</span>
-        <h2>Who's responsible for what.</h2>
-        <p>The exact split is defined in your management agreement — this is the general shape of it, regardless of plan.</p>
-      </div>
-      <div class="split-grid">
-        <div class="card reveal">
-          <h3>Owner responsibilities</h3>
-          <ul class="split-list">
-            <li>Vehicle financing</li>
-            <li>Registration &amp; licensing</li>
-            <li>Required insurance coverage</li>
-            <li>Maintenance costs (parts &amp; labour)</li>
-            <li>Major mechanical repairs</li>
-            <li>Taxes on rental income</li>
-          </ul>
-        </div>
-        <div class="card reveal">
-          <h3>What 604 Kars manages</h3>
-          <ul class="split-list">
-            <li>Guest communication</li>
-            <li>Listing management &amp; pricing</li>
-            <li>Trip coordination</li>
-            <li>Cleaning coordination</li>
-            <li>Documentation</li>
-            <li>Reporting &amp; maintenance scheduling</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CALCULATOR -->
-  <section id="calculator">
-    <div class="container">
-      <div class="section-head reveal">
-        <span class="spec-plate">Earnings Estimate</span>
-        <h2>See what your car could earn.</h2>
-        <p>Adjust the inputs below for a rough, non-binding estimate. This accounts for Turo's own host fee, our management fee, cleaning, maintenance, and depreciation — revenue isn't the same as profit.</p>
-      </div>
-
-      <div class="calc-grid reveal">
-        <div>
-          <div class="field">
-            <label for="vehicleType">Vehicle Type</label>
-            <select id="vehicleType" class="field-input">
-              <option data-rate="70" data-clean="18" data-depreciation="7" selected>SUV (RAV4, CR-V, CX-5)</option>
-              <option data-rate="88" data-clean="19" data-depreciation="7">Electric (Model 3, Model Y)</option>
-              <option data-rate="125" data-clean="22" data-depreciation="16">Luxury (BMW, Mercedes, Audi)</option>
-              <option data-rate="145" data-clean="24" data-depreciation="20">Specialty (Convertibles, Sports)</option>
-              <option data-rate="55" data-clean="16.4" data-depreciation="5">Economy (Corolla, Civic, Mazda 3)</option>
-            </select>
-          </div>
-          <div class="field">
-            <label for="protectionPlan">Turo Protection Plan</label>
-            <select id="protectionPlan" class="field-input">
-              <option data-retention="0.90">Basic · you keep ~90%</option>
-              <option data-retention="0.75" selected>Standard · you keep ~75%</option>
-              <option data-retention="0.60">Premium · you keep ~60%</option>
-            </select>
-          </div>
-          <div class="field">
-            <label for="daysAvailable">Days Available Per Month <span class="val"><span id="daysVal">15</span></span></label>
-            <div class="slider">
-              <input type="range" id="daysAvailable" class="slider-input" min="1" max="30" step="1" value="15">
-              <div class="slider-visual" aria-hidden="true">
-                <div class="slider-track"><div class="slider-fill"></div><div class="slider-thumb"></div></div>
-              </div>
-            </div>
-          </div>
-          <div class="field">
-            <label for="utilization">Expected Utilization <span class="val"><span id="utilVal">55</span>%</span></label>
-            <div class="slider">
-              <input type="range" id="utilization" class="slider-input" min="10" max="95" step="1" value="55">
-              <div class="slider-visual" aria-hidden="true">
-                <div class="slider-track"><div class="slider-fill"></div><div class="slider-thumb"></div></div>
-              </div>
-            </div>
-          </div>
-          <div class="field">
-            <label for="tripLength">Average Trip Length <span class="val"><span id="tripLenVal">3</span> days</span></label>
-            <div class="slider">
-              <input type="range" id="tripLength" class="slider-input" min="1" max="10" step="1" value="3">
-              <div class="slider-visual" aria-hidden="true">
-                <div class="slider-track"><div class="slider-fill"></div><div class="slider-thumb"></div></div>
-              </div>
-            </div>
-          </div>
-          <div class="field">
-            <span class="field-label">Management Plan</span>
-            <div class="plan-toggle" role="group" aria-label="Management plan">
-              <button type="button" data-plan="25" aria-pressed="false">Ops Lite · 25%</button>
-              <button type="button" data-plan="30" class="active" aria-pressed="true">Standard · 30%</button>
-              <button type="button" data-plan="35" aria-pressed="false">Full Service · 35%</button>
-            </div>
-          </div>
-        </div>
-
-        <div>
-          <div class="calc-result-head">
-            <span class="mono">Estimated Monthly</span>
-            <div class="calc-big-num"><span class="cur">CAD $</span><span id="netMonthly">0</span></div>
-            <span class="sub">Estimated owner net, after Turo's fee, our management fee, and estimated expenses</span>
-          </div>
-          <div class="calc-breakdown">
-            <div class="calc-line"><span>Estimated trips per month</span><span id="tripCount">0</span></div>
-            <div class="calc-line"><span>Gross trip revenue</span><span id="grossRev">$0</span></div>
-            <div class="calc-line neg"><span>Turo host fee</span><span id="turoFee">$0</span></div>
-            <div class="calc-line"><span>Your Turo payout</span><span id="turoPayout">$0</span></div>
-            <div class="calc-line neg"><span>604 Kars management fee</span><span id="mgmtFee">$0</span></div>
-            <div class="calc-line"><span>Owner share</span><span id="ownerShare">$0</span></div>
-            <div class="calc-line neg"><span>– Estimated cleaning</span><span id="cleaningCost">$0</span></div>
-            <div class="calc-line neg"><span>– Estimated maintenance reserve</span><span id="maintCost">$0</span></div>
-            <div class="calc-line neg"><span>– Estimated depreciation reserve</span><span id="depreciationCost">$0</span></div>
-            <div class="calc-line total"><span>Owner net (monthly)</span><span id="netMonthly2">$0</span></div>
-            <div class="calc-line"><span>Owner net (annual)</span><span id="netAnnual">$0</span></div>
-          </div>
-          <p class="calc-disclaimer">Estimate only — not a guarantee of income. Daily rates are illustrative Vancouver-market comps, not live pricing. Turo protection-plan retention percentages are representative — confirm your exact rate on Turo. Cleaning is charged once per trip, so average trip length changes how many turnovers you pay for. Depreciation is estimated from typical added mileage and is a real cost of rental use, not just a bookkeeping line. Actual earnings vary based on vehicle type, demand, seasonality, pricing, utilization, and operating expenses.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- FINE PRINT + EXPECTATIONS (merged) -->
-  <section>
-    <div class="container">
-      <div class="section-head reveal">
-        <span class="spec-plate">Read The Fine Print</span>
-        <h2>Revenue is only one part of the equation.</h2>
-        <p>Gross revenue is not the same as profit, and co-hosting isn't completely passive. A full picture of vehicle economics includes:</p>
-      </div>
-      <div class="finegrid stack-lg">
-        <div class="card reveal"><span class="card-eyebrow">Revenue In</span><h3>Gross trip revenue</h3><p>Total revenue generated by bookings, before any deductions.</p></div>
-        <div class="card reveal"><span class="card-eyebrow">Platform</span><h3>Turo's host fee</h3><p>Turo's own cut, deducted before you ever receive a payout — varies by protection plan.</p></div>
-        <div class="card reveal"><span class="card-eyebrow">Management</span><h3>604 Kars fee</h3><p>Your selected management percentage — 25%, 30%, or 35% of your Turo payout.</p></div>
-        <div class="card reveal"><span class="card-eyebrow">Turnover</span><h3>Cleaning</h3><p>Turnover and cleaning costs between trips.</p></div>
-        <div class="card reveal"><span class="card-eyebrow">Upkeep</span><h3>Maintenance</h3><p>Oil changes, tires, brakes, and general wear.</p></div>
-        <div class="card reveal"><span class="card-eyebrow">Real Cost</span><h3>Depreciation</h3><p>The single largest true cost of rental use — added mileage accelerates resale-value loss.</p></div>
-      </div>
-      <div class="section-head reveal stack-md">
-        <span class="spec-plate">Set The Right Expectations</span>
-        <h2 class="h2-sub">Co-hosting isn't completely passive.</h2>
-      </div>
-      <ul class="expect-list reveal">
-        <li>Vehicles accumulate mileage</li>
-        <li>Maintenance is required</li>
-        <li>Demand fluctuates seasonally</li>
-        <li>Revenue varies month to month</li>
-        <li>Vehicles experience normal wear</li>
-        <li>Bookings aren't guaranteed</li>
+    <div class="split-card rise">
+      <p class="split-figure"><span id="splitPct">20</span>%<small>of host earnings — everything below included</small></p>
+      <ul class="checks">
+        <li><svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M3.5 9.5l3.5 3.5 7.5-8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Listing, pricing and calendar management</span></li>
+        <li><svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M3.5 9.5l3.5 3.5 7.5-8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Guest screening, messaging and support during trips</span></li>
+        <li><svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M3.5 9.5l3.5 3.5 7.5-8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Handoffs, inspections, cleaning and refuelling</span></li>
+        <li><svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M3.5 9.5l3.5 3.5 7.5-8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Claims filed and followed through on your behalf</span></li>
+        <li class="no"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M5 5l8 8M13 5l-8 8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg><span>Not included: insurance, registration and mechanical repairs stay with you as the owner</span></li>
       </ul>
-      <p class="center reveal stack-top">Our job is to manage the operational complexity — not to promise guaranteed income.</p>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- TRIP MANAGEMENT + PHOTO DOC (merged) -->
-  <section>
-    <div class="container">
-      <div class="section-head reveal">
-        <span class="spec-plate">Trip Management System</span>
-        <h2>Every trip runs on the same clock.</h2>
-        <p>Consistency is what makes hands-off ownership possible. Every booking moves through the same three checkpoints — and Full Service plans document all of it with 30+ photos per trip.</p>
-      </div>
-      <div class="checkpoints">
-        <div class="checkpoint reveal">
-          <span class="checkpoint-time">T–24H</span>
-          <h3>Before the trip</h3>
-          <ul><li>Confirm booking &amp; guest details</li><li>Confirm vehicle readiness</li><li>Send pickup instructions</li></ul>
-        </div>
-        <div class="checkpoint reveal">
-          <span class="checkpoint-time">T–1H</span>
-          <h3>Right before pickup</h3>
-          <ul><li>Confirm vehicle access &amp; location</li><li>Verify guest has instructions</li></ul>
-        </div>
-        <div class="checkpoint reveal">
-          <span class="checkpoint-time">T+2H</span>
-          <h3>After expected return</h3>
-          <ul><li>Confirm return &amp; vehicle status</li><li>Begin post-trip inspection</li></ul>
-        </div>
-      </div>
+<hr class="rule">
+
+<!-- ======================= FAQ ======================= -->
+<section class="band wrap" id="faq">
+  <div class="rise" style="margin-bottom:30px">
+    <p class="eyebrow">Before you ask</p>
+    <h2>The questions owners actually have.</h2>
+  </div>
+  <div class="faq rise">
+    <div class="qa" data-open="false">
+      <button class="qa-btn" type="button" aria-expanded="false">Who’s liable if something happens to my car?<svg class="chev" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3.5 6L8 10.5 12.5 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      <div class="qa-body"><div><p>Trips booked through Turo are covered by Turo’s host protection, and how much protection you get depends on the plan you pick. Coverage in B.C. works differently than in other provinces, so we go through your specific vehicle and plan with you before anything gets listed — and you should confirm the details with Turo and your own insurer directly rather than take our word for it.</p></div></div>
     </div>
-  </section>
-
-  <!-- FIT -->
-  <section id="fit">
-    <div class="container">
-      <div class="section-head reveal">
-        <span class="spec-plate">Is Your Vehicle A Fit?</span>
-        <h2>Every vehicle is evaluated individually.</h2>
-        <p>We consider age, condition, reliability, mileage, and local demand. These categories tend to perform best in the Vancouver market — luxury and specialty vehicles typically clear meaningfully more than economy after real costs.</p>
-      </div>
-      <div class="fit-categories">
-        <div class="fit-cat reveal"><span class="tag">Luxury</span><span class="model">BMW</span><span class="model">Mercedes</span><span class="model">Audi</span></div>
-        <div class="fit-cat reveal"><span class="tag">Electric</span><span class="model">Model 3</span><span class="model">Model Y</span></div>
-        <div class="fit-cat reveal"><span class="tag">SUV</span><span class="model">RAV4</span><span class="model">CR-V</span><span class="model">CX-5</span></div>
-      </div>
-      <div class="fit-split">
-        <div class="reveal">
-          <h3 class="fit-heading-good">Good Fit</h3>
-          <p class="card-eyebrow">604 Kars may be a good fit if...</p>
-          <ul class="split-list">
-            <li><span class="check-mark"><svg class="icon-sm" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span> Your car sits unused regularly</li>
-            <li><span class="check-mark"><svg class="icon-sm" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span> You have a second vehicle</li>
-            <li><span class="check-mark"><svg class="icon-sm" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span> You don't want to manage guests yourself</li>
-            <li><span class="check-mark"><svg class="icon-sm" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span> You're interested in building a small fleet over time</li>
-          </ul>
-        </div>
-        <div class="reveal">
-          <h3 class="fit-heading-bad">Not A Fit — Yet</h3>
-          <p class="card-eyebrow">It may not be right if...</p>
-          <ul class="split-list">
-            <li><span class="x-mark"><svg class="icon-sm" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></span> You need your car every day</li>
-            <li><span class="x-mark"><svg class="icon-sm" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></span> Your vehicle is unreliable or unsafe to drive</li>
-            <li><span class="x-mark"><svg class="icon-sm" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></span> Your vehicle isn't eligible for the platform</li>
-            <li><span class="x-mark"><svg class="icon-sm" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></span> You expect guaranteed income</li>
-          </ul>
-        </div>
-      </div>
+    <div class="qa" data-open="false">
+      <button class="qa-btn" type="button" aria-expanded="false">Can I still drive my own car?<svg class="chev" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3.5 6L8 10.5 12.5 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      <div class="qa-body"><div><p>Yes. You block off any dates you want it and we work around them. Plenty of owners keep weekends and list weekdays, or the reverse. The estimator is built around exactly that — you set how many days you’re actually willing to give up.</p></div></div>
     </div>
-  </section>
-
-  <!-- FOUNDER -->
-  <section>
-    <div class="container">
-      <div class="section-head reveal">
-        <span class="spec-plate">Local Management. Built For Vancouver.</span>
-        <h2>Meet 604 Kars.</h2>
-      </div>
-      <div class="founder-grid reveal">
-        <div class="photo-frame portrait-photo">
-          <div class="photo-caption">
-            <svg class="icon-camera" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 8h3l2-2h6l2 2h3v11H4z"/><circle cx="12" cy="13.5" r="3.5"/></svg>
-            <div class="label">Photo: Amir Keshavarzi</div>
-            <div class="dims">900 × 1200</div>
-          </div>
-        </div>
-        <div>
-          <div class="founder-name">Amir Keshavarzi</div>
-          <span class="founder-role">Founder, 604 Kars</span>
-          <p>604 Kars was started to help Vancouver vehicle owners get more value from underutilized cars without taking on the operational burden of managing every trip themselves. The focus is a professional, systems-driven approach — built around Vancouver's specific market, not a generic playbook.</p>
-          <p>I personally oversee guest communication, booking coordination, vehicle presentation, and cleaning coordination — making sure each vehicle is managed with care and attention to detail, and every guest gets a reliable, seamless rental experience.</p>
-        </div>
-      </div>
+    <div class="qa" data-open="false">
+      <button class="qa-btn" type="button" aria-expanded="false">What kind of car works on Turo here?<svg class="chev" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3.5 6L8 10.5 12.5 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      <div class="qa-body"><div><p>Clean, reliable and under roughly ten years old covers most of it. Economy cars book most often; premium cars book less often but earn more per day. If your car isn’t a fit we’ll tell you that instead of listing it and hoping.</p></div></div>
     </div>
-  </section>
-
-  <!-- TESTIMONIALS -->
-  <section>
-    <div class="container">
-      <div class="section-head reveal">
-        <span class="spec-plate">Owner Feedback</span>
-        <h2>What owners say.</h2>
-        <p>Sample testimonials shown for website preview purposes. Replace with verified owner testimonials as your client base grows.</p>
-      </div>
-      <div class="grid-3">
-        <div class="testi-card reveal">
-          <blockquote>"604 Kars made the process of getting my vehicle onto Turo feel simple and stress-free. The communication and attention to detail gave me confidence my car was being taken care of."</blockquote>
-          <div class="testi-author">Daniel M.</div>
-          <div class="testi-tag">Sample Owner Testimonial</div>
-        </div>
-        <div class="testi-card reveal">
-          <blockquote>"I wanted extra income from my vehicle but didn't have time to manage everything myself. The 604 Kars approach is exactly what I was looking for."</blockquote>
-          <div class="testi-author">Jason K.</div>
-          <div class="testi-tag">Sample Owner Testimonial</div>
-        </div>
-        <div class="testi-card reveal">
-          <blockquote>"What stood out was the level of organization. From guest communication to vehicle preparation, everything was handled with a professional mindset."</blockquote>
-          <div class="testi-author">Michael R.</div>
-          <div class="testi-tag">Sample Owner Testimonial</div>
-        </div>
-      </div>
+    <div class="qa" data-open="false">
+      <button class="qa-btn" type="button" aria-expanded="false">How new is 604 Kars?<svg class="chev" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3.5 6L8 10.5 12.5 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      <div class="qa-body"><div><p>New. We’re building the owner side of the business right now, which is why there’s no wall of testimonials on this page and why the terms are deliberately easy to walk away from. If you’d rather work with an operator who has years of Vancouver reviews behind them, that’s a fair call — say so and we’ll tell you honestly whether we’re the right fit for your car.</p></div></div>
     </div>
-  </section>
-
-  <!-- FLEET BANNER -->
-  <section>
-    <div class="container">
-      <div class="fleet-banner reveal">
-        <div>
-          <h3>Managing more than one vehicle?</h3>
-          <p>Whether you own 1 vehicle or 10+, 604 Kars can help you build a structured management process around your fleet as it grows.</p>
-        </div>
-        <a href="#contact" class="btn btn-primary btn-lg">Talk To Us About Fleet Management</a>
-      </div>
+    <div class="qa" data-open="false">
+      <button class="qa-btn" type="button" aria-expanded="false">How do I get out?<svg class="chev" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3.5 6L8 10.5 12.5 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      <div class="qa-body"><div><p>Tell us. We finish any trips already booked, hand back the keys and the listing, and that’s it. No notice period and no exit fee.</p></div></div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- CONTACT -->
-  <section id="contact">
-    <div class="container">
-      <div class="section-head reveal">
-        <span class="spec-plate">Get Started</span>
-        <h2>Tell us about your car.</h2>
-        <p>A few quick steps and we'll follow up with a personalized estimate — or grab a time on our calendar if you'd rather talk it through first.</p>
-      </div>
+<hr class="rule">
 
-      <div class="contact-grid">
-        <div class="form-card reveal">
-          <div class="form-progress" id="formProgress">
-            <div class="bar"><span></span></div>
-            <div class="bar"><span></span></div>
-            <div class="bar"><span></span></div>
-            <div class="bar"><span></span></div>
-          </div>
-          <div class="form-step-label"><span id="stepLabel">Step 1 of 4</span></div>
-
-          <form id="leadForm">
-            <div class="form-step active" data-step="1">
-              <div class="form-group"><label for="fullName">Full Name</label><input type="text" id="fullName" name="fullName" required placeholder="Jane Smith"></div>
-              <div class="form-nav"><span></span><button type="button" class="btn btn-primary form-next">Continue</button></div>
-            </div>
-            <div class="form-step" data-step="2">
-              <div class="form-group"><label for="email">Email</label><input type="email" id="email" name="email" required placeholder="jane@example.com"></div>
-              <div class="form-nav"><button type="button" class="btn btn-ghost form-back">Back</button><button type="button" class="btn btn-primary form-next">Continue</button></div>
-            </div>
-            <div class="form-step" data-step="3">
-              <div class="form-group"><label for="phone">Phone</label><input type="tel" id="phone" name="phone" required placeholder="(604) 555-0123"></div>
-              <div class="form-nav"><button type="button" class="btn btn-ghost form-back">Back</button><button type="button" class="btn btn-primary form-next">Continue</button></div>
-            </div>
-            <div class="form-step" data-step="4">
-              <div class="form-group">
-                <label for="location">Location</label>
-                <select id="location" name="location">
-                  <option>Vancouver</option>
-                  <option>North Vancouver</option>
-                  <option>Burnaby</option>
-                  <option>Richmond</option>
-                  <option>Other Lower Mainland</option>
-                </select>
-              </div>
-              <div class="form-nav"><button type="button" class="btn btn-ghost form-back">Back</button><button type="submit" class="btn btn-primary">Submit</button></div>
-            </div>
-          </form>
-
-          <div class="form-success" id="formSuccess">
-            <h3>Almost there.</h3>
-            <p>Your email app should have opened with your details pre-filled — hit send and we'll follow up shortly to talk through your vehicle and put together a personalized estimate.</p>
-          </div>
-
-          <p class="form-fineprint">By submitting, you agree to be contacted by 604 Kars about your vehicle. Read our <a href="privacy.html">privacy policy</a> — we don't sell your information.</p>
-        </div>
-
-        <div>
-          <div class="consult-card reveal">
-            <span class="card-eyebrow">Prefer To Talk First?</span>
-            <h3>Book a free consultation</h3>
-            <p>15 minutes to walk through your vehicle, your availability, and which plan fits best — no obligation.</p>
-            <!-- PLACEHOLDER: replace with your real Calendly/booking link -->
-            <a href="#contact" class="btn btn-secondary btn-block">Open Calendar</a>
-          </div>
-          <div class="reveal">
-            <span class="card-eyebrow">What Happens Next</span>
-            <h3 class="stack-sm">Here's the process</h3>
-            <ul class="next-steps">
-              <li><span class="n">1.</span> We review the vehicle details you submit.</li>
-              <li><span class="n">2.</span> We reach out to discuss your vehicle and availability.</li>
-              <li><span class="n">3.</span> We build a personalized earnings estimate.</li>
-              <li><span class="n">4.</span> You decide — no obligation to move forward.</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- FAQ -->
-  <section id="faq">
-    <div class="container">
-      <div class="section-head reveal">
-        <span class="spec-plate">FAQ</span>
-        <h2>Common questions.</h2>
-      </div>
-      <div class="faq-list reveal">
-        <div class="faq-item">
-          <button class="faq-q" aria-expanded="false"><span>How does 604 Kars make money?</span><span class="plus"><svg class="icon" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button>
-          <div class="faq-a"><div class="faq-a-inner"><p>We charge a percentage of what you actually receive from Turo — 25%, 30%, or 35% depending on plan. This is separate from Turo's own host fee, which the platform deducts independently before your payout.</p></div></div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-q" aria-expanded="false"><span>How much can my car make?</span><span class="plus"><svg class="icon" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button>
-          <div class="faq-a"><div class="faq-a-inner"><p>It depends on vehicle type, location, availability, and demand. Use the earnings calculator above for a rough estimate that accounts for Turo's fee, our fee, and real operating costs, or book a consultation for a personalized analysis.</p></div></div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-q" aria-expanded="false"><span>Do you guarantee income?</span><span class="plus"><svg class="icon" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button>
-          <div class="faq-a"><div class="faq-a-inner"><p>No. Bookings aren't guaranteed and revenue varies month to month based on demand, seasonality, and market conditions. We manage the operational complexity — we don't promise guaranteed income.</p></div></div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-q" aria-expanded="false"><span>Do I have to manage guests myself?</span><span class="plus"><svg class="icon" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button>
-          <div class="faq-a"><div class="faq-a-inner"><p>On Standard and Full Service plans, no — we handle guest communication end-to-end. On Ops Lite, guest communication is included but you stay more hands-on with the vehicle itself.</p></div></div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-q" aria-expanded="false"><span>Can I still use my own car?</span><span class="plus"><svg class="icon" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button>
-          <div class="faq-a"><div class="faq-a-inner"><p>Yes. Your availability calendar is set by you — block out the days you need the vehicle and it simply won't be bookable during that time.</p></div></div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-q" aria-expanded="false"><span>What happens if a guest damages my vehicle?</span><span class="plus"><svg class="icon" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button>
-          <div class="faq-a"><div class="faq-a-inner"><p>Every trip is documented with pre- and post-trip photos and condition notes, which supports any damage claim filed through Turo's protection plans. We handle documentation and claim coordination on your behalf.</p></div></div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-q" aria-expanded="false"><span>What types of vehicles do you accept?</span><span class="plus"><svg class="icon" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button>
-          <div class="faq-a"><div class="faq-a-inner"><p>We evaluate each vehicle individually based on age, condition, reliability, mileage, and local demand. Luxury, electric, and SUV categories have generally performed best in the Vancouver market after real costs; economy vehicles are considered case by case.</p></div></div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-q" aria-expanded="false"><span>Who pays for maintenance and repairs?</span><span class="plus"><svg class="icon" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button>
-          <div class="faq-a"><div class="faq-a-inner"><p>Maintenance costs — parts and labour — and major mechanical repairs are the owner's responsibility. We coordinate scheduling and reminders so nothing falls through the cracks.</p></div></div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-q" aria-expanded="false"><span>How do I get started?</span><span class="plus"><svg class="icon" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button>
-          <div class="faq-a"><div class="faq-a-inner"><p>Fill out the short form above or book a free 15-minute consultation. We'll review your vehicle, build a personalized earnings estimate, and walk through which plan fits best — no obligation to move forward.</p></div></div>
-        </div>
-      </div>
-    </div>
-  </section>
+<!-- ======================= CONTACT ======================= -->
+<section class="band band--tight wrap" id="contact">
+  <div class="rise">
+    <p class="eyebrow">Start here</p>
+    <h2>Tell us what you drive.</h2>
+    <p class="lede" style="margin-top:18px">
+      Send the year, make, model and roughly how many days a month you could leave it
+      available. We’ll come back with a real number for your car — not the slider’s guess.
+    </p>
+  </div>
+  <div class="contact-grid rise">
+    <a class="contact-card" href="tel:+12367888944">
+      <span class="kicker">CALL OR TEXT</span>
+      <span class="v">236-788-8944</span>
+      <span class="s">9 AM – 9 PM, daily</span>
+    </a>
+    <a class="contact-card" href="mailto:604kars@gmail.com">
+      <span class="kicker">EMAIL</span>
+      <span class="v">604kars@gmail.com</span>
+      <span class="s">Usually same day</span>
+    </a>
+    <button class="contact-card" type="button" data-open-sheet>
+      <span class="kicker">SEND DETAILS</span>
+      <span class="v">Fill in the form</span>
+      <span class="s">Takes about a minute</span>
+    </button>
+  </div>
+</section>
 
 </main>
 
-<footer>
-  <div class="container">
-    <div class="footer-grid">
-      <a href="#top" class="logo"><span class="logo-mark">604</span> Kars</a>
-      <div class="footer-links">
-        <a href="#plans">Plans</a>
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-top">
+      <div>
+        <a class="brand" href="#top" aria-label="604 Kars — home"><span class="plate">604&nbsp;KARS</span></a>
+        <p class="foot-blurb">Turo co-hosting &amp; vehicle management<br>Metro Vancouver, British Columbia</p>
+      </div>
+      <div class="foot-links">
+        <a href="#handled">What we handle</a>
+        <a href="#trip">How a booking runs</a>
+        <a href="#split">The split</a>
         <a href="#faq">FAQ</a>
-        <a href="#contact">Contact</a>
-        <a href="mailto:604kars@gmail.com">604kars@gmail.com</a>
         <a href="tel:+12367888944">236-788-8944</a>
-        <a href="privacy.html">Privacy Policy</a>
-        <a href="terms.html">Terms of Service</a>
+        <a href="mailto:604kars@gmail.com">604kars@gmail.com</a>
+        <a href="privacy.html">Privacy</a>
+        <a href="terms.html">Terms</a>
       </div>
     </div>
-    <div class="footer-meta">© <span id="year"></span> 604 Kars, Vancouver BC. Not affiliated with Turo Inc.</div>
+    <p class="foot-fine">
+      Earnings figures on this page are estimates produced from the assumptions shown
+      beside the calculator. They are not a forecast, a guarantee or an offer. Real
+      results depend on your vehicle, your availability, seasonal demand and the Turo
+      plan you choose. 604&nbsp;Kars is an independent operator and is not affiliated
+      with Turo Inc.
+      <br><br>© <span id="yr">2026</span> 604 Kars. All rights reserved.
+    </p>
   </div>
 </footer>
 
-<script src="script.js"></script>
+<div class="scrim" id="scrim"></div>
+
+<div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-labelledby="sheetTitle" aria-hidden="true">
+  <div class="sheet-handle" id="sheetHandle">
+    <div class="grabber" aria-hidden="true"></div>
+    <h2 id="sheetTitle">Get an estimate</h2>
+    <p class="lede">We’ll reply with a number based on your actual car and the Vancouver market — usually the same day.</p>
+  </div>
+
+  <div class="field">
+    <label for="fName">Your name</label>
+    <input id="fName" type="text" autocomplete="name" placeholder="Alex Chen" required>
+    <span class="field-err" id="fNameErr" role="alert"></span>
+  </div>
+  <div class="field">
+    <label for="fContact">Phone or email</label>
+    <input id="fContact" type="text" autocomplete="tel" spellcheck="false" placeholder="604-555-0142" required>
+    <span class="field-err" id="fContactErr" role="alert"></span>
+  </div>
+  <div class="field">
+    <label for="fCar">Year, make and model</label>
+    <input id="fCar" type="text" autocomplete="off" placeholder="2021 Toyota Corolla Hatchback" required>
+    <span class="field-err" id="fCarErr" role="alert"></span>
+  </div>
+  <div class="field"><label for="fNotes">Anything else</label><textarea id="fNotes" placeholder="Mileage, condition, days a month you could leave it available…"></textarea></div>
+
+  <div class="sheet-actions">
+    <button class="btn btn--primary btn--wide" type="button" id="sheetSend">Send it</button>
+    <button class="btn btn--ghost btn--wide" type="button" data-close-sheet>Not now</button>
+  </div>
+  <p class="sheet-alt">Rather just talk? <a href="tel:+12367888944">236-788-8944</a>, 9 AM – 9 PM daily.</p>
+  <p class="sheet-alt" style="margin-top:6px;">We only use this to reply about your car. Read our <a href="privacy.html">privacy policy</a>.</p>
+</div>
+
+<!--
+  ANALYTICS: nothing is installed yet. Add your real GA4 or Plausible
+  snippet here once you have an account — e.g.:
+  <script defer data-domain="604kars.com" src="https://plausible.io/js/script.js"></script>
+  A placeholder ID would silently report fake data, so none is set.
+-->
+
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"LocalBusiness",
+  "name":"604 Kars",
+  "description":"Turo co-hosting and vehicle management for car owners in Metro Vancouver.",
+  "url":"https://604kars.com/",
+  "email":"604kars@gmail.com",
+  "telephone":"+1-236-788-8944",
+  "areaServed":{"@type":"Place","name":"Metro Vancouver, British Columbia, Canada"},
+  "openingHoursSpecification":[{
+    "@type":"OpeningHoursSpecification",
+    "dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+    "opens":"09:00","closes":"21:00"
+  }]
+}
+</script>
+
+<script>
+"use strict";
+/* ==========================================================================
+   CONFIG — every number this page asserts lives here.
+   Check these against your real Turo plan and Vancouver rates before publishing.
+   ========================================================================== */
+var CONFIG = {
+  email: '604kars@gmail.com',
+  managementSharePct: 20,   /* 604 Kars share of HOST earnings */
+  turoTakePct:        20,   /* Turo's cut of the gross trip price */
+  bookedRate:        0.65,  /* share of available days that actually book */
+  minDays: 4, maxDays: 30, defaultDays: 18,
+  classes: [
+    { id:'economy', name:'Economy', eg:'Corolla, Civic, Elantra',     daily: 58 },
+    { id:'mid',     name:'Midsize', eg:'Camry, Accord, Model 3',      daily: 82 },
+    { id:'suv',     name:'SUV',     eg:'RAV4, Highlander, Tacoma',    daily:104 },
+    { id:'premium', name:'Premium', eg:'BMW 4 Series, Model Y Perf.', daily:168 }
+  ]
+};
+
+var REDUCED = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+/* ==========================================================================
+   SPRING — Apple's parameterisation: damping ratio + response, not duration.
+   Re-targeting keeps the current value AND the current velocity, which is what
+   makes every animation here interruptible and reversible with no
+   discontinuity at the reversal (§3, §4).
+   ========================================================================== */
+function Spring(value, damping, response){
+  this.value = value; this.target = value; this.velocity = 0;
+  this.damping  = (damping  == null) ? 1.0 : damping;
+  this.response = (response == null) ? 0.4 : response;
+  this.settled = true;
+}
+Spring.prototype.set = function(v){
+  this.value = v; this.target = v; this.velocity = 0; this.settled = true;
+};
+Spring.prototype.to = function(target, opts){
+  opts = opts || {};
+  if (opts.damping  != null) this.damping  = opts.damping;
+  if (opts.response != null) this.response = opts.response;
+  if (opts.velocity != null) this.velocity = opts.velocity;
+  this.target = target;
+  this.settled = false;
+};
+Spring.prototype.step = function(dt){
+  if (this.settled) return false;
+  if (REDUCED.matches){                      /* gentler equivalent, not absence (§14) */
+    this.value = this.target; this.velocity = 0; this.settled = true; return true;
+  }
+  /* The ticker below already clamps dt to 64ms before any spring sees it,
+     so this never fires in practice — but the sub-step count was capped
+     at 8 while the step size (dt / steps) was not, so a caller that ever
+     did hand this a multi-second dt (a resumed background tab bypassing
+     the ticker, a future caller) would integrate with a step way outside
+     stability range and the value would diverge to +/-Infinity. Belt and
+     suspenders: the primitive enforces its own safe input rather than
+     trusting every future call site to remember to clamp first. */
+  if (dt > 0.1) dt = 0.1;
+  var w = (2 * Math.PI) / this.response;     /* natural frequency */
+  var k = w * w, c = 2 * this.damping * w;
+  var steps = Math.min(8, Math.max(1, Math.ceil(dt * 240)));
+  var h = dt / steps;
+  for (var i = 0; i < steps; i++){
+    var a = -k * (this.value - this.target) - c * this.velocity;
+    this.velocity += a * h;
+    this.value    += this.velocity * h;
+  }
+  if (Math.abs(this.velocity) < 0.02 && Math.abs(this.value - this.target) < 0.02){
+    this.value = this.target; this.velocity = 0; this.settled = true;
+  }
+  return true;
+};
+
+/* One display-synced clock for everything (§11) */
+var ticker = (function(){
+  var subs = [], raf = null, last = 0;
+  function frame(t){
+    var dt = Math.min(0.064, last ? (t - last) / 1000 : 0.016);
+    last = t;
+    var alive = false;
+    for (var i = 0; i < subs.length; i++){ if (subs[i](dt)) alive = true; }
+    if (alive){ raf = requestAnimationFrame(frame); } else { raf = null; last = 0; }
+  }
+  return {
+    add: function(fn){ subs.push(fn); this.kick(); },
+    kick: function(){ if (raf === null){ last = 0; raf = requestAnimationFrame(frame); } }
+  };
+})();
+
+/* Momentum projection — Apple's exponential decay, not v²/2a (§6) */
+function project(velocity, decelerationRate){
+  var d = (decelerationRate == null) ? 0.998 : decelerationRate;
+  return (velocity / 1000) * d / (1 - d);
+}
+/* Progressive resistance past a boundary, never a hard stop (§9) */
+function rubberband(overshoot, dimension, constant){
+  var c = (constant == null) ? 0.55 : constant;
+  return (overshoot * dimension * c) / (dimension + c * Math.abs(overshoot));
+}
+/* Velocity from a short position history, not just the last two points (§2) */
+function Tracker(){ this.pts = []; }
+Tracker.prototype.reset = function(){ this.pts.length = 0; };
+Tracker.prototype.push = function(v){
+  var now = performance.now();
+  this.pts.push({ v:v, t:now });
+  while (this.pts.length > 6 || (this.pts.length > 2 && now - this.pts[0].t > 110)) this.pts.shift();
+};
+Tracker.prototype.velocity = function(){
+  if (this.pts.length < 2) return 0;
+  var a = this.pts[0], b = this.pts[this.pts.length - 1];
+  var dt = (b.t - a.t) / 1000;
+  return dt > 0.001 ? (b.v - a.v) / dt : 0;
+};
+/* Reserved for commits and snaps. Over-feedback trains people to ignore it (§13) */
+function haptic(ms){
+  if (REDUCED.matches) return;
+  if (navigator.vibrate){ try { navigator.vibrate(ms || 8); } catch (e) {} }
+}
+function money(n){ return '$' + Math.round(n).toLocaleString('en-CA'); }
+function $(id){ return document.getElementById(id); }
+
+/* ==========================================================================
+   NAV
+   ========================================================================== */
+(function(){
+  var nav = $('nav'), lifted = false;
+  function onScroll(){
+    var should = window.scrollY > 20;
+    if (should !== lifted){ lifted = should; nav.classList.toggle('is-lifted', should); }
+  }
+  window.addEventListener('scroll', onScroll, { passive:true });
+  onScroll();
+})();
+
+/* ==========================================================================
+   ESTIMATOR
+   ========================================================================== */
+var seg = $('seg'), segThumb = $('segThumb'), segHint = $('segHint');
+var track = $('track'), thumb = $('thumb'), fill = $('fill');
+var THUMB = 28;
+
+var classIndex = 1;                       /* Midsize by default */
+var daysSpring = new Spring(CONFIG.defaultDays);
+var segX = new Spring(0);
+var segW = new Spring(0);
+var segBtns = [];
+
+CONFIG.classes.forEach(function(c, i){
+  var b = document.createElement('button');
+  b.type = 'button';
+  b.setAttribute('role', 'radio');
+  b.setAttribute('aria-checked', String(i === classIndex));
+  b.tabIndex = (i === classIndex) ? 0 : -1;
+  b.textContent = c.name;
+  b.addEventListener('pointerdown', function(){ selectClass(i); });  /* respond on press (§1) */
+  b.addEventListener('keydown', function(e){
+    var n = null, len = CONFIG.classes.length;
+    if (e.key === 'ArrowRight' || e.key === 'ArrowDown') n = (i + 1) % len;
+    if (e.key === 'ArrowLeft'  || e.key === 'ArrowUp')   n = (i - 1 + len) % len;
+    if (e.key === ' ' || e.key === 'Enter') n = i;
+    if (n === null) return;
+    e.preventDefault();
+    selectClass(n);
+    segBtns[n].focus();
+  });
+  seg.appendChild(b);
+});
+segBtns = Array.prototype.slice.call(seg.querySelectorAll('button'));
+
+function selectClass(i){
+  if (i === classIndex) return;
+  classIndex = i;
+  segBtns.forEach(function(b, n){
+    b.setAttribute('aria-checked', String(n === i));
+    b.tabIndex = (n === i) ? 0 : -1;
+  });
+  var r = segBtns[i].getBoundingClientRect(), p = seg.getBoundingClientRect();
+  segX.to(r.left - p.left, { damping:1.0, response:0.34 });
+  segW.to(r.width,         { damping:1.0, response:0.34 });
+  segHint.textContent = CONFIG.classes[i].eg;
+  writeAssumptions();
+  haptic(6);
+  ticker.kick();
+  paint();
+}
+
+function placeSegThumb(){
+  if (!segBtns.length) return;
+  var r = segBtns[classIndex].getBoundingClientRect(), p = seg.getBoundingClientRect();
+  segX.set(r.left - p.left);
+  segW.set(r.width);
+}
+
+function economics(days){
+  var daily = CONFIG.classes[classIndex].daily;
+  var gross = daily * days * CONFIG.bookedRate;
+  var turo  = gross * (CONFIG.turoTakePct / 100);
+  var host  = gross - turo;
+  var mgmt  = host * (CONFIG.managementSharePct / 100);
+  return { gross:gross, turo:turo, mgmt:mgmt, net:host - mgmt };
+}
+
+var announceTimer = null;
+function announceFigure(text){
+  /* One clean read per pause in interaction, not one per frame. Debounced
+     on trailing edge so a fast drag or key-repeat produces a single
+     announcement of the value the user actually stopped on. */
+  if (announceTimer) clearTimeout(announceTimer);
+  announceTimer = window.setTimeout(function(){
+    $('figureAnnounce').textContent = text;
+  }, 500);
+}
+
+function paint(){
+  var days = daysSpring.value;
+  var shown = Math.round(Math.max(CONFIG.minDays, Math.min(CONFIG.maxDays, days)));
+  var e = economics(days);
+  var netText = money(e.net);
+
+  $('figure').textContent = netText;
+  $('dayCount').textContent = shown;
+  $('mGross').textContent = money(e.gross);
+  $('mTuro').textContent  = '\u2212' + money(e.turo);
+  $('mMgmt').textContent  = '\u2212' + money(e.mgmt);
+  $('mNet').textContent   = money(e.net);
+  track.setAttribute('aria-valuenow', shown);
+  track.setAttribute('aria-valuetext', shown + ' days per month');
+  announceFigure('Estimated payout ' + netText + ' per month, at ' + shown + ' days available.');
+
+  var w = track.clientWidth;
+  var usable = Math.max(1, w - THUMB);
+  var t = (days - CONFIG.minDays) / (CONFIG.maxDays - CONFIG.minDays);
+  thumb.style.transform = 'translate3d(' + (t * usable).toFixed(2) + 'px,0,0)';
+  var fillT = w > 0 ? (t * usable + THUMB / 2) / w : 0;
+  fill.style.transform = 'scaleX(' + Math.max(0, Math.min(1, fillT)).toFixed(4) + ')';
+
+  segThumb.style.transform = 'translate3d(' + segX.value.toFixed(2) + 'px,0,0)';
+  segThumb.style.width = segW.value.toFixed(2) + 'px';
+}
+
+ticker.add(function(dt){
+  var a = daysSpring.step(dt), b = segX.step(dt), c = segW.step(dt);
+  if (a || b || c) paint();
+  return a || b || c;
+});
+
+/* --- Slider: 1:1 tracking, rubber-banded, momentum on release --- */
+(function(){
+  var tracker = new Tracker();
+  var dragging = false, grabOffset = 0, pxPerDay = 1, activeId = null;
+  var span = CONFIG.maxDays - CONFIG.minDays;
+
+  function usable(){ return Math.max(1, track.clientWidth - THUMB); }
+  function daysFromPx(px){ return CONFIG.minDays + (px / usable()) * span; }
+  function pxFromDays(d){ return ((d - CONFIG.minDays) / span) * usable(); }
+  function clampDays(d){ return Math.max(CONFIG.minDays, Math.min(CONFIG.maxDays, d)); }
+
+  track.addEventListener('pointerdown', function(e){
+    if (dragging) return;                 /* a second finger must not hijack the drag */
+    if (e.button != null && e.button !== 0) return;
+    dragging = true;
+    activeId = e.pointerId;
+    thumb.classList.add('is-held');
+    pxPerDay = usable() / span;
+    /* Capture keeps tracking alive past the element's edge, but it rejects a
+       pointer the browser no longer knows about — that must not abort the
+       rest of the gesture setup, so state is committed before we ask. */
+    try { track.setPointerCapture(e.pointerId); } catch (err) {}
+
+    var rect = track.getBoundingClientRect();
+    var px = e.clientX - rect.left - THUMB / 2;
+    var thumbPx = pxFromDays(daysSpring.value);
+
+    /* Grabbed the thumb: keep the offset, or it jumps to the finger (§2).
+       Grabbed the rail: spring over, then track 1:1 from there. */
+    if (Math.abs(px - thumbPx) < 24){
+      grabOffset = px - thumbPx;
+    } else {
+      grabOffset = 0;
+      daysSpring.to(clampDays(daysFromPx(px)), { damping:1.0, response:0.26 });
+      ticker.kick();
+    }
+    tracker.reset(); tracker.push(px);
+    e.preventDefault();
+  });
+
+  track.addEventListener('pointermove', function(e){
+    if (!dragging || e.pointerId !== activeId) return;
+    var rect = track.getBoundingClientRect();
+    var px = e.clientX - rect.left - THUMB / 2;
+    tracker.push(px);
+
+    var d = daysFromPx(px - grabOffset);
+    if (d < CONFIG.minDays){
+      d = CONFIG.minDays - rubberband((CONFIG.minDays - d) * pxPerDay, usable()) / pxPerDay;
+    } else if (d > CONFIG.maxDays){
+      d = CONFIG.maxDays + rubberband((d - CONFIG.maxDays) * pxPerDay, usable()) / pxPerDay;
+    }
+    daysSpring.set(d);          /* 1:1 with the finger the whole way (§1) */
+    paint();
+  });
+
+  function release(e){
+    if (!dragging || e.pointerId !== activeId) return;
+    dragging = false;
+    activeId = null;
+    thumb.classList.remove('is-held');
+    try { track.releasePointerCapture(e.pointerId); } catch (err) {}
+
+    var vPx = tracker.velocity();
+    var vDay = vPx / pxPerDay;
+    /* Land where the flick was going, not where the finger stopped (§6) */
+    var projected = daysSpring.value + project(vDay);
+    var target = clampDays(Math.round(projected));
+    var flicked = Math.abs(vPx) > 240;
+
+    daysSpring.to(target, {
+      /* Bounce only because momentum preceded it. A tap gets none. (§4) */
+      damping:  flicked ? 0.82 : 1.0,
+      response: flicked ? 0.36 : 0.28,
+      velocity: vDay                       /* no seam between drag and animation (§5) */
+    });
+    haptic(8);
+    ticker.kick();
+  }
+  track.addEventListener('pointerup', release);
+  track.addEventListener('pointercancel', release);
+
+  track.addEventListener('keydown', function(e){
+    var step = e.shiftKey ? 5 : 1, d = null;
+    if (e.key === 'ArrowRight' || e.key === 'ArrowUp')   d = Math.round(daysSpring.target) + step;
+    if (e.key === 'ArrowLeft'  || e.key === 'ArrowDown') d = Math.round(daysSpring.target) - step;
+    if (e.key === 'Home') d = CONFIG.minDays;
+    if (e.key === 'End')  d = CONFIG.maxDays;
+    if (d === null) return;
+    e.preventDefault();
+    daysSpring.to(clampDays(d), { damping:1.0, response:0.24 });
+    ticker.kick();
+  });
+})();
+
+/* ==========================================================================
+   TIMELINE — flick to throw, snap to the projected card
+   ========================================================================== */
+(function(){
+  var vp = $('tlViewport'), rail = $('tlRail'), dotsEl = $('tlDots');
+  var cards = Array.prototype.slice.call(rail.children);
+  if (!cards.length) return;
+
+  var x = new Spring(0);
+  var tracker = new Tracker();
+  var dragging = false, startX = 0, startVal = 0, index = 0, locked = false, activeId = null;
+
+  cards.forEach(function(_, i){
+    var d = document.createElement('span');
+    d.className = 'dot' + (i === 0 ? ' is-on' : '');
+    dotsEl.appendChild(d);
+  });
+  var dots = Array.prototype.slice.call(dotsEl.children);
+
+  var GAP = 14;
+  function stride(){ return cards[0].offsetWidth + GAP; }
+  function maxScroll(){ return Math.max(0, rail.scrollWidth - vp.clientWidth); }
+
+  var prevBtn = $('tlPrev'), nextBtn = $('tlNext');
+
+  function render(){
+    rail.style.transform = 'translate3d(' + (-x.value).toFixed(2) + 'px,0,0)';
+    var i = Math.max(0, Math.min(cards.length - 1, Math.round(x.value / stride())));
+    if (i !== index){
+      index = i;
+      dots.forEach(function(d, n){ d.classList.toggle('is-on', n === i); });
+    }
+    var max = maxScroll();
+    prevBtn.disabled = x.value <= 0.5;
+    nextBtn.disabled = x.value >= max - 0.5;
+  }
+  ticker.add(function(dt){ var moved = x.step(dt); if (moved) render(); return moved; });
+
+  /* Keyboard / button equivalent of the drag — a carousel that only
+     responds to touch is not operable without a pointer (§10, Familiarity). */
+  function goTo(i){
+    i = Math.max(0, Math.min(cards.length - 1, i));
+    var target = Math.max(0, Math.min(maxScroll(), i * stride()));
+    x.to(target, { damping:1.0, response:0.32 });
+    ticker.kick();
+  }
+  prevBtn.addEventListener('click', function(){ goTo(index - 1); });
+  nextBtn.addEventListener('click', function(){ goTo(index + 1); });
+  vp.addEventListener('keydown', function(e){
+    if (e.key === 'ArrowRight'){ e.preventDefault(); goTo(index + 1); }
+    else if (e.key === 'ArrowLeft'){ e.preventDefault(); goTo(index - 1); }
+    else if (e.key === 'Home'){ e.preventDefault(); goTo(0); }
+    else if (e.key === 'End'){ e.preventDefault(); goTo(cards.length - 1); }
+  });
+
+  vp.addEventListener('pointerdown', function(e){
+    if (dragging) return;
+    if (e.button != null && e.button !== 0) return;
+    dragging = true; locked = false;
+    activeId = e.pointerId;
+    startX = e.clientX; startVal = x.value;
+    x.set(x.value);                 /* grab it mid-flight and it stops under the finger (§3) */
+    tracker.reset(); tracker.push(e.clientX);
+    try { vp.setPointerCapture(e.pointerId); } catch (err) {}
+  });
+
+  vp.addEventListener('pointermove', function(e){
+    if (!dragging || e.pointerId !== activeId) return;
+    var dx = e.clientX - startX;
+    if (!locked){                   /* ~10px hysteresis before committing (§10) */
+      if (Math.abs(dx) < 10) return;
+      locked = true;
+    }
+    tracker.push(e.clientX);
+    var v = startVal - dx;
+    var max = maxScroll();
+    if (v < 0) v = -rubberband(-v, vp.clientWidth);
+    else if (v > max) v = max + rubberband(v - max, vp.clientWidth);
+    x.set(v);
+    render();
+    e.preventDefault();
+  });
+
+  function release(e){
+    if (!dragging || e.pointerId !== activeId) return;
+    dragging = false;
+    activeId = null;
+    try { vp.releasePointerCapture(e.pointerId); } catch (err) {}
+    if (!locked) return;
+    var v = -tracker.velocity();               /* rail moves opposite the finger */
+    var projected = x.value + project(v);
+    var s = stride();
+    var snapped = Math.max(0, Math.min(maxScroll(), Math.round(projected / s) * s));
+    var flicked = Math.abs(v) > 300;
+    x.to(snapped, { damping: flicked ? 0.84 : 1.0, response: flicked ? 0.38 : 0.30, velocity: v });
+    haptic(6);
+    ticker.kick();
+  }
+  vp.addEventListener('pointerup', release);
+  vp.addEventListener('pointercancel', release);
+
+  window.addEventListener('resize', function(){
+    var s = stride();
+    x.set(Math.max(0, Math.min(maxScroll(), Math.round(x.value / s) * s)));
+    render();
+  });
+  render();
+})();
+
+/* ==========================================================================
+   SHEET — in from the bottom, out to the bottom (§7). Grabbable mid-flight.
+   ========================================================================== */
+var sheet = $('sheet'), scrim = $('scrim');
+var openSheet, closeSheet, sheetOpen = false;
+
+(function(){
+  var y = new Spring(0);
+  var tracker = new Tracker();
+  var dragging = false, startY = 0, startVal = 0, height = 1, lastFocus = null, activeId = null;
+
+  function render(){
+    sheet.style.transform = 'translate3d(-50%,' + y.value.toFixed(2) + 'px,0)';
+    var p = 1 - Math.max(0, Math.min(1, y.value / height));
+    scrim.style.opacity = p.toFixed(3);
+    if (!sheetOpen && y.value >= height - 1){ y.set(height); finishClose(); }
+  }
+  ticker.add(function(dt){ var m = y.step(dt); if (m) render(); return m; });
+
+  function finishClose(){
+    sheet.classList.remove('is-live');
+    scrim.classList.remove('is-live');
+    sheet.setAttribute('aria-hidden', 'true');
+    document.body.classList.remove('is-locked');
+    if (lastFocus && lastFocus.focus) lastFocus.focus();
+    lastFocus = null;
+  }
+
+  openSheet = function(){
+    if (sheetOpen) return;
+    lastFocus = document.activeElement;
+    sheetOpen = true;                            /* before render(), or its close check fires */
+    sheet.classList.add('is-live');
+    scrim.classList.add('is-live');
+    sheet.setAttribute('aria-hidden', 'false');
+    document.body.classList.add('is-locked');
+    height = Math.max(1, sheet.offsetHeight);
+    y.set(height);
+    render();
+    y.to(0, { damping:0.82, response:0.34 });   /* drawer values from the skill's table */
+    ticker.kick();
+    haptic(8);
+    window.setTimeout(function(){ var f = $('fName'); if (f) f.focus({ preventScroll:true }); }, 240);
+  };
+
+  closeSheet = function(velocity){
+    if (!sheetOpen) return;
+    sheetOpen = false;
+    height = Math.max(1, sheet.offsetHeight);
+    y.to(height, { damping:1.0, response:0.30, velocity: velocity || 0 });
+    ticker.kick();
+  };
+
+  var handle = $('sheetHandle');
+
+  handle.addEventListener('pointerdown', function(e){
+    handle.setPointerCapture(e.pointerId);
+    dragging = true;
+    height = Math.max(1, sheet.offsetHeight);
+    startY = e.clientY; startVal = y.value;
+    y.set(y.value);                              /* interrupt in-flight, keep position (§3) */
+    tracker.reset(); tracker.push(e.clientY);
+  });
+
+  handle.addEventListener('pointermove', function(e){
+    if (!dragging) return;
+    tracker.push(e.clientY);
+    var v = startVal + (e.clientY - startY);
+    if (v < 0) v = -rubberband(-v, height);      /* resists upward, doesn't stop hard (§9) */
+    y.set(v);
+    render();
+  });
+
+  function release(e){
+    if (!dragging) return;
+    dragging = false;
+    try { handle.releasePointerCapture(e.pointerId); } catch (err) {}
+    var v = tracker.velocity();
+    /* Decide on the projection, not on where the finger happened to stop (§6) */
+    if (y.value + project(v) > height * 0.4){
+      closeSheet(v);
+    } else {
+      y.to(0, { damping:0.84, response:0.32, velocity:v });
+      ticker.kick();
+    }
+  }
+  handle.addEventListener('pointerup', release);
+  handle.addEventListener('pointercancel', release);
+})();
+
+Array.prototype.forEach.call(document.querySelectorAll('[data-open-sheet]'), function(b){
+  b.addEventListener('click', function(){ openSheet(); });
+});
+Array.prototype.forEach.call(document.querySelectorAll('[data-close-sheet]'), function(b){
+  b.addEventListener('click', function(){ closeSheet(); });
+});
+scrim.addEventListener('click', function(){ closeSheet(); });
+
+window.addEventListener('keydown', function(e){
+  if (!sheetOpen) return;
+  if (e.key === 'Escape'){ closeSheet(); return; }
+  if (e.key === 'Tab'){
+    var f = sheet.querySelectorAll('input, textarea, button, a[href]');
+    if (!f.length) return;
+    var first = f[0], lastEl = f[f.length - 1];
+    if (e.shiftKey && document.activeElement === first){ e.preventDefault(); lastEl.focus(); }
+    else if (!e.shiftKey && document.activeElement === lastEl){ e.preventDefault(); first.focus(); }
+  }
+});
+
+/* Inline errors, focus on the first one \u2014 not a blocking alert() (Forms) */
+var REQUIRED = ['fName', 'fContact', 'fCar'];
+var ERR_TEXT = {
+  fName: 'Let us know what to call you.',
+  fContact: 'A phone number or email so we can reply.',
+  fCar: 'At least the make and model \u2014 year helps too.'
+};
+REQUIRED.forEach(function(id){
+  $(id).addEventListener('input', function(){
+    if (this.value.trim()) clearFieldError(id);
+  });
+});
+function setFieldError(id, msg){
+  $(id).closest('.field').classList.add('has-err');
+  $(id + 'Err').textContent = msg;
+  $(id).setAttribute('aria-invalid', 'true');
+  $(id).setAttribute('aria-describedby', id + 'Err');
+}
+function clearFieldError(id){
+  $(id).closest('.field').classList.remove('has-err');
+  $(id + 'Err').textContent = '';
+  $(id).removeAttribute('aria-invalid');
+}
+
+$('sheetSend').addEventListener('click', function(){
+  function g(id){ return ($(id).value || '').trim(); }
+
+  var firstInvalid = null;
+  REQUIRED.forEach(function(id){
+    if (g(id)){ clearFieldError(id); }
+    else {
+      setFieldError(id, ERR_TEXT[id]);
+      if (!firstInvalid) firstInvalid = id;
+    }
+  });
+  if (firstInvalid){ $(firstInvalid).focus(); return; }
+
+  var body = [
+    'Name: ' + g('fName'),
+    'Contact: ' + g('fContact'),
+    'Vehicle: ' + g('fCar'),
+    'Days available per month: ' + Math.round(daysSpring.value),
+    'Class selected on site: ' + CONFIG.classes[classIndex].name,
+    '',
+    g('fNotes')
+  ].join('\n');
+  window.location.href = 'mailto:' + CONFIG.email +
+    '?subject=' + encodeURIComponent('Turo co-hosting enquiry \u2014 ' + (g('fCar') || 'my car')) +
+    '&body=' + encodeURIComponent(body);
+});
+
+/* ==========================================================================
+   FAQ
+   ========================================================================== */
+Array.prototype.forEach.call(document.querySelectorAll('.qa'), function(qa){
+  var btn = qa.querySelector('.qa-btn');
+  btn.addEventListener('click', function(){
+    var open = qa.getAttribute('data-open') === 'true';
+    qa.setAttribute('data-open', String(!open));
+    btn.setAttribute('aria-expanded', String(!open));
+  });
+});
+
+/* ==========================================================================
+   REVEALS
+   ========================================================================== */
+(function(){
+  var els = Array.prototype.slice.call(document.querySelectorAll('.rise'));
+  if (!('IntersectionObserver' in window)){
+    els.forEach(function(el){ el.classList.add('is-in'); });
+    return;
+  }
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(en){
+      if (en.isIntersecting){ en.target.classList.add('is-in'); io.unobserve(en.target); }
+    });
+  }, { rootMargin:'0px 0px -6% 0px', threshold:0.06 });
+  els.forEach(function(el, i){
+    el.style.transitionDelay = Math.min(i % 3, 2) * 70 + 'ms';
+    io.observe(el);
+  });
+})();
+
+/* ==========================================================================
+   BOOT
+   ========================================================================== */
+function writeAssumptions(){
+  var c = CONFIG.classes[classIndex];
+  $('assumptions').textContent =
+    'Estimate only. Assumes ' + Math.round(CONFIG.bookedRate * 100) + '% of available days book, $' +
+    c.daily + '/day for a ' + c.name.toLowerCase() + ' vehicle in Vancouver, Turo taking ' +
+    CONFIG.turoTakePct + '% of the trip price, and 604 Kars taking ' + CONFIG.managementSharePct +
+    '% of host earnings. Your car\u2019s real number depends on its condition, mileage and the season.';
+}
+function layout(){ placeSegThumb(); paint(); }
+
+$('splitPct').textContent = CONFIG.managementSharePct;
+$('yr').textContent = new Date().getFullYear();
+segHint.textContent = CONFIG.classes[classIndex].eg;
+writeAssumptions();
+daysSpring.set(CONFIG.defaultDays);
+layout();
+window.addEventListener('resize', layout);
+if (document.fonts && document.fonts.ready){ document.fonts.ready.then(layout).catch(function(){}); }
+</script>
 </body>
 </html>

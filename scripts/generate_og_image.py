@@ -1,60 +1,61 @@
-"""Generate og-image.png for 604 Kars — matches the racing-green/brass/paper design system."""
+"""Generate og-image.png for 604 Kars.
+
+Matches the current inline design system in index.html: racing green /
+brass / paper, Fraunces display type (roman + italic), and the "plate"
+signature mark used in the nav and footer.
+"""
+
 from PIL import Image, ImageDraw, ImageFont
 
 W, H = 1200, 630
 
 PAPER = (243, 238, 227)
-INK = (22, 36, 27)
 RACING_GREEN = (15, 61, 40)
 BRASS = (169, 121, 60)
-HAIRLINE = (217, 206, 184)
+BRASS_LIFT = (223, 174, 104)
 
 img = Image.new("RGB", (W, H), RACING_GREEN)
 draw = ImageDraw.Draw(img)
 
-# Paper panel inset (editorial card-on-brand feel)
-margin = 0
-draw.rectangle([0, 0, W, H], fill=RACING_GREEN)
-
-# Brass hairline frame
 frame_pad = 36
 draw.rectangle(
     [frame_pad, frame_pad, W - frame_pad, H - frame_pad],
-    outline=BRASS, width=2
+    outline=BRASS,
+    width=2,
 )
 
-georgia_bold = ImageFont.truetype("/System/Library/Fonts/Supplemental/Georgia Bold.ttf", 74)
-georgia_italic = ImageFont.truetype("/System/Library/Fonts/Supplemental/Georgia Italic.ttf", 74)
+georgia_bold = ImageFont.truetype("/System/Library/Fonts/Supplemental/Georgia Bold.ttf", 70)
+georgia_italic = ImageFont.truetype("/System/Library/Fonts/Supplemental/Georgia Italic.ttf", 70)
 helv_small = ImageFont.truetype("/System/Library/Fonts/HelveticaNeue.ttc", 26)
 helv_tiny = ImageFont.truetype("/System/Library/Fonts/HelveticaNeue.ttc", 20)
-mono = ImageFont.truetype("/System/Library/Fonts/Supplemental/Courier New Bold.ttf", 18)
+mono_bold = ImageFont.truetype("/System/Library/Fonts/Supplemental/Courier New Bold.ttf", 20)
 
-# Spec-plate eyebrow (signature element, echoed in the OG card)
-plate_text = "VANCOUVER  ·  TURO CO-HOSTING"
-plate_y = 130
-bbox = draw.textbbox((0, 0), plate_text, font=mono)
+# The "plate" — same signature mark used for the nav brand and footer.
+plate_text = "604 KARS"
+plate_y = 100
+bbox = draw.textbbox((0, 0), plate_text, font=mono_bold)
 plate_w = bbox[2] - bbox[0]
-plate_x = 90
-pad_x, pad_y = 16, 10
+plate_h = bbox[3] - bbox[1]
+plate_x = 88
+pad_x, pad_y = 14, 10
 draw.rectangle(
-    [plate_x - pad_x, plate_y - pad_y, plate_x + plate_w + pad_x, plate_y + (bbox[3]-bbox[1]) + pad_y],
-    outline=BRASS, width=1
+    [plate_x - pad_x, plate_y - pad_y, plate_x + plate_w + pad_x, plate_y + plate_h + pad_y],
+    outline=BRASS,
+    width=1,
 )
-draw.text((plate_x, plate_y), plate_text, font=mono, fill=BRASS)
+draw.text((plate_x, plate_y), plate_text, font=mono_bold, fill=BRASS_LIFT)
 
-# Headline
-draw.text((88, 210), "Your car is an", font=georgia_bold, fill=PAPER)
-draw.text((88, 300), "idle asset.", font=georgia_italic, fill=(199, 154, 92))
+# Headline — matches the live hero copy.
+draw.text((88, 195), "Your car earns", font=georgia_bold, fill=PAPER)
+draw.text((88, 270), "nothing in the", font=georgia_bold, fill=PAPER)
+draw.text((88, 345), "driveway.", font=georgia_italic, fill=BRASS_LIFT)
 
-# Subline
-sub = "604 Kars manages guest messages, cleaning, and"
-sub2 = "pricing for your vehicle on Turo — Vancouver."
-draw.text((90, 430), sub, font=helv_small, fill=(230, 226, 214))
-draw.text((90, 466), sub2, font=helv_small, fill=(230, 226, 214))
+sub1 = "604 Kars runs your vehicle on Turo end to end —"
+sub2 = "listing, guests, handoffs, cleaning and claims."
+draw.text((90, 470), sub1, font=helv_small, fill=(230, 226, 214))
+draw.text((90, 506), sub2, font=helv_small, fill=(230, 226, 214))
 
-# Footer wordmark
-draw.text((90, 540), "604 KARS", font=helv_tiny, fill=BRASS)
-draw.text((90, 568), "604kars.com", font=helv_tiny, fill=(200, 196, 184))
+draw.text((90, 568), "604kars.com  ·  Metro Vancouver", font=helv_tiny, fill=(200, 196, 184))
 
 img.save("og-image.png", "PNG", optimize=True)
 print("saved og-image.png", img.size)
