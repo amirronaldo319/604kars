@@ -16,6 +16,10 @@
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
+<script>document.documentElement.className += ' js';</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,600;1,9..144,700&family=Work+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600;700&display=swap">
 <link rel="stylesheet" href="styles.css">
 <!--
   ANALYTICS: no tracking is installed yet. Add your own GA4 or Plausible
@@ -83,13 +87,15 @@
   </div>
   <div class="container">
     <div class="mobile-menu" id="mobileMenu">
-      <a href="#owners">For Owners</a>
-      <a href="#plans">Plans</a>
-      <a href="#calculator">Earnings</a>
-      <a href="#fit">Is It A Fit</a>
-      <a href="#faq">FAQ</a>
-      <a href="#contact">Contact</a>
-      <a href="#contact" class="btn btn-primary" style="margin-top:0.5rem;">Get Started</a>
+      <div class="mobile-menu-inner">
+        <a href="#owners">For Owners</a>
+        <a href="#plans">Plans</a>
+        <a href="#calculator">Earnings</a>
+        <a href="#fit">Is It A Fit</a>
+        <a href="#faq">FAQ</a>
+        <a href="#contact">Contact</a>
+        <a href="#contact" class="btn btn-primary">Get Started</a>
+      </div>
     </div>
   </div>
 </nav>
@@ -129,13 +135,13 @@
       <div class="path-grid">
         <div class="path-card reveal">
           <span class="path-tag">I Own A Vehicle</span>
-          <h3>Turn your car into managed income</h3>
+          <h2 class="path-title">Turn your car into managed income</h2>
           <p>Learn how 604 Kars can list, manage, and report on your vehicle.</p>
           <a href="#contact" class="btn btn-primary">Manage My Vehicle</a>
         </div>
         <div class="path-card reveal">
           <span class="path-tag">I Need A Vehicle</span>
-          <h3>Looking to rent a car in Vancouver?</h3>
+          <h2 class="path-title">Looking to rent a car in Vancouver?</h2>
           <p>Browse vehicles currently managed by 604 Kars on Turo.</p>
           <!-- PLACEHOLDER: replace with your real Turo host profile URL -->
           <a href="https://turo.com" target="_blank" rel="noopener" class="btn btn-secondary">Browse Available Vehicles</a>
@@ -145,7 +151,7 @@
   </section>
 
   <!-- WIDE PHOTO BAND -->
-  <section style="padding-top:0;padding-bottom:0;">
+  <section class="section-flush">
     <div class="photo-frame wide-photo reveal">
       <div class="photo-caption">
         <svg class="icon-camera" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 8h3l2-2h6l2 2h3v11H4z"/><circle cx="12" cy="13.5" r="3.5"/></svg>
@@ -165,7 +171,7 @@
       </div>
       <div class="problem-layout">
         <div class="reveal">
-          <h3 style="font-size:1rem;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.06em;color:var(--ink-dim);margin-bottom:var(--space-4);">What running it yourself looks like</h3>
+          <h3 class="list-heading">What running it yourself looks like</h3>
           <div class="op-list">
             <div class="op-row"><span>Listing, photos &amp; pricing</span><span>Ongoing</span></div>
             <div class="op-row"><span>Guest messages &amp; booking requests</span><span>Daily</span></div>
@@ -176,7 +182,7 @@
           </div>
         </div>
         <div class="reveal">
-          <h3 style="font-size:1rem;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.06em;color:var(--ink-dim);margin-bottom:var(--space-4);">What you hand off to us</h3>
+          <h3 class="list-heading">What you hand off to us</h3>
           <ul class="x-list">
             <li><span class="x-mark"><svg class="icon-sm" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></span>Answering guest messages at midnight</li>
             <li><span class="x-mark"><svg class="icon-sm" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></span>Coordinating every check-in and check-out</li>
@@ -438,18 +444,37 @@
           </div>
           <div class="field">
             <label for="daysAvailable">Days Available Per Month <span class="val"><span id="daysVal">15</span></span></label>
-            <input type="range" id="daysAvailable" min="1" max="30" value="15">
+            <div class="slider">
+              <input type="range" id="daysAvailable" class="slider-input" min="1" max="30" step="1" value="15">
+              <div class="slider-visual" aria-hidden="true">
+                <div class="slider-track"><div class="slider-fill"></div><div class="slider-thumb"></div></div>
+              </div>
+            </div>
           </div>
           <div class="field">
             <label for="utilization">Expected Utilization <span class="val"><span id="utilVal">55</span>%</span></label>
-            <input type="range" id="utilization" min="10" max="95" value="55">
+            <div class="slider">
+              <input type="range" id="utilization" class="slider-input" min="10" max="95" step="1" value="55">
+              <div class="slider-visual" aria-hidden="true">
+                <div class="slider-track"><div class="slider-fill"></div><div class="slider-thumb"></div></div>
+              </div>
+            </div>
           </div>
           <div class="field">
-            <label>Management Plan</label>
-            <div class="plan-toggle">
-              <button type="button" data-plan="25">Ops Lite · 25%</button>
-              <button type="button" data-plan="30" class="active">Standard · 30%</button>
-              <button type="button" data-plan="35">Full Service · 35%</button>
+            <label for="tripLength">Average Trip Length <span class="val"><span id="tripLenVal">3</span> days</span></label>
+            <div class="slider">
+              <input type="range" id="tripLength" class="slider-input" min="1" max="10" step="1" value="3">
+              <div class="slider-visual" aria-hidden="true">
+                <div class="slider-track"><div class="slider-fill"></div><div class="slider-thumb"></div></div>
+              </div>
+            </div>
+          </div>
+          <div class="field">
+            <span class="field-label">Management Plan</span>
+            <div class="plan-toggle" role="group" aria-label="Management plan">
+              <button type="button" data-plan="25" aria-pressed="false">Ops Lite · 25%</button>
+              <button type="button" data-plan="30" class="active" aria-pressed="true">Standard · 30%</button>
+              <button type="button" data-plan="35" aria-pressed="false">Full Service · 35%</button>
             </div>
           </div>
         </div>
@@ -461,6 +486,7 @@
             <span class="sub">Estimated owner net, after Turo's fee, our management fee, and estimated expenses</span>
           </div>
           <div class="calc-breakdown">
+            <div class="calc-line"><span>Estimated trips per month</span><span id="tripCount">0</span></div>
             <div class="calc-line"><span>Gross trip revenue</span><span id="grossRev">$0</span></div>
             <div class="calc-line neg"><span>Turo host fee</span><span id="turoFee">$0</span></div>
             <div class="calc-line"><span>Your Turo payout</span><span id="turoPayout">$0</span></div>
@@ -472,7 +498,7 @@
             <div class="calc-line total"><span>Owner net (monthly)</span><span id="netMonthly2">$0</span></div>
             <div class="calc-line"><span>Owner net (annual)</span><span id="netAnnual">$0</span></div>
           </div>
-          <p class="calc-disclaimer">Estimate only — not a guarantee of income. Daily rates are illustrative Vancouver-market comps, not live pricing. Turo protection-plan retention percentages are representative — confirm your exact rate on Turo. Depreciation is estimated from typical added mileage per trip and is a real cost of rental use, not just a bookkeeping line. Actual earnings vary based on vehicle type, demand, seasonality, pricing, utilization, and operating expenses.</p>
+          <p class="calc-disclaimer">Estimate only — not a guarantee of income. Daily rates are illustrative Vancouver-market comps, not live pricing. Turo protection-plan retention percentages are representative — confirm your exact rate on Turo. Cleaning is charged once per trip, so average trip length changes how many turnovers you pay for. Depreciation is estimated from typical added mileage and is a real cost of rental use, not just a bookkeeping line. Actual earnings vary based on vehicle type, demand, seasonality, pricing, utilization, and operating expenses.</p>
         </div>
       </div>
     </div>
@@ -486,7 +512,7 @@
         <h2>Revenue is only one part of the equation.</h2>
         <p>Gross revenue is not the same as profit, and co-hosting isn't completely passive. A full picture of vehicle economics includes:</p>
       </div>
-      <div class="finegrid" style="margin-bottom:var(--space-16);">
+      <div class="finegrid stack-lg">
         <div class="card reveal"><span class="card-eyebrow">Revenue In</span><h3>Gross trip revenue</h3><p>Total revenue generated by bookings, before any deductions.</p></div>
         <div class="card reveal"><span class="card-eyebrow">Platform</span><h3>Turo's host fee</h3><p>Turo's own cut, deducted before you ever receive a payout — varies by protection plan.</p></div>
         <div class="card reveal"><span class="card-eyebrow">Management</span><h3>604 Kars fee</h3><p>Your selected management percentage — 25%, 30%, or 35% of your Turo payout.</p></div>
@@ -494,9 +520,9 @@
         <div class="card reveal"><span class="card-eyebrow">Upkeep</span><h3>Maintenance</h3><p>Oil changes, tires, brakes, and general wear.</p></div>
         <div class="card reveal"><span class="card-eyebrow">Real Cost</span><h3>Depreciation</h3><p>The single largest true cost of rental use — added mileage accelerates resale-value loss.</p></div>
       </div>
-      <div class="section-head reveal" style="margin-bottom:var(--space-8);">
+      <div class="section-head reveal stack-md">
         <span class="spec-plate">Set The Right Expectations</span>
-        <h2 style="font-size:1.6rem;">Co-hosting isn't completely passive.</h2>
+        <h2 class="h2-sub">Co-hosting isn't completely passive.</h2>
       </div>
       <ul class="expect-list reveal">
         <li>Vehicles accumulate mileage</li>
@@ -506,7 +532,7 @@
         <li>Vehicles experience normal wear</li>
         <li>Bookings aren't guaranteed</li>
       </ul>
-      <p class="center reveal" style="margin-top:var(--space-8);">Our job is to manage the operational complexity — not to promise guaranteed income.</p>
+      <p class="center reveal stack-top">Our job is to manage the operational complexity — not to promise guaranteed income.</p>
     </div>
   </section>
 
@@ -553,8 +579,8 @@
       </div>
       <div class="fit-split">
         <div class="reveal">
-          <h3 style="color:var(--success);">Good Fit</h3>
-          <p class="card-eyebrow" style="margin-bottom:var(--space-4);">604 Kars may be a good fit if...</p>
+          <h3 class="fit-heading-good">Good Fit</h3>
+          <p class="card-eyebrow">604 Kars may be a good fit if...</p>
           <ul class="split-list">
             <li><span class="check-mark"><svg class="icon-sm" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span> Your car sits unused regularly</li>
             <li><span class="check-mark"><svg class="icon-sm" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span> You have a second vehicle</li>
@@ -563,8 +589,8 @@
           </ul>
         </div>
         <div class="reveal">
-          <h3 style="color:var(--danger);">Not A Fit — Yet</h3>
-          <p class="card-eyebrow" style="margin-bottom:var(--space-4);">It may not be right if...</p>
+          <h3 class="fit-heading-bad">Not A Fit — Yet</h3>
+          <p class="card-eyebrow">It may not be right if...</p>
           <ul class="split-list">
             <li><span class="x-mark"><svg class="icon-sm" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></span> You need your car every day</li>
             <li><span class="x-mark"><svg class="icon-sm" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></span> Your vehicle is unreliable or unsafe to drive</li>
@@ -593,8 +619,8 @@
         </div>
         <div>
           <div class="founder-name">Amir Keshavarzi</div>
-          <div class="founder-role" style="margin-bottom:var(--space-4);">Founder, 604 Kars</div>
-          <p style="margin-bottom:var(--space-4);">604 Kars was started to help Vancouver vehicle owners get more value from underutilized cars without taking on the operational burden of managing every trip themselves. The focus is a professional, systems-driven approach — built around Vancouver's specific market, not a generic playbook.</p>
+          <span class="founder-role">Founder, 604 Kars</span>
+          <p>604 Kars was started to help Vancouver vehicle owners get more value from underutilized cars without taking on the operational burden of managing every trip themselves. The focus is a professional, systems-driven approach — built around Vancouver's specific market, not a generic playbook.</p>
           <p>I personally oversee guest communication, booking coordination, vehicle presentation, and cleaning coordination — making sure each vehicle is managed with care and attention to detail, and every guest gets a reliable, seamless rental experience.</p>
         </div>
       </div>
@@ -654,10 +680,10 @@
       <div class="contact-grid">
         <div class="form-card reveal">
           <div class="form-progress" id="formProgress">
-            <div class="bar"><span style="width:25%"></span></div>
-            <div class="bar"><span style="width:0%"></span></div>
-            <div class="bar"><span style="width:0%"></span></div>
-            <div class="bar"><span style="width:0%"></span></div>
+            <div class="bar"><span></span></div>
+            <div class="bar"><span></span></div>
+            <div class="bar"><span></span></div>
+            <div class="bar"><span></span></div>
           </div>
           <div class="form-step-label"><span id="stepLabel">Step 1 of 4</span></div>
 
@@ -689,12 +715,12 @@
             </div>
           </form>
 
-          <div class="form-success" id="formSuccess" style="display:none;">
+          <div class="form-success" id="formSuccess">
             <h3>Almost there.</h3>
             <p>Your email app should have opened with your details pre-filled — hit send and we'll follow up shortly to talk through your vehicle and put together a personalized estimate.</p>
           </div>
 
-          <p class="form-fineprint">By submitting, you agree to be contacted by 604 Kars about your vehicle. Read our <a href="privacy.html" style="text-decoration:underline;">privacy policy</a> — we don't sell your information.</p>
+          <p class="form-fineprint">By submitting, you agree to be contacted by 604 Kars about your vehicle. Read our <a href="privacy.html">privacy policy</a> — we don't sell your information.</p>
         </div>
 
         <div>
@@ -707,7 +733,7 @@
           </div>
           <div class="reveal">
             <span class="card-eyebrow">What Happens Next</span>
-            <h3 style="margin-bottom:var(--space-4);">Here's the process</h3>
+            <h3 class="stack-sm">Here's the process</h3>
             <ul class="next-steps">
               <li><span class="n">1.</span> We review the vehicle details you submit.</li>
               <li><span class="n">2.</span> We reach out to discuss your vehicle and availability.</li>
@@ -727,7 +753,7 @@
         <span class="spec-plate">FAQ</span>
         <h2>Common questions.</h2>
       </div>
-      <div style="max-width:760px;margin:0 auto;" class="reveal">
+      <div class="faq-list reveal">
         <div class="faq-item">
           <button class="faq-q" aria-expanded="false"><span>How does 604 Kars make money?</span><span class="plus"><svg class="icon" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button>
           <div class="faq-a"><div class="faq-a-inner"><p>We charge a percentage of what you actually receive from Turo — 25%, 30%, or 35% depending on plan. This is separate from Turo's own host fee, which the platform deducts independently before your payout.</p></div></div>
@@ -784,7 +810,7 @@
         <a href="terms.html">Terms of Service</a>
       </div>
     </div>
-    <div class="footer-meta" style="margin-top:var(--space-6);">© <span id="year"></span> 604 Kars, Vancouver BC. Not affiliated with Turo Inc.</div>
+    <div class="footer-meta">© <span id="year"></span> 604 Kars, Vancouver BC. Not affiliated with Turo Inc.</div>
   </div>
 </footer>
 
