@@ -3,16 +3,59 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>604 Kars — Turo Co-Hosting &amp; Vehicle Management, Vancouver</title>
-<meta name="description" content="604 Kars manages guest messages, check-ins, cleaning, documentation, and pricing for your vehicle on Turo — Vancouver, North Van, Burnaby &amp; Richmond. One flat management rate.">
-<meta name="theme-color" content="#0A0D12">
+<title>604 Kars — Turo Co-Hosting & Vehicle Management, Vancouver</title>
+<meta name="description" content="604 Kars manages guest messages, check-ins, cleaning, documentation, and pricing for your vehicle on Turo — Vancouver, North Van, Burnaby & Richmond. One flat management rate.">
+<link rel="canonical" href="https://604kars.com/">
+<meta name="theme-color" content="#0F3D28">
 <meta property="og:type" content="website">
-<meta property="og:title" content="604 Kars — Turo Co-Hosting &amp; Vehicle Management, Vancouver">
-<meta property="og:description" content="604 Kars manages guest messages, check-ins, cleaning, documentation, and pricing for your vehicle on Turo — Vancouver, North Van, Burnaby &amp; Richmond.">
+<meta property="og:title" content="604 Kars — Turo Co-Hosting & Vehicle Management, Vancouver">
+<meta property="og:description" content="604 Kars manages guest messages, check-ins, cleaning, documentation, and pricing for your vehicle on Turo — Vancouver, North Van, Burnaby & Richmond.">
 <meta property="og:url" content="https://604kars.com/">
-<meta name="twitter:card" content="summary">
+<meta property="og:image" content="https://604kars.com/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link rel="stylesheet" href="styles.css">
+<!--
+  ANALYTICS: no tracking is installed yet. Add your own GA4 or Plausible
+  snippet here once you have an account — e.g.:
+  <script defer data-domain="604kars.com" src="https://plausible.io/js/script.js"></script>
+  We can't create that account on your behalf; drop in your real ID/domain.
+-->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "604 Kars",
+  "description": "Turo co-hosting and vehicle management service covering Vancouver, North Vancouver, Burnaby, and Richmond.",
+  "url": "https://604kars.com/",
+  "telephone": "+1-236-788-8944",
+  "email": "604kars@gmail.com",
+  "areaServed": [
+    { "@type": "City", "name": "Vancouver" },
+    { "@type": "City", "name": "North Vancouver" },
+    { "@type": "City", "name": "Burnaby" },
+    { "@type": "City", "name": "Richmond" }
+  ],
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Vancouver",
+    "addressRegion": "BC",
+    "addressCountry": "CA"
+  },
+  "openingHoursSpecification": {
+    "@type": "OpeningHoursSpecification",
+    "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+    "opens": "09:00",
+    "closes": "21:00"
+  },
+  "founder": {
+    "@type": "Person",
+    "name": "Amir Keshavarzi"
+  }
+}
+</script>
 </head>
 <body>
 
@@ -21,7 +64,7 @@
 
 <nav class="nav">
   <div class="container nav-inner">
-    <a href="#top" class="logo"><span class="logo-mark">604</span> KARS</a>
+    <a href="#top" class="logo"><span class="logo-mark">604</span> Kars</a>
     <div class="nav-links">
       <a href="#owners">For Owners</a>
       <a href="#plans">Plans</a>
@@ -34,7 +77,7 @@
       <a href="#contact" class="btn btn-ghost">Book a Call</a>
       <a href="#contact" class="btn btn-primary">Get Started</a>
     </div>
-    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobileMenu">
       <svg class="icon" viewBox="0 0 24 24"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
     </button>
   </div>
@@ -57,8 +100,8 @@
   <header class="hero">
     <div class="container hero-grid">
       <div>
-        <span class="eyebrow">Vancouver · Turo Co-Hosting</span>
-        <h1>Your car is an <span class="accent">idle asset.</span></h1>
+        <span class="spec-plate">Vancouver · Turo Co-Hosting</span>
+        <h1>Your car is an <em>idle asset.</em></h1>
         <p class="hero-sub">604 Kars manages the guest messages, check-ins, cleaning, documentation, and pricing for your vehicle — so the hours it spends parked can start paying rent.</p>
         <div class="hero-ctas">
           <a href="#calculator" class="btn btn-primary btn-lg">See What My Car Could Earn</a>
@@ -66,32 +109,15 @@
         </div>
         <div class="hero-badges">
           <div class="hero-badge"><strong>Local</strong> — Vancouver, North Van, Burnaby, Richmond</div>
-          <div class="hero-badge"><strong>Transparent</strong> — One flat management rate</div>
+          <div class="hero-badge"><strong>Transparent</strong> — one flat management rate</div>
         </div>
       </div>
 
-      <div class="status-panel reveal">
-        <div class="status-panel-head">
-          <span class="status-panel-title">604 Kars / System Status</span>
-          <span class="status-live"><span class="status-dot"></span>Active</span>
-        </div>
-        <div class="gauge-wrap">
-          <div class="gauge">
-            <svg viewBox="0 0 200 120">
-              <path d="M 15 110 A 85 85 0 0 1 185 110" fill="none" stroke="#232A34" stroke-width="14" stroke-linecap="round"/>
-              <path id="gaugeArc" d="M 15 110 A 85 85 0 0 1 185 110" fill="none" stroke="#E8B34D" stroke-width="14" stroke-linecap="round" stroke-dasharray="267" stroke-dashoffset="267"/>
-            </svg>
-            <div class="gauge-value">
-              <span class="num" id="gaugeNum">0</span>
-              <span class="label">Operations</span>
-            </div>
-          </div>
-          <div class="status-caption">Management Mode: Full Service</div>
-          <div class="status-note">Illustrative dashboard — not live vehicle data. Use the calculator below for your own estimate.</div>
-        </div>
-        <div class="status-footer">
-          <span>Coverage: <strong>Lower Mainland</strong></span>
-          <span>Rate: <strong>Flat %</strong></span>
+      <div class="photo-frame hero-photo reveal">
+        <div class="photo-caption">
+          <svg class="icon-camera" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 8h3l2-2h6l2 2h3v11H4z"/><circle cx="12" cy="13.5" r="3.5"/></svg>
+          <div class="label">Photo: managed vehicle</div>
+          <div class="dims">1000 × 1250 · portrait, natural light</div>
         </div>
       </div>
     </div>
@@ -118,43 +144,46 @@
     </div>
   </section>
 
-  <!-- THE PROBLEM -->
-  <section>
-    <div class="container">
-      <div class="problem-layout">
-        <div class="reveal">
-          <span class="eyebrow">The Problem</span>
-          <h2>Owning a car costs money whether you drive it or not.</h2>
-          <p>Insurance, financing, and depreciation run on a monthly clock — regardless of how many days the car actually leaves the driveway. Most owners who try renting it out on their own quit within a few months, not because the demand isn't there, but because the operational load is.</p>
-        </div>
-        <div class="op-list reveal">
-          <div class="op-row"><span>Listing, photos &amp; pricing</span><span>Ongoing</span></div>
-          <div class="op-row"><span>Guest messages &amp; booking requests</span><span>Daily</span></div>
-          <div class="op-row"><span>Check-in / check-out coordination</span><span>Per trip</span></div>
-          <div class="op-row"><span>Cleaning &amp; turnover</span><span>Per trip</span></div>
-          <div class="op-row"><span>Damage documentation</span><span>As needed</span></div>
-          <div class="op-row"><span>Maintenance scheduling</span><span>Ongoing</span></div>
-        </div>
+  <!-- WIDE PHOTO BAND -->
+  <section style="padding-top:0;padding-bottom:0;">
+    <div class="photo-frame wide-photo reveal">
+      <div class="photo-caption">
+        <svg class="icon-camera" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 8h3l2-2h6l2 2h3v11H4z"/><circle cx="12" cy="13.5" r="3.5"/></svg>
+        <div class="label">Photo: vehicle prepped for handoff</div>
+        <div class="dims">2400 × 1030 · full-bleed, exterior detail shot</div>
       </div>
     </div>
   </section>
 
-  <!-- THE ALTERNATIVE -->
+  <!-- THE PROBLEM (merged: problem + alternative + short version) -->
   <section>
     <div class="container">
+      <div class="section-head left reveal">
+        <span class="spec-plate">The Problem</span>
+        <h2>Owning a car costs money whether you drive it or not.</h2>
+        <p>Insurance, financing, and depreciation run on a monthly clock — regardless of how many days the car actually leaves the driveway. Most owners who try renting it out on their own quit within a few months, not because the demand isn't there, but because the operational load is.</p>
+      </div>
       <div class="problem-layout">
-        <ul class="x-list reveal">
-          <li><span class="x-mark"><svg class="icon-sm" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></span>Answer guest messages at midnight</li>
-          <li><span class="x-mark"><svg class="icon-sm" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></span>Coordinate every check-in and check-out</li>
-          <li><span class="x-mark"><svg class="icon-sm" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></span>Track down every trip's photo documentation</li>
-          <li><span class="x-mark"><svg class="icon-sm" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></span>Reprice your car every week</li>
-          <li><span class="x-mark"><svg class="icon-sm" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></span>Schedule every cleaning yourself</li>
-          <li><span class="x-mark"><svg class="icon-sm" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></span>Chase down every maintenance appointment</li>
-        </ul>
         <div class="reveal">
-          <span class="eyebrow">The Alternative</span>
-          <h2>You don't have to become a Turo expert.</h2>
-          <p>We take on the day-to-day operational work so you don't have to build the expertise, the systems, or the habits it takes to run a vehicle like a small business.</p>
+          <h3 style="font-size:1rem;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.06em;color:var(--ink-dim);margin-bottom:var(--space-4);">What running it yourself looks like</h3>
+          <div class="op-list">
+            <div class="op-row"><span>Listing, photos &amp; pricing</span><span>Ongoing</span></div>
+            <div class="op-row"><span>Guest messages &amp; booking requests</span><span>Daily</span></div>
+            <div class="op-row"><span>Check-in / check-out coordination</span><span>Per trip</span></div>
+            <div class="op-row"><span>Cleaning &amp; turnover</span><span>Per trip</span></div>
+            <div class="op-row"><span>Damage documentation</span><span>As needed</span></div>
+            <div class="op-row"><span>Maintenance scheduling</span><span>Ongoing</span></div>
+          </div>
+        </div>
+        <div class="reveal">
+          <h3 style="font-size:1rem;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.06em;color:var(--ink-dim);margin-bottom:var(--space-4);">What you hand off to us</h3>
+          <ul class="x-list">
+            <li><span class="x-mark"><svg class="icon-sm" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></span>Answering guest messages at midnight</li>
+            <li><span class="x-mark"><svg class="icon-sm" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></span>Coordinating every check-in and check-out</li>
+            <li><span class="x-mark"><svg class="icon-sm" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></span>Tracking down photo documentation</li>
+            <li><span class="x-mark"><svg class="icon-sm" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></span>Repricing the car every week</li>
+            <li><span class="x-mark"><svg class="icon-sm" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></span>Scheduling cleaning and maintenance yourself</li>
+          </ul>
         </div>
       </div>
     </div>
@@ -163,7 +192,6 @@
   <!-- SHORT STATEMENT -->
   <section class="statement">
     <div class="container">
-      <span class="eyebrow center" style="justify-content:center;">The Short Version</span>
       <h2>You own the vehicle. <span class="dim">We manage the operations.</span></h2>
       <p>That's the entire pitch. Everything else on this page is detail.</p>
     </div>
@@ -173,40 +201,30 @@
   <section>
     <div class="container">
       <div class="section-head reveal">
-        <span class="eyebrow" style="justify-content:center;">Why Owners Choose Us</span>
+        <span class="spec-plate">Why Owners Choose Us</span>
         <h2>Why 604 Kars?</h2>
         <p>You could manage the car yourself, or hire someone unproven. Here's what you actually get with us.</p>
       </div>
-      <div class="grid-3">
-        <div class="card feature-card reveal">
+      <div class="grid-4">
+        <div class="card reveal">
           <span class="card-eyebrow">Local</span>
           <h3>Vancouver market knowledge</h3>
-          <p>We focus on the Vancouver and Lower Mainland market specifically, positioning your vehicle for local demand rather than generic advice.</p>
+          <p>We focus on the Vancouver and Lower Mainland market specifically, positioning your vehicle for local demand.</p>
         </div>
-        <div class="card feature-card reveal">
+        <div class="card reveal">
           <span class="card-eyebrow">Hands-Off</span>
           <h3>Operations off your plate</h3>
-          <p>You don't spend your evenings answering guest messages, coordinating trips, or managing every turnover.</p>
+          <p>You don't spend your evenings answering guest messages or coordinating every turnover.</p>
         </div>
-        <div class="card feature-card reveal">
+        <div class="card reveal">
           <span class="card-eyebrow">Documented</span>
           <h3>Structured documentation</h3>
-          <p>Consistent pre- and post-trip records help track vehicle condition — not guesswork after the fact.</p>
+          <p>Consistent pre- and post-trip records track vehicle condition — not guesswork after the fact.</p>
         </div>
-        <div class="card feature-card reveal">
+        <div class="card reveal">
           <span class="card-eyebrow">Transparent</span>
           <h3>One flat fee, defined upfront</h3>
           <p>Your management percentage is set before you begin. No surprise increases mid-agreement.</p>
-        </div>
-        <div class="card feature-card reveal">
-          <span class="card-eyebrow">Performance</span>
-          <h3>Ongoing optimization</h3>
-          <p>We monitor pricing, availability, and listing performance to look for room to improve results.</p>
-        </div>
-        <div class="card feature-card reveal">
-          <span class="card-eyebrow">Personalized</span>
-          <h3>Built around your vehicle</h3>
-          <p>Every car is evaluated individually — condition, category, location, and realistic local demand.</p>
         </div>
       </div>
     </div>
@@ -216,7 +234,7 @@
   <section>
     <div class="container">
       <div class="section-head reveal">
-        <span class="eyebrow" style="justify-content:center;">Day-To-Day Operations</span>
+        <span class="spec-plate">Day-To-Day Operations</span>
         <h2>We handle the details.</h2>
         <p>This is what your management fee actually pays for, broken down by function.</p>
       </div>
@@ -224,44 +242,32 @@
         <div class="card reveal">
           <span class="card-eyebrow">Guest Mgmt</span>
           <h3>Guest management</h3>
-          <ul class="split-list">
-            <li>Guest questions</li><li>Booking communication</li><li>Pickup instructions</li><li>Return instructions</li><li>Trip-related support</li>
-          </ul>
+          <ul class="split-list"><li>Guest questions &amp; booking communication</li><li>Pickup &amp; return instructions</li><li>Trip-related support</li></ul>
         </div>
         <div class="card reveal">
           <span class="card-eyebrow">Vehicle Ops</span>
           <h3>Vehicle operations</h3>
-          <ul class="split-list">
-            <li>Vehicle readiness</li><li>Cleaning coordination</li><li>Turnovers</li><li>Fuel / charge checks</li><li>Condition checks</li>
-          </ul>
+          <ul class="split-list"><li>Vehicle readiness &amp; turnovers</li><li>Cleaning coordination</li><li>Fuel / charge &amp; condition checks</li></ul>
         </div>
         <div class="card reveal">
           <span class="card-eyebrow">Listing</span>
           <h3>Listing management</h3>
-          <ul class="split-list">
-            <li>Photos</li><li>Description</li><li>Pricing</li><li>Availability</li><li>Listing optimization</li>
-          </ul>
+          <ul class="split-list"><li>Photos &amp; description</li><li>Pricing &amp; availability</li><li>Listing optimization</li></ul>
         </div>
         <div class="card reveal">
           <span class="card-eyebrow">Documentation</span>
           <h3>Trip documentation</h3>
-          <ul class="split-list">
-            <li>Pre-trip photos</li><li>Post-trip photos</li><li>Odometer readings</li><li>Fuel / charge level</li><li>Condition notes</li>
-          </ul>
+          <ul class="split-list"><li>Pre- &amp; post-trip photos</li><li>Odometer &amp; fuel/charge readings</li><li>Condition notes</li></ul>
         </div>
         <div class="card reveal">
           <span class="card-eyebrow">Maintenance</span>
           <h3>Maintenance coordination</h3>
-          <ul class="split-list">
-            <li>Service reminders</li><li>Tire changes</li><li>Repairs</li><li>Detailing</li><li>Scheduling</li>
-          </ul>
+          <ul class="split-list"><li>Service reminders &amp; scheduling</li><li>Tire changes &amp; repairs</li><li>Detailing</li></ul>
         </div>
         <div class="card reveal">
           <span class="card-eyebrow">Reporting</span>
           <h3>Owner reporting</h3>
-          <ul class="split-list">
-            <li>Revenue</li><li>Trip count</li><li>Utilization</li><li>Management fees</li><li>Performance updates</li>
-          </ul>
+          <ul class="split-list"><li>Revenue &amp; trip count</li><li>Utilization</li><li>Performance updates</li></ul>
         </div>
       </div>
     </div>
@@ -271,19 +277,17 @@
   <section>
     <div class="container">
       <div class="section-head reveal">
-        <span class="eyebrow" style="justify-content:center;">Owner Journey</span>
+        <span class="spec-plate">Owner Journey</span>
         <h2>From your driveway to your first booking.</h2>
-        <p>Eight steps take your vehicle from parked to earning. You choose how involved you want to stay at every stage.</p>
+        <p>Six steps take your vehicle from parked to earning. You choose how involved you want to stay at every stage.</p>
       </div>
       <div class="timeline">
-        <div class="timeline-step reveal"><span class="step-num">01</span><h3>Vehicle assessment</h3><p>We learn about your vehicle, its condition, availability, and your goals.</p></div>
-        <div class="timeline-step reveal"><span class="step-num">02</span><h3>Earnings analysis</h3><p>We review its potential based on category, location, demand, and availability.</p></div>
-        <div class="timeline-step reveal"><span class="step-num">03</span><h3>Management plan</h3><p>You choose the level of service that fits — Ops Lite, Standard, or Full Service.</p></div>
-        <div class="timeline-step reveal"><span class="step-num">04</span><h3>Owner onboarding</h3><p>We collect the necessary information and establish responsibilities in writing.</p></div>
-        <div class="timeline-step reveal"><span class="step-num">05</span><h3>Vehicle preparation</h3><p>We prepare the vehicle for professional presentation and day-to-day operations.</p></div>
-        <div class="timeline-step reveal"><span class="step-num">06</span><h3>Listing launch</h3><p>We optimize the listing, pricing, photos, and availability windows.</p></div>
-        <div class="timeline-step reveal"><span class="step-num">07</span><h3>First booking</h3><p>The vehicle begins accepting trips under your selected plan.</p></div>
-        <div class="timeline-step reveal"><span class="step-num">08</span><h3>Ongoing management</h3><p>We run the operational process and continuously monitor performance.</p></div>
+        <div class="timeline-step reveal"><span class="step-num">01</span><h3>Assessment &amp; earnings estimate</h3><p>We review your vehicle's condition, availability, and realistic local demand.</p></div>
+        <div class="timeline-step reveal"><span class="step-num">02</span><h3>Management plan</h3><p>You choose the level of service that fits — Ops Lite, Standard, or Full Service.</p></div>
+        <div class="timeline-step reveal"><span class="step-num">03</span><h3>Onboarding &amp; preparation</h3><p>We put responsibilities in writing and prepare the vehicle for listing.</p></div>
+        <div class="timeline-step reveal"><span class="step-num">04</span><h3>Listing launch</h3><p>We optimize the listing, pricing, photos, and availability windows.</p></div>
+        <div class="timeline-step reveal"><span class="step-num">05</span><h3>First booking</h3><p>The vehicle begins accepting trips under your selected plan.</p></div>
+        <div class="timeline-step reveal"><span class="step-num">06</span><h3>Ongoing management</h3><p>We run the operational process and continuously monitor performance.</p></div>
       </div>
     </div>
   </section>
@@ -292,9 +296,9 @@
   <section id="plans">
     <div class="container">
       <div class="section-head reveal">
-        <span class="eyebrow" style="justify-content:center;">Management Plans</span>
+        <span class="spec-plate">Management Plans</span>
         <h2>Choose how involved you want to be.</h2>
-        <p>One flat rate, taken as a percentage of trip revenue. No setup fees, no hidden management line items.</p>
+        <p>One flat rate, taken as a percentage of what you actually receive from Turo. No setup fees, no hidden management line items.</p>
       </div>
       <div class="pricing-grid">
         <div class="price-card reveal">
@@ -306,7 +310,6 @@
             <li><span class="check-mark"><svg class="icon-sm" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>Calendar management</li>
             <li><span class="check-mark"><svg class="icon-sm" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>Basic pricing support</li>
             <li><span class="check-mark"><svg class="icon-sm" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>Listing support</li>
-            <li><span class="check-mark"><svg class="icon-sm" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>Owner coordination</li>
           </ul>
           <a href="#contact" class="btn btn-secondary btn-block">Get Started</a>
           <span class="price-best">Best for: Involved Owners</span>
@@ -321,7 +324,6 @@
             <li><span class="check-mark"><svg class="icon-sm" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>Check-in &amp; check-out coordination</li>
             <li><span class="check-mark"><svg class="icon-sm" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>Cleaning coordination</li>
             <li><span class="check-mark"><svg class="icon-sm" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>Vehicle &amp; damage documentation</li>
-            <li><span class="check-mark"><svg class="icon-sm" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>Pricing &amp; listing optimization</li>
           </ul>
           <a href="#contact" class="btn btn-primary btn-block">Get Started</a>
           <span class="price-best">Best for: Most Vehicle Owners</span>
@@ -334,14 +336,13 @@
             <li><span class="check-mark"><svg class="icon-sm" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>Everything in Standard</li>
             <li><span class="check-mark"><svg class="icon-sm" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>30+ photo trip documentation</li>
             <li><span class="check-mark"><svg class="icon-sm" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>Inspection &amp; maintenance coordination</li>
-            <li><span class="check-mark"><svg class="icon-sm" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>Lockbox / access management</li>
             <li><span class="check-mark"><svg class="icon-sm" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>Monthly owner performance reports</li>
           </ul>
           <a href="#contact" class="btn btn-secondary btn-block">Get Started</a>
           <span class="price-best">Best for: Hands-Off Owners</span>
         </div>
       </div>
-      <p class="pricing-note reveal">"No hidden line items" refers to our management fee specifically — it's fixed at the percentage you select and won't change mid-agreement. It doesn't mean there are zero other costs: Turo's own host service fee, cleaning, and maintenance are separate and are addressed in the earnings calculator and your management agreement.</p>
+      <p class="pricing-note reveal">"No hidden line items" refers to our management fee specifically — it's fixed at the percentage you select and won't change mid-agreement. It doesn't mean there are zero other costs: Turo's own host protection fee, cleaning, maintenance, and depreciation are separate and are addressed in the earnings calculator below.</p>
     </div>
   </section>
 
@@ -349,7 +350,7 @@
   <section>
     <div class="container">
       <div class="section-head reveal">
-        <span class="eyebrow" style="justify-content:center;">Side By Side</span>
+        <span class="spec-plate">Side By Side</span>
         <h2>Compare your options.</h2>
       </div>
       <div class="table-wrap reveal">
@@ -375,12 +376,12 @@
   <section>
     <div class="container">
       <div class="section-head reveal">
-        <span class="eyebrow" style="justify-content:center;">Set In Writing</span>
+        <span class="spec-plate">Set In Writing</span>
         <h2>Who's responsible for what.</h2>
         <p>The exact split is defined in your management agreement — this is the general shape of it, regardless of plan.</p>
       </div>
       <div class="split-grid">
-        <div class="card split-card reveal">
+        <div class="card reveal">
           <h3>Owner responsibilities</h3>
           <ul class="split-list">
             <li>Vehicle financing</li>
@@ -391,7 +392,7 @@
             <li>Taxes on rental income</li>
           </ul>
         </div>
-        <div class="card split-card reveal">
+        <div class="card reveal">
           <h3>What 604 Kars manages</h3>
           <ul class="split-list">
             <li>Guest communication</li>
@@ -410,9 +411,9 @@
   <section id="calculator">
     <div class="container">
       <div class="section-head reveal">
-        <span class="eyebrow" style="justify-content:center;">Earnings Estimate</span>
+        <span class="spec-plate">Earnings Estimate</span>
         <h2>See what your car could earn.</h2>
-        <p>Adjust the inputs below for a rough, non-binding estimate. Revenue isn't the same as profit — this breaks out both.</p>
+        <p>Adjust the inputs below for a rough, non-binding estimate. This accounts for Turo's own host fee, our management fee, cleaning, maintenance, and depreciation — revenue isn't the same as profit.</p>
       </div>
 
       <div class="calc-grid reveal">
@@ -420,11 +421,19 @@
           <div class="field">
             <label for="vehicleType">Vehicle Type</label>
             <select id="vehicleType" class="field-input">
-              <option value="55" data-clean="16.4">Economy (Corolla, Civic, Mazda 3)</option>
-              <option value="70" data-clean="18">SUV (RAV4, CR-V, CX-5)</option>
-              <option value="88" data-clean="19">Electric (Model 3, Model Y)</option>
-              <option value="125" data-clean="22">Luxury (BMW, Mercedes, Audi)</option>
-              <option value="145" data-clean="24">Specialty (Convertibles, Sports)</option>
+              <option data-rate="70" data-clean="18" data-depreciation="7" selected>SUV (RAV4, CR-V, CX-5)</option>
+              <option data-rate="88" data-clean="19" data-depreciation="7">Electric (Model 3, Model Y)</option>
+              <option data-rate="125" data-clean="22" data-depreciation="16">Luxury (BMW, Mercedes, Audi)</option>
+              <option data-rate="145" data-clean="24" data-depreciation="20">Specialty (Convertibles, Sports)</option>
+              <option data-rate="55" data-clean="16.4" data-depreciation="5">Economy (Corolla, Civic, Mazda 3)</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="protectionPlan">Turo Protection Plan</label>
+            <select id="protectionPlan" class="field-input">
+              <option data-retention="0.90">Basic · you keep ~90%</option>
+              <option data-retention="0.75" selected>Standard · you keep ~75%</option>
+              <option data-retention="0.60">Premium · you keep ~60%</option>
             </select>
           </div>
           <div class="field">
@@ -449,116 +458,82 @@
           <div class="calc-result-head">
             <span class="mono">Estimated Monthly</span>
             <div class="calc-big-num"><span class="cur">CAD $</span><span id="netMonthly">0</span></div>
-            <span class="sub">Estimated owner net, after management fee and estimated expenses</span>
+            <span class="sub">Estimated owner net, after Turo's fee, our management fee, and estimated expenses</span>
           </div>
           <div class="calc-breakdown">
             <div class="calc-line"><span>Gross trip revenue</span><span id="grossRev">$0</span></div>
+            <div class="calc-line neg"><span>Turo host fee</span><span id="turoFee">$0</span></div>
+            <div class="calc-line"><span>Your Turo payout</span><span id="turoPayout">$0</span></div>
             <div class="calc-line neg"><span>604 Kars management fee</span><span id="mgmtFee">$0</span></div>
             <div class="calc-line"><span>Owner share</span><span id="ownerShare">$0</span></div>
             <div class="calc-line neg"><span>– Estimated cleaning</span><span id="cleaningCost">$0</span></div>
             <div class="calc-line neg"><span>– Estimated maintenance reserve</span><span id="maintCost">$0</span></div>
+            <div class="calc-line neg"><span>– Estimated depreciation reserve</span><span id="depreciationCost">$0</span></div>
             <div class="calc-line total"><span>Owner net (monthly)</span><span id="netMonthly2">$0</span></div>
-            <div class="calc-line annual"><span>Owner net (annual)</span><span id="netAnnual">$0</span></div>
+            <div class="calc-line"><span>Owner net (annual)</span><span id="netAnnual">$0</span></div>
           </div>
-          <p class="calc-disclaimer">Estimate only — not a guarantee of income. Daily rates are illustrative Vancouver-market comps, not live pricing. Figures exclude Turo's own host service fee, which the platform deducts before gross trip revenue is calculated above. Actual earnings vary based on vehicle type, demand, seasonality, pricing, utilization, and operating expenses.</p>
+          <p class="calc-disclaimer">Estimate only — not a guarantee of income. Daily rates are illustrative Vancouver-market comps, not live pricing. Turo protection-plan retention percentages are representative — confirm your exact rate on Turo. Depreciation is estimated from typical added mileage per trip and is a real cost of rental use, not just a bookkeeping line. Actual earnings vary based on vehicle type, demand, seasonality, pricing, utilization, and operating expenses.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- FINE PRINT -->
+  <!-- FINE PRINT + EXPECTATIONS (merged) -->
   <section>
     <div class="container">
       <div class="section-head reveal">
-        <span class="eyebrow" style="justify-content:center;">Read The Fine Print</span>
+        <span class="spec-plate">Read The Fine Print</span>
         <h2>Revenue is only one part of the equation.</h2>
-        <p>Gross revenue is not the same as profit. A full picture of vehicle economics includes:</p>
+        <p>Gross revenue is not the same as profit, and co-hosting isn't completely passive. A full picture of vehicle economics includes:</p>
       </div>
-      <div class="finegrid">
+      <div class="finegrid" style="margin-bottom:var(--space-16);">
         <div class="card reveal"><span class="card-eyebrow">Revenue In</span><h3>Gross trip revenue</h3><p>Total revenue generated by bookings, before any deductions.</p></div>
-        <div class="card reveal"><span class="card-eyebrow">Platform</span><h3>Platform fees</h3><p>Fees charged by the rental platform itself, separate from our fee.</p></div>
-        <div class="card reveal"><span class="card-eyebrow">Management</span><h3>604 Kars fee</h3><p>Your selected management percentage — 25%, 30%, or 35%.</p></div>
+        <div class="card reveal"><span class="card-eyebrow">Platform</span><h3>Turo's host fee</h3><p>Turo's own cut, deducted before you ever receive a payout — varies by protection plan.</p></div>
+        <div class="card reveal"><span class="card-eyebrow">Management</span><h3>604 Kars fee</h3><p>Your selected management percentage — 25%, 30%, or 35% of your Turo payout.</p></div>
         <div class="card reveal"><span class="card-eyebrow">Turnover</span><h3>Cleaning</h3><p>Turnover and cleaning costs between trips.</p></div>
         <div class="card reveal"><span class="card-eyebrow">Upkeep</span><h3>Maintenance</h3><p>Oil changes, tires, brakes, and general wear.</p></div>
-        <div class="card reveal"><span class="card-eyebrow">Bottom Line</span><h3>Owner net</h3><p>What's estimated to remain after applicable expenses.</p></div>
+        <div class="card reveal"><span class="card-eyebrow">Real Cost</span><h3>Depreciation</h3><p>The single largest true cost of rental use — added mileage accelerates resale-value loss.</p></div>
       </div>
-    </div>
-  </section>
-
-  <!-- EXPECTATIONS -->
-  <section>
-    <div class="container">
-      <div class="section-head reveal">
-        <span class="eyebrow" style="justify-content:center;">Set The Right Expectations</span>
-        <h2>Co-hosting isn't completely passive.</h2>
-        <p>We make vehicle management easier, but owning a rental vehicle still comes with real responsibilities.</p>
+      <div class="section-head reveal" style="margin-bottom:var(--space-8);">
+        <span class="spec-plate">Set The Right Expectations</span>
+        <h2 style="font-size:1.6rem;">Co-hosting isn't completely passive.</h2>
       </div>
       <ul class="expect-list reveal">
         <li>Vehicles accumulate mileage</li>
         <li>Maintenance is required</li>
         <li>Demand fluctuates seasonally</li>
         <li>Revenue varies month to month</li>
-        <li>Vehicles may experience normal wear</li>
+        <li>Vehicles experience normal wear</li>
         <li>Bookings aren't guaranteed</li>
-        <li>Operating expenses affect profitability</li>
       </ul>
       <p class="center reveal" style="margin-top:var(--space-8);">Our job is to manage the operational complexity — not to promise guaranteed income.</p>
     </div>
   </section>
 
-  <!-- TRIP MANAGEMENT -->
+  <!-- TRIP MANAGEMENT + PHOTO DOC (merged) -->
   <section>
     <div class="container">
       <div class="section-head reveal">
-        <span class="eyebrow" style="justify-content:center;">Trip Management System</span>
+        <span class="spec-plate">Trip Management System</span>
         <h2>Every trip runs on the same clock.</h2>
-        <p>Consistency is what makes hands-off ownership possible. Every booking moves through the same three checkpoints.</p>
+        <p>Consistency is what makes hands-off ownership possible. Every booking moves through the same three checkpoints — and Full Service plans document all of it with 30+ photos per trip.</p>
       </div>
       <div class="checkpoints">
         <div class="checkpoint reveal">
           <span class="checkpoint-time">T–24H</span>
           <h3>Before the trip</h3>
-          <ul>
-            <li>Confirm booking &amp; guest details</li>
-            <li>Confirm vehicle readiness</li>
-            <li>Send pickup instructions</li>
-          </ul>
+          <ul><li>Confirm booking &amp; guest details</li><li>Confirm vehicle readiness</li><li>Send pickup instructions</li></ul>
         </div>
         <div class="checkpoint reveal">
           <span class="checkpoint-time">T–1H</span>
           <h3>Right before pickup</h3>
-          <ul>
-            <li>Confirm vehicle access</li>
-            <li>Confirm vehicle location</li>
-            <li>Verify guest has instructions</li>
-          </ul>
+          <ul><li>Confirm vehicle access &amp; location</li><li>Verify guest has instructions</li></ul>
         </div>
         <div class="checkpoint reveal">
           <span class="checkpoint-time">T+2H</span>
           <h3>After expected return</h3>
-          <ul>
-            <li>Confirm the vehicle has been returned</li>
-            <li>Check vehicle status</li>
-            <li>Begin post-trip inspection</li>
-          </ul>
+          <ul><li>Confirm return &amp; vehicle status</li><li>Begin post-trip inspection</li></ul>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- PHOTO DOCUMENTATION -->
-  <section>
-    <div class="container">
-      <div class="section-head reveal">
-        <span class="eyebrow" style="justify-content:center;">Documentation, Not Assumptions</span>
-        <h2>30+ photos, every trip.</h2>
-        <p>Full Service plans include this structured photo record, captured before and after every trip.</p>
-      </div>
-      <div class="photo-groups">
-        <div class="photo-group reveal"><span class="tag">Ext / 01–09</span><p>Front, rear, both sides, roof, hood, trunk, both mirrors</p></div>
-        <div class="photo-group reveal"><span class="tag">Whl / 10–13</span><p>Front left, front right, rear left, rear right</p></div>
-        <div class="photo-group reveal"><span class="tag">Int / 14–24</span><p>Dashboard, front &amp; rear seats, console, floor mats, trunk, headliner</p></div>
-        <div class="photo-group reveal"><span class="tag">Data / 25–30+</span><p>Odometer, fuel/charge level, keys, any existing wear or marks</p></div>
       </div>
     </div>
   </section>
@@ -567,37 +542,32 @@
   <section id="fit">
     <div class="container">
       <div class="section-head reveal">
-        <span class="eyebrow" style="justify-content:center;">Is Your Vehicle A Fit?</span>
+        <span class="spec-plate">Is Your Vehicle A Fit?</span>
         <h2>Every vehicle is evaluated individually.</h2>
-        <p>We consider age, condition, reliability, mileage, and local demand. These categories tend to perform well in the Vancouver market.</p>
+        <p>We consider age, condition, reliability, mileage, and local demand. These categories tend to perform best in the Vancouver market — luxury and specialty vehicles typically clear meaningfully more than economy after real costs.</p>
       </div>
       <div class="fit-categories">
-        <div class="fit-cat reveal"><span class="tag">Economy</span><span class="model">Corolla</span><span class="model">Civic</span><span class="model">Mazda 3</span></div>
-        <div class="fit-cat reveal"><span class="tag">SUV</span><span class="model">RAV4</span><span class="model">CR-V</span><span class="model">CX-5</span></div>
-        <div class="fit-cat reveal"><span class="tag">Electric</span><span class="model">Model 3</span><span class="model">Model Y</span></div>
         <div class="fit-cat reveal"><span class="tag">Luxury</span><span class="model">BMW</span><span class="model">Mercedes</span><span class="model">Audi</span></div>
+        <div class="fit-cat reveal"><span class="tag">Electric</span><span class="model">Model 3</span><span class="model">Model Y</span></div>
+        <div class="fit-cat reveal"><span class="tag">SUV</span><span class="model">RAV4</span><span class="model">CR-V</span><span class="model">CX-5</span></div>
       </div>
       <div class="fit-split">
-        <div class="card reveal">
-          <h3 style="color:var(--color-success);">Good Fit</h3>
+        <div class="reveal">
+          <h3 style="color:var(--success);">Good Fit</h3>
           <p class="card-eyebrow" style="margin-bottom:var(--space-4);">604 Kars may be a good fit if...</p>
           <ul class="split-list">
             <li><span class="check-mark"><svg class="icon-sm" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span> Your car sits unused regularly</li>
             <li><span class="check-mark"><svg class="icon-sm" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span> You have a second vehicle</li>
-            <li><span class="check-mark"><svg class="icon-sm" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span> You travel frequently</li>
-            <li><span class="check-mark"><svg class="icon-sm" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span> You work from home</li>
-            <li><span class="check-mark"><svg class="icon-sm" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span> You want income from an asset you already own</li>
             <li><span class="check-mark"><svg class="icon-sm" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span> You don't want to manage guests yourself</li>
             <li><span class="check-mark"><svg class="icon-sm" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span> You're interested in building a small fleet over time</li>
           </ul>
         </div>
-        <div class="card reveal">
-          <h3 style="color:var(--color-danger);">Not A Fit — Yet</h3>
+        <div class="reveal">
+          <h3 style="color:var(--danger);">Not A Fit — Yet</h3>
           <p class="card-eyebrow" style="margin-bottom:var(--space-4);">It may not be right if...</p>
           <ul class="split-list">
             <li><span class="x-mark"><svg class="icon-sm" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></span> You need your car every day</li>
             <li><span class="x-mark"><svg class="icon-sm" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></span> Your vehicle is unreliable or unsafe to drive</li>
-            <li><span class="x-mark"><svg class="icon-sm" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></span> You don't want additional mileage on it</li>
             <li><span class="x-mark"><svg class="icon-sm" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></span> Your vehicle isn't eligible for the platform</li>
             <li><span class="x-mark"><svg class="icon-sm" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></span> You expect guaranteed income</li>
           </ul>
@@ -610,16 +580,22 @@
   <section>
     <div class="container">
       <div class="section-head reveal">
-        <span class="eyebrow" style="justify-content:center;">Local Management. Built For Vancouver.</span>
+        <span class="spec-plate">Local Management. Built For Vancouver.</span>
         <h2>Meet 604 Kars.</h2>
       </div>
       <div class="founder-grid reveal">
-        <div class="founder-avatar">AK</div>
+        <div class="photo-frame portrait-photo">
+          <div class="photo-caption">
+            <svg class="icon-camera" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 8h3l2-2h6l2 2h3v11H4z"/><circle cx="12" cy="13.5" r="3.5"/></svg>
+            <div class="label">Photo: Amir Keshavarzi</div>
+            <div class="dims">900 × 1200</div>
+          </div>
+        </div>
         <div>
           <div class="founder-name">Amir Keshavarzi</div>
           <div class="founder-role" style="margin-bottom:var(--space-4);">Founder, 604 Kars</div>
-          <p style="margin-bottom:var(--space-4);">604 Kars was started to help Vancouver vehicle owners get more value from underutilized cars without taking on the operational burden of managing every trip themselves. The focus is a professional, systems-driven approach to vehicle management — built around Vancouver's specific market, not a generic playbook.</p>
-          <p>I'm Amir Keshavarzi, the founder of 604 Kars, and I started the business to help vehicle owners turn their cars into a well-managed income-producing asset without having to handle the day-to-day work themselves. I personally oversee the key parts of the operation, including guest communication, booking coordination, vehicle presentation, cleaning coordination, and making sure each vehicle is managed with care and attention to detail. My goal is to give every vehicle owner peace of mind knowing their car is being professionally managed while providing guests with a reliable and seamless rental experience.</p>
+          <p style="margin-bottom:var(--space-4);">604 Kars was started to help Vancouver vehicle owners get more value from underutilized cars without taking on the operational burden of managing every trip themselves. The focus is a professional, systems-driven approach — built around Vancouver's specific market, not a generic playbook.</p>
+          <p>I personally oversee guest communication, booking coordination, vehicle presentation, and cleaning coordination — making sure each vehicle is managed with care and attention to detail, and every guest gets a reliable, seamless rental experience.</p>
         </div>
       </div>
     </div>
@@ -629,23 +605,23 @@
   <section>
     <div class="container">
       <div class="section-head reveal">
-        <span class="eyebrow" style="justify-content:center;">Owner Feedback</span>
+        <span class="spec-plate">Owner Feedback</span>
         <h2>What owners say.</h2>
         <p>Sample testimonials shown for website preview purposes. Replace with verified owner testimonials as your client base grows.</p>
       </div>
       <div class="grid-3">
         <div class="testi-card reveal">
-          <blockquote>604 Kars made the process of getting my vehicle onto Turo feel simple and stress-free. The communication, attention to detail, and professional approach gave me confidence that my car was being taken care of.</blockquote>
+          <blockquote>"604 Kars made the process of getting my vehicle onto Turo feel simple and stress-free. The communication and attention to detail gave me confidence my car was being taken care of."</blockquote>
           <div class="testi-author">Daniel M.</div>
           <div class="testi-tag">Sample Owner Testimonial</div>
         </div>
         <div class="testi-card reveal">
-          <blockquote>I wanted to generate extra income from my vehicle but didn't have the time to manage everything myself. The 604 Kars approach is exactly what I was looking for — professional management while keeping me informed throughout the process.</blockquote>
+          <blockquote>"I wanted extra income from my vehicle but didn't have time to manage everything myself. The 604 Kars approach is exactly what I was looking for."</blockquote>
           <div class="testi-author">Jason K.</div>
           <div class="testi-tag">Sample Owner Testimonial</div>
         </div>
         <div class="testi-card reveal">
-          <blockquote>What stood out to me was the level of organization and attention to detail. From guest communication to vehicle preparation, everything was handled with a professional mindset. I could see the potential for a much better ownership experience.</blockquote>
+          <blockquote>"What stood out was the level of organization. From guest communication to vehicle preparation, everything was handled with a professional mindset."</blockquote>
           <div class="testi-author">Michael R.</div>
           <div class="testi-tag">Sample Owner Testimonial</div>
         </div>
@@ -670,7 +646,7 @@
   <section id="contact">
     <div class="container">
       <div class="section-head reveal">
-        <span class="eyebrow" style="justify-content:center;">Get Started</span>
+        <span class="spec-plate">Get Started</span>
         <h2>Tell us about your car.</h2>
         <p>A few quick steps and we'll follow up with a personalized estimate — or grab a time on our calendar if you'd rather talk it through first.</p>
       </div>
@@ -714,12 +690,11 @@
           </form>
 
           <div class="form-success" id="formSuccess" style="display:none;">
-            <div class="tag-icon" style="margin:0 auto var(--space-4);"><svg class="icon" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
             <h3>Almost there.</h3>
             <p>Your email app should have opened with your details pre-filled — hit send and we'll follow up shortly to talk through your vehicle and put together a personalized estimate.</p>
           </div>
 
-          <p class="form-fineprint">By submitting, you agree to be contacted by 604 Kars about your vehicle. We don't sell your information.</p>
+          <p class="form-fineprint">By submitting, you agree to be contacted by 604 Kars about your vehicle. Read our <a href="privacy.html" style="text-decoration:underline;">privacy policy</a> — we don't sell your information.</p>
         </div>
 
         <div>
@@ -737,9 +712,7 @@
               <li><span class="n">1.</span> We review the vehicle details you submit.</li>
               <li><span class="n">2.</span> We reach out to discuss your vehicle and availability.</li>
               <li><span class="n">3.</span> We build a personalized earnings estimate.</li>
-              <li><span class="n">4.</span> We walk through which plan fits best.</li>
-              <li><span class="n">5.</span> You decide — no obligation to move forward.</li>
-              <li><span class="n">6.</span> If you proceed, we onboard the vehicle.</li>
+              <li><span class="n">4.</span> You decide — no obligation to move forward.</li>
             </ul>
           </div>
         </div>
@@ -751,66 +724,46 @@
   <section id="faq">
     <div class="container">
       <div class="section-head reveal">
-        <span class="eyebrow" style="justify-content:center;">FAQ</span>
+        <span class="spec-plate">FAQ</span>
         <h2>Common questions.</h2>
       </div>
       <div style="max-width:760px;margin:0 auto;" class="reveal">
         <div class="faq-item">
-          <button class="faq-q"><span>How does 604 Kars make money?</span><span class="plus"><svg class="icon" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button>
-          <div class="faq-a"><div class="faq-a-inner"><p>We charge a percentage of the trip revenue generated, based on the management plan you select — 25%, 30%, or 35%. This is separate from Turo's own host service fee, which the platform deducts independently.</p></div></div>
+          <button class="faq-q" aria-expanded="false"><span>How does 604 Kars make money?</span><span class="plus"><svg class="icon" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button>
+          <div class="faq-a"><div class="faq-a-inner"><p>We charge a percentage of what you actually receive from Turo — 25%, 30%, or 35% depending on plan. This is separate from Turo's own host fee, which the platform deducts independently before your payout.</p></div></div>
         </div>
         <div class="faq-item">
-          <button class="faq-q"><span>How much can my car make?</span><span class="plus"><svg class="icon" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button>
-          <div class="faq-a"><div class="faq-a-inner"><p>It depends on vehicle type, location, availability, and demand. Use the earnings calculator above for a rough estimate, or book a consultation for a personalized analysis based on your specific vehicle.</p></div></div>
+          <button class="faq-q" aria-expanded="false"><span>How much can my car make?</span><span class="plus"><svg class="icon" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button>
+          <div class="faq-a"><div class="faq-a-inner"><p>It depends on vehicle type, location, availability, and demand. Use the earnings calculator above for a rough estimate that accounts for Turo's fee, our fee, and real operating costs, or book a consultation for a personalized analysis.</p></div></div>
         </div>
         <div class="faq-item">
-          <button class="faq-q"><span>Do you guarantee income?</span><span class="plus"><svg class="icon" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button>
+          <button class="faq-q" aria-expanded="false"><span>Do you guarantee income?</span><span class="plus"><svg class="icon" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button>
           <div class="faq-a"><div class="faq-a-inner"><p>No. Bookings aren't guaranteed and revenue varies month to month based on demand, seasonality, and market conditions. We manage the operational complexity — we don't promise guaranteed income.</p></div></div>
         </div>
         <div class="faq-item">
-          <button class="faq-q"><span>Do I have to manage guests myself?</span><span class="plus"><svg class="icon" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button>
+          <button class="faq-q" aria-expanded="false"><span>Do I have to manage guests myself?</span><span class="plus"><svg class="icon" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button>
           <div class="faq-a"><div class="faq-a-inner"><p>On Standard and Full Service plans, no — we handle guest communication end-to-end. On Ops Lite, guest communication is included but you stay more hands-on with the vehicle itself.</p></div></div>
         </div>
         <div class="faq-item">
-          <button class="faq-q"><span>Can I still use my own car?</span><span class="plus"><svg class="icon" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button>
+          <button class="faq-q" aria-expanded="false"><span>Can I still use my own car?</span><span class="plus"><svg class="icon" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button>
           <div class="faq-a"><div class="faq-a-inner"><p>Yes. Your availability calendar is set by you — block out the days you need the vehicle and it simply won't be bookable during that time.</p></div></div>
         </div>
         <div class="faq-item">
-          <button class="faq-q"><span>What happens if a guest damages my vehicle?</span><span class="plus"><svg class="icon" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button>
-          <div class="faq-a"><div class="faq-a-inner"><p>Every trip is documented with pre- and post-trip photos and condition notes, which supports any damage claim filed through Turo's protection plans. We handle the documentation and claim coordination on your behalf.</p></div></div>
+          <button class="faq-q" aria-expanded="false"><span>What happens if a guest damages my vehicle?</span><span class="plus"><svg class="icon" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button>
+          <div class="faq-a"><div class="faq-a-inner"><p>Every trip is documented with pre- and post-trip photos and condition notes, which supports any damage claim filed through Turo's protection plans. We handle documentation and claim coordination on your behalf.</p></div></div>
         </div>
         <div class="faq-item">
-          <button class="faq-q"><span>What types of vehicles do you accept?</span><span class="plus"><svg class="icon" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button>
-          <div class="faq-a"><div class="faq-a-inner"><p>We evaluate each vehicle individually based on age, condition, reliability, mileage, and local demand. Economy, SUV, electric, luxury, and specialty vehicles have all performed well in the Vancouver market.</p></div></div>
+          <button class="faq-q" aria-expanded="false"><span>What types of vehicles do you accept?</span><span class="plus"><svg class="icon" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button>
+          <div class="faq-a"><div class="faq-a-inner"><p>We evaluate each vehicle individually based on age, condition, reliability, mileage, and local demand. Luxury, electric, and SUV categories have generally performed best in the Vancouver market after real costs; economy vehicles are considered case by case.</p></div></div>
         </div>
         <div class="faq-item">
-          <button class="faq-q"><span>Who pays for maintenance and repairs?</span><span class="plus"><svg class="icon" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button>
+          <button class="faq-q" aria-expanded="false"><span>Who pays for maintenance and repairs?</span><span class="plus"><svg class="icon" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button>
           <div class="faq-a"><div class="faq-a-inner"><p>Maintenance costs — parts and labour — and major mechanical repairs are the owner's responsibility. We coordinate scheduling and reminders so nothing falls through the cracks.</p></div></div>
         </div>
         <div class="faq-item">
-          <button class="faq-q"><span>How do I get started?</span><span class="plus"><svg class="icon" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button>
+          <button class="faq-q" aria-expanded="false"><span>How do I get started?</span><span class="plus"><svg class="icon" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button>
           <div class="faq-a"><div class="faq-a-inner"><p>Fill out the short form above or book a free 15-minute consultation. We'll review your vehicle, build a personalized earnings estimate, and walk through which plan fits best — no obligation to move forward.</p></div></div>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- GET IN TOUCH -->
-  <section>
-    <div class="container">
-      <div class="section-head reveal">
-        <span class="eyebrow" style="justify-content:center;">Get In Touch</span>
-        <h2>Let's talk about your vehicle.</h2>
-      </div>
-      <div class="touch-grid">
-        <a href="mailto:604kars@gmail.com" class="touch-card reveal">
-          <span class="card-eyebrow">Email</span>
-          <div class="value">604kars@gmail.com</div>
-        </a>
-        <a href="tel:+12367888944" class="touch-card reveal">
-          <span class="card-eyebrow">Phone</span>
-          <div class="value">236-788-8944</div>
-        </a>
       </div>
     </div>
   </section>
@@ -818,14 +771,20 @@
 </main>
 
 <footer>
-  <div class="container footer-grid">
-    <a href="#top" class="logo"><span class="logo-mark">604</span> KARS</a>
-    <div class="footer-links">
-      <a href="#plans">Plans</a>
-      <a href="#faq">FAQ</a>
-      <a href="#contact">Contact</a>
+  <div class="container">
+    <div class="footer-grid">
+      <a href="#top" class="logo"><span class="logo-mark">604</span> Kars</a>
+      <div class="footer-links">
+        <a href="#plans">Plans</a>
+        <a href="#faq">FAQ</a>
+        <a href="#contact">Contact</a>
+        <a href="mailto:604kars@gmail.com">604kars@gmail.com</a>
+        <a href="tel:+12367888944">236-788-8944</a>
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="terms.html">Terms of Service</a>
+      </div>
     </div>
-    <div class="footer-meta">© <span id="year"></span> 604 Kars, Vancouver BC. Not affiliated with Turo Inc.</div>
+    <div class="footer-meta" style="margin-top:var(--space-6);">© <span id="year"></span> 604 Kars, Vancouver BC. Not affiliated with Turo Inc.</div>
   </div>
 </footer>
 

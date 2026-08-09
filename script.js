@@ -16,9 +16,13 @@ updateScrollProgress();
 const navToggle = document.getElementById('navToggle');
 const mobileMenu = document.getElementById('mobileMenu');
 navToggle.addEventListener('click', () => {
-  mobileMenu.classList.toggle('open');
+  const isOpen = mobileMenu.classList.toggle('open');
+  navToggle.setAttribute('aria-expanded', String(isOpen));
 });
-mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => mobileMenu.classList.remove('open')));
+mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+  mobileMenu.classList.remove('open');
+  navToggle.setAttribute('aria-expanded', 'false');
+}));
 
 /* ---------- Scroll reveal ---------- */
 const revealEls = document.querySelectorAll('.reveal');
@@ -49,39 +53,6 @@ window.addEventListener('hashchange', () => setTimeout(revealVisibleNow, 50));
 window.addEventListener('scroll', revealVisibleNow, { passive: true });
 if (location.hash) revealVisibleNow();
 
-/* ---------- Hero gauge animation ---------- */
-const gaugeArc = document.getElementById('gaugeArc');
-const gaugeNum = document.getElementById('gaugeNum');
-const ARC_LENGTH = 267;
-const TARGET = 82;
-let gaugeAnimated = false;
-
-function animateGauge() {
-  if (gaugeAnimated) return;
-  gaugeAnimated = true;
-  const duration = 1400;
-  const start = performance.now();
-  function tick(now) {
-    const progress = Math.min((now - start) / duration, 1);
-    const eased = 1 - Math.pow(1 - progress, 3);
-    const value = Math.round(TARGET * eased);
-    gaugeNum.textContent = value;
-    gaugeArc.setAttribute('stroke-dashoffset', ARC_LENGTH - (ARC_LENGTH * TARGET / 100) * eased);
-    if (progress < 1) requestAnimationFrame(tick);
-  }
-  requestAnimationFrame(tick);
-}
-
-const gaugeObserver = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      animateGauge();
-      gaugeObserver.disconnect();
-    }
-  });
-}, { threshold: 0.4 });
-gaugeObserver.observe(document.querySelector('.status-panel'));
-
 /* ---------- FAQ accordion ---------- */
 document.querySelectorAll('.faq-item').forEach(item => {
   const q = item.querySelector('.faq-q');
@@ -92,20 +63,36 @@ document.querySelectorAll('.faq-item').forEach(item => {
       if (openItem !== item) {
         openItem.classList.remove('open');
         openItem.querySelector('.faq-a').style.maxHeight = null;
+        openItem.querySelector('.faq-q').setAttribute('aria-expanded', 'false');
       }
     });
     if (isOpen) {
       item.classList.remove('open');
       a.style.maxHeight = null;
+      q.setAttribute('aria-expanded', 'false');
     } else {
       item.classList.add('open');
       a.style.maxHeight = a.scrollHeight + 'px';
+      q.setAttribute('aria-expanded', 'true');
     }
   });
 });
 
-/* ---------- Earnings calculator ---------- */
+/* ---------- Earnings calculator ----------
+ * Order of operations (per Aug 2026 audit — previous version omitted the
+ * Turo host fee entirely and understated real owner take-home by 35-50%):
+ *   grossTripRevenue = dailyRate * tripDays          (guest-facing trip price)
+ *   turoHostFee       = grossTripRevenue * (1 - retention)   -- Turo's cut, shown as its own line
+ *   turoPayout        = grossTripRevenue - turoHostFee       -- what the host actually receives from Turo
+ *   mgmtFee           = turoPayout * managementPlanPercent   -- computed on payout, not gross
+ *   ownerShare        = turoPayout - mgmtFee
+ *   cleaning          = tripDays * cleaningPerTrip
+ *   maintenance       = grossTripRevenue * 0.08               -- raised from 5%, still an estimate
+ *   depreciation      = tripDays * depreciationPerTripDay      -- previously missing entirely
+ *   ownerNet          = ownerShare - cleaning - maintenance - depreciation
+ */
 const vehicleType = document.getElementById('vehicleType');
+const protectionPlan = document.getElementById('protectionPlan');
 const daysAvailable = document.getElementById('daysAvailable');
 const utilization = document.getElementById('utilization');
 const daysVal = document.getElementById('daysVal');
@@ -114,13 +101,16 @@ const planButtons = document.querySelectorAll('.plan-toggle button');
 
 let currentPlan = 30;
 
+/** @param {number} n @returns {string} */
 function fmt(n) {
   return Math.round(n).toLocaleString('en-CA');
 }
 
 function calculate() {
-  const dailyRate = parseFloat(vehicleType.value);
+  const dailyRate = parseFloat(vehicleType.selectedOptions[0].dataset.rate);
   const cleaningPerTrip = parseFloat(vehicleType.selectedOptions[0].dataset.clean);
+  const depreciationPerTrip = parseFloat(vehicleType.selectedOptions[0].dataset.depreciation);
+  const retention = parseFloat(protectionPlan.selectedOptions[0].dataset.retention);
   const days = parseInt(daysAvailable.value, 10);
   const util = parseInt(utilization.value, 10);
 
@@ -128,25 +118,31 @@ function calculate() {
   utilVal.textContent = util;
 
   const tripDays = days * (util / 100);
-  const gross = dailyRate * tripDays;
-  const fee = gross * (currentPlan / 100);
-  const ownerShare = gross - fee;
+  const grossTripRevenue = dailyRate * tripDays;
+  const turoHostFee = grossTripRevenue * (1 - retention);
+  const turoPayout = grossTripRevenue - turoHostFee;
+  const mgmtFee = turoPayout * (currentPlan / 100);
+  const ownerShare = turoPayout - mgmtFee;
   const cleaning = tripDays * cleaningPerTrip;
-  const maintenance = gross * 0.05;
-  const net = ownerShare - cleaning - maintenance;
+  const maintenance = grossTripRevenue * 0.08;
+  const depreciation = tripDays * depreciationPerTrip;
+  const net = ownerShare - cleaning - maintenance - depreciation;
   const annual = net * 12;
 
-  document.getElementById('grossRev').textContent = '$' + fmt(gross);
-  document.getElementById('mgmtFee').textContent = '-$' + fmt(fee);
+  document.getElementById('grossRev').textContent = '$' + fmt(grossTripRevenue);
+  document.getElementById('turoFee').textContent = '-$' + fmt(turoHostFee);
+  document.getElementById('turoPayout').textContent = '$' + fmt(turoPayout);
+  document.getElementById('mgmtFee').textContent = '-$' + fmt(mgmtFee);
   document.getElementById('ownerShare').textContent = '$' + fmt(ownerShare);
   document.getElementById('cleaningCost').textContent = '-$' + fmt(cleaning);
   document.getElementById('maintCost').textContent = '-$' + fmt(maintenance);
-  document.getElementById('netMonthly').textContent = fmt(Math.max(net, 0));
+  document.getElementById('depreciationCost').textContent = '-$' + fmt(depreciation);
+  document.getElementById('netMonthly').textContent = fmt(net);
   document.getElementById('netMonthly2').textContent = '$' + fmt(net);
-  document.getElementById('netAnnual').textContent = '$' + fmt(Math.max(annual, 0));
+  document.getElementById('netAnnual').textContent = '$' + fmt(annual);
 }
 
-[vehicleType, daysAvailable, utilization].forEach(el => el.addEventListener('input', calculate));
+[vehicleType, protectionPlan, daysAvailable, utilization].forEach(el => el.addEventListener('input', calculate));
 
 planButtons.forEach(btn => {
   btn.addEventListener('click', () => {
