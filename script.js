@@ -2,6 +2,16 @@
 
 document.getElementById('year').textContent = new Date().getFullYear();
 
+/* ---------- Scroll progress bar ---------- */
+const scrollProgress = document.getElementById('scrollProgress');
+function updateScrollProgress() {
+  const scrollable = document.documentElement.scrollHeight - window.innerHeight;
+  const pct = scrollable > 0 ? (window.scrollY / scrollable) * 100 : 0;
+  scrollProgress.style.width = pct + '%';
+}
+window.addEventListener('scroll', updateScrollProgress, { passive: true });
+updateScrollProgress();
+
 /* ---------- Mobile nav ---------- */
 const navToggle = document.getElementById('navToggle');
 const mobileMenu = document.getElementById('mobileMenu');
@@ -19,8 +29,25 @@ const revealObserver = new IntersectionObserver((entries) => {
       revealObserver.unobserve(entry.target);
     }
   });
-}, { threshold: 0.12 });
+}, { threshold: 0.12, rootMargin: '0px 0px -5% 0px' });
 revealEls.forEach(el => revealObserver.observe(el));
+
+// Fallback: catches elements the observer can miss when a user jumps straight to
+// a section (deep-linked #hash on load, prefers-reduced-motion skipping smooth-scroll,
+// or restored scroll position) rather than passing through it during a scroll.
+function revealVisibleNow() {
+  document.querySelectorAll('.reveal:not(.in)').forEach(el => {
+    const rect = el.getBoundingClientRect();
+    if (rect.top < window.innerHeight && rect.bottom > 0) {
+      el.classList.add('in');
+      revealObserver.unobserve(el);
+    }
+  });
+}
+window.addEventListener('load', revealVisibleNow);
+window.addEventListener('hashchange', () => setTimeout(revealVisibleNow, 50));
+window.addEventListener('scroll', revealVisibleNow, { passive: true });
+if (location.hash) revealVisibleNow();
 
 /* ---------- Hero gauge animation ---------- */
 const gaugeArc = document.getElementById('gaugeArc');
