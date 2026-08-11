@@ -1076,6 +1076,7 @@ function $(id){ return document.getElementById(id); }
 /* ==========================================================================
    NAV
    ========================================================================== */
+var closeMobileNav;
 (function(){
   var nav = $('nav'), lifted = false;
   function onScroll(){
@@ -1094,11 +1095,15 @@ function $(id){ return document.getElementById(id); }
     nav.classList.add('nav-open');
     navToggle.setAttribute('aria-expanded', 'true');
   }
+  closeMobileNav = closeMenu;
   navToggle.addEventListener('click', function(){
     if (nav.classList.contains('nav-open')) closeMenu(); else openMenu();
   });
-  $('navRight').querySelectorAll('.nav-link').forEach(function(a){
-    a.addEventListener('click', closeMenu);
+  /* Any control inside the dropdown — a section link or the "Get an
+     estimate" button that opens the sheet — should close the dropdown
+     behind it, not just the plain links. */
+  $('navRight').querySelectorAll('a, button').forEach(function(el){
+    el.addEventListener('click', closeMenu);
   });
   document.addEventListener('keydown', function(e){
     if (e.key === 'Escape' && nav.classList.contains('nav-open')) closeMenu();
