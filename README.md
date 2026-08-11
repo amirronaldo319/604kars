@@ -1,7 +1,7 @@
 # 604 Kars
 
 <div align="center">
-  <img src="logo.svg" alt="604 Kars Logo" width="200" height="200">
+  <img src="logo.png" alt="604 Kars Logo" width="200" height="200">
 </div>
 
 ## Turo Co-hosting & Vehicle Management in Metro Vancouver
