@@ -200,6 +200,39 @@ p:last-child{ margin-bottom:0; }
 .nav-link:hover{ color:var(--ink); }
 @media (min-width:900px){ .nav-link{ display:inline-block; } }
 
+/* Mobile nav toggle — below 900px the links above collapse to display:none,
+   so this hamburger is the only way to reach them without a full page scroll. */
+.nav-toggle{
+  display:none; flex:none; width:40px; height:40px; align-items:center; justify-content:center;
+  background:none; border:1px solid transparent; border-radius:var(--r-sm); cursor:pointer; padding:0;
+}
+.nav-toggle-bars{ position:relative; width:18px; height:12px; flex:none; }
+.nav-toggle-bars span{
+  position:absolute; left:0; right:0; height:2px; background:var(--ink); border-radius:2px;
+  transition:transform 200ms var(--ease-out), opacity 200ms var(--ease-out), top 200ms var(--ease-out);
+}
+.nav-toggle-bars span:nth-child(1){ top:0; }
+.nav-toggle-bars span:nth-child(2){ top:5px; }
+.nav-toggle-bars span:nth-child(3){ top:10px; }
+.nav.nav-open .nav-toggle-bars span:nth-child(1){ top:5px; transform:rotate(45deg); }
+.nav.nav-open .nav-toggle-bars span:nth-child(2){ opacity:0; }
+.nav.nav-open .nav-toggle-bars span:nth-child(3){ top:5px; transform:rotate(-45deg); }
+
+@media (max-width:899.98px){
+  .nav-toggle{ display:inline-flex; }
+  .nav-right{
+    position:absolute; top:100%; left:0; right:0;
+    flex-direction:column; align-items:stretch; gap:2px;
+    background:var(--paper-raise); border-bottom:1px solid var(--hairline);
+    padding:8px var(--gut) calc(16px + env(safe-area-inset-bottom));
+    display:none;
+    max-height:calc(100vh - 62px); overflow-y:auto;
+  }
+  .nav.nav-open .nav-right{ display:flex; }
+  .nav.nav-open .nav-link{ display:block; font-size:1rem; padding:13px 4px; border-bottom:1px solid var(--hairline); }
+  .nav-right .btn{ margin-top:10px; width:100%; justify-content:center; }
+}
+
 /* ==========================================================================
    BUTTONS — feedback on pointer-down, instantly (§1)
    ========================================================================== */
@@ -517,6 +550,11 @@ p:last-child{ margin-bottom:0; }
 .sheet-actions{ display:grid; gap:9px; margin-top:20px; }
 .sheet-alt{ text-align:center; font-size:.8rem; color:var(--ink-mute); margin:14px 0 0; }
 .sheet-alt a{ color:var(--brass-text); }
+.sheet-fallback-text{
+  width:100%; resize:vertical; font-family:'JetBrains Mono',monospace; font-size:.8rem;
+  color:var(--ink-soft); background:var(--paper); border:1px solid var(--hairline);
+  border-radius:var(--r-sm); padding:10px 12px; margin:10px 0 16px;
+}
 
 /* ==========================================================================
    REVEALS — entry only, restrained
@@ -556,7 +594,10 @@ p:last-child{ margin-bottom:0; }
     <a class="brand" href="#top" aria-label="604 Kars — home">
       <img src="logo.png" alt="604 Kars" class="brand-logo" style="height: 50px; width: auto;">
     </a>
-    <div class="nav-right">
+    <button class="nav-toggle" type="button" id="navToggle" aria-expanded="false" aria-controls="navRight" aria-label="Open menu">
+      <span class="nav-toggle-bars" aria-hidden="true"><span></span><span></span><span></span></span>
+    </button>
+    <div class="nav-right" id="navRight">
       <a class="nav-link" href="#handled">What we handle</a>
       <a class="nav-link" href="#trip">How a booking runs</a>
       <a class="nav-link" href="#split">The split</a>
@@ -841,29 +882,45 @@ p:last-child{ margin-bottom:0; }
     <p class="lede">We’ll reply with a number based on your actual car and the Vancouver market — usually the same day.</p>
   </div>
 
-  <div class="field">
-    <label for="fName">Your name</label>
-    <input id="fName" type="text" autocomplete="name" placeholder="Alex Chen" required>
-    <span class="field-err" id="fNameErr" role="alert"></span>
-  </div>
-  <div class="field">
-    <label for="fContact">Phone or email</label>
-    <input id="fContact" type="text" autocomplete="tel" spellcheck="false" placeholder="604-555-0142" required>
-    <span class="field-err" id="fContactErr" role="alert"></span>
-  </div>
-  <div class="field">
-    <label for="fCar">Year, make and model</label>
-    <input id="fCar" type="text" autocomplete="off" placeholder="2021 Toyota Corolla Hatchback" required>
-    <span class="field-err" id="fCarErr" role="alert"></span>
-  </div>
-  <div class="field"><label for="fNotes">Anything else</label><textarea id="fNotes" placeholder="Mileage, condition, days a month you could leave it available…"></textarea></div>
+  <div id="sheetForm">
+    <div class="field">
+      <label for="fName">Your name</label>
+      <input id="fName" type="text" autocomplete="name" placeholder="Alex Chen" required>
+      <span class="field-err" id="fNameErr" role="alert"></span>
+    </div>
+    <div class="field">
+      <label for="fContact">Phone or email</label>
+      <input id="fContact" type="text" autocomplete="tel" spellcheck="false" placeholder="604-555-0142" required>
+      <span class="field-err" id="fContactErr" role="alert"></span>
+    </div>
+    <div class="field">
+      <label for="fCar">Year, make and model</label>
+      <input id="fCar" type="text" autocomplete="off" placeholder="2021 Toyota Corolla Hatchback" required>
+      <span class="field-err" id="fCarErr" role="alert"></span>
+    </div>
+    <div class="field"><label for="fNotes">Anything else</label><textarea id="fNotes" placeholder="Mileage, condition, days a month you could leave it available…"></textarea></div>
 
-  <div class="sheet-actions">
-    <button class="btn btn--primary btn--wide" type="button" id="sheetSend">Send it</button>
-    <button class="btn btn--ghost btn--wide" type="button" data-close-sheet>Not now</button>
+    <div class="sheet-actions">
+      <button class="btn btn--primary btn--wide" type="button" id="sheetSend">Send it</button>
+      <button class="btn btn--ghost btn--wide" type="button" data-close-sheet>Not now</button>
+    </div>
+    <p class="sheet-alt">Rather just talk? <a href="tel:+12367888944">236-788-8944</a>, 9 AM – 9 PM daily.</p>
+    <p class="sheet-alt" style="margin-top:6px;">We only use this to reply about your car. Read our <a href="privacy.html">privacy policy</a>.</p>
   </div>
-  <p class="sheet-alt">Rather just talk? <a href="tel:+12367888944">236-788-8944</a>, 9 AM – 9 PM daily.</p>
-  <p class="sheet-alt" style="margin-top:6px;">We only use this to reply about your car. Read our <a href="privacy.html">privacy policy</a>.</p>
+
+  <!-- Shown after "Send it" — mailto: silently does nothing on devices with no
+       configured mail app, so this gives every visitor a working fallback
+       instead of a dead end. -->
+  <div id="sheetFallback" class="sheet-fallback" hidden>
+    <p class="lede">Your email app should be opening with these details filled in. If nothing happened, copy them below and paste into an email, or just call or text us.</p>
+    <textarea id="sheetFallbackText" class="sheet-fallback-text" readonly rows="7"></textarea>
+    <div class="sheet-actions">
+      <button class="btn btn--primary btn--wide" type="button" id="sheetCopy">Copy details</button>
+      <a class="btn btn--ghost btn--wide" id="sheetMailtoRetry" href="#">Open email app again</a>
+    </div>
+    <p class="sheet-alt">Or call or text <a href="tel:+12367888944">236-788-8944</a>, 9 AM – 9 PM daily.</p>
+    <p class="sheet-alt" id="sheetCopyStatus" role="status" style="margin-top:6px;"></p>
+  </div>
 </div>
 
 <!--
@@ -1024,6 +1081,32 @@ function $(id){ return document.getElementById(id); }
   }
   window.addEventListener('scroll', onScroll, { passive:true });
   onScroll();
+
+  var navToggle = $('navToggle');
+  function closeMenu(){
+    nav.classList.remove('nav-open');
+    navToggle.setAttribute('aria-expanded', 'false');
+  }
+  function openMenu(){
+    nav.classList.add('nav-open');
+    navToggle.setAttribute('aria-expanded', 'true');
+  }
+  navToggle.addEventListener('click', function(){
+    if (nav.classList.contains('nav-open')) closeMenu(); else openMenu();
+  });
+  $('navRight').querySelectorAll('.nav-link').forEach(function(a){
+    a.addEventListener('click', closeMenu);
+  });
+  document.addEventListener('keydown', function(e){
+    if (e.key === 'Escape' && nav.classList.contains('nav-open')) closeMenu();
+  });
+  document.addEventListener('click', function(e){
+    if (!nav.classList.contains('nav-open')) return;
+    if (!nav.contains(e.target)) closeMenu();
+  });
+  window.addEventListener('resize', function(){
+    if (window.innerWidth >= 900) closeMenu();
+  });
 })();
 
 /* ==========================================================================
@@ -1372,6 +1455,7 @@ var openSheet, closeSheet, sheetOpen = false;
 
   openSheet = function(){
     if (sheetOpen) return;
+    if (typeof resetSheetFallback === 'function') resetSheetFallback();
     lastFocus = document.activeElement;
     sheetOpen = true;                            /* before render(), or its close check fires */
     sheet.classList.add('is-live');
@@ -1476,6 +1560,12 @@ function clearFieldError(id){
   $(id).removeAttribute('aria-invalid');
 }
 
+function resetSheetFallback(){
+  $('sheetForm').hidden = false;
+  $('sheetFallback').hidden = true;
+  $('sheetCopyStatus').textContent = '';
+}
+
 $('sheetSend').addEventListener('click', function(){
   function g(id){ return ($(id).value || '').trim(); }
 
@@ -1498,9 +1588,30 @@ $('sheetSend').addEventListener('click', function(){
     '',
     g('fNotes')
   ].join('\n');
-  window.location.href = 'mailto:' + CONFIG.email +
-    '?subject=' + encodeURIComponent('Turo co-hosting enquiry \u2014 ' + (g('fCar') || 'my car')) +
-    '&body=' + encodeURIComponent(body);
+  var subject = 'Turo co-hosting enquiry \u2014 ' + (g('fCar') || 'my car');
+  var mailtoHref = 'mailto:' + CONFIG.email +
+    '?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+
+  window.location.href = mailtoHref;
+
+  // mailto: does nothing visible on devices with no configured mail client,
+  // so swap to a fallback panel rather than leave the sheet looking inert.
+  $('sheetForm').hidden = true;
+  var fallback = $('sheetFallback');
+  fallback.hidden = false;
+  $('sheetFallbackText').value = 'To: ' + CONFIG.email + '\nSubject: ' + subject + '\n\n' + body;
+  $('sheetMailtoRetry').href = mailtoHref;
+});
+
+$('sheetCopy').addEventListener('click', function(){
+  var text = $('sheetFallbackText').value;
+  function done(ok){ $('sheetCopyStatus').textContent = ok ? 'Copied \u2014 paste it into an email to us.' : 'Couldn\u2019t copy automatically \u2014 select the text above and copy it manually.'; }
+  if (navigator.clipboard && navigator.clipboard.writeText){
+    navigator.clipboard.writeText(text).then(function(){ done(true); }, function(){ done(false); });
+  } else {
+    $('sheetFallbackText').select();
+    try { done(document.execCommand('copy')); } catch (e) { done(false); }
+  }
 });
 
 /* ==========================================================================
